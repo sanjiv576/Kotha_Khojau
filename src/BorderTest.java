@@ -1,24 +1,24 @@
-import javax.imageio.ImageIO;
-import javax.swing.*;
-import java.awt.*;
-import java.io.File;
-
-class BorderTest extends JFrame{
-
-    ImageIcon backgroundImage;
-    Image img, temp;
-    JLabel backImg;
-    public BorderTest(){
-        setTitle("test");
-        setBounds(40, 60, 700, 800);
-
-
-
-        Image backgroundImage = ImageIO.read(new File("background.jpg"));
-        public void paint( Graphics ) {
-            super.paint();
-            drawImage(backgroundImage, 0, 0, null);
-        }
+//import javax.imageio.ImageIO;
+//import javax.swing.*;
+//import java.awt.*;
+//import java.io.File;
+//
+//class BorderTest extends JFrame{
+//
+//    ImageIcon backgroundImage;
+//    Image img, temp;
+//    JLabel backImg;
+//    public BorderTest(){
+//        setTitle("test");
+//        setBounds(40, 60, 700, 800);
+//
+//
+//
+//        Image backgroundImage = ImageIO.read(new File("background.jpg"));
+//        public void paint( Graphics ) {
+//            super.paint();
+//            drawImage(backgroundImage, 0, 0, null);
+//        }
 
 
 //        backImg = new JLabel(new ImageIcon("log_cover.png"));
@@ -37,9 +37,9 @@ class BorderTest extends JFrame{
 
 
 
-        setVisible(true);
-    }
-    public static void main(String[] args) {
-        new BorderTest().setVisible(true);
-    }
-}
+//        setVisible(true);
+//    }
+//    public static void main(String[] args) {
+//        new BorderTest().setVisible(true);
+//    }
+//}
