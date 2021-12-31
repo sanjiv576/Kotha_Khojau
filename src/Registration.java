@@ -20,6 +20,7 @@ public class Registration extends JFrame {
     JLabel label1;
     JLabel label2;
     JLabel label3;;
+    JLabel imgLbl;
 
     JTextField FirstName;
     JTextField MiddleName;
@@ -36,8 +37,6 @@ public class Registration extends JFrame {
     JTextField repassword;
 
     JButton Btn;
-
-    private JFrame frame;
     private ImageIcon img;
     JComboBox comboBox;
     JComboBox comboBox1;
@@ -291,6 +290,17 @@ public class Registration extends JFrame {
 //        Btn.setEnabled(false);
 
         add(Btn);
+
+
+
+        // background image insertion
+        imgLbl = new JLabel();
+        imgLbl.setIcon(new ImageIcon(getClass().getResource("Images/registration.png")));
+        getContentPane().add(imgLbl);
+        imgLbl.setBounds(350, 200, 700, 500);
+
+
+
 
 
 
