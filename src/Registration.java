@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 import javax.swing.ImageIcon;
+import javax.swing.border.EmptyBorder;
 
 
 public class Registration extends JFrame {
@@ -20,6 +21,9 @@ public class Registration extends JFrame {
     JLabel label1;
     JLabel label2;
     JLabel label3;;
+    JLabel imgLbl;
+    JPanel panel;
+    JPanel panel1;
 
     JTextField FirstName;
     JTextField MiddleName;
@@ -36,8 +40,6 @@ public class Registration extends JFrame {
     JTextField repassword;
 
     JButton Btn;
-
-    private JFrame frame;
     private ImageIcon img;
     JComboBox comboBox;
     JComboBox comboBox1;
@@ -50,151 +52,153 @@ public class Registration extends JFrame {
 
 
         setTitle("Registration");
-        setSize(930,700);
-        setLocation(100,100);
+        setSize(920,750);
+        setLocation(100,50);
         setResizable(false);
         setLayout(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
+        panel1 = new JPanel();
+        panel1.setBorder(new EmptyBorder(10,10,10,10));
+        panel1.setBounds(0, 0, 920, 750);
+        panel1.setBackground(Color.decode("#FFFFFF"));
+        panel1.setOpaque(true);
+
         // labels
-//
-//        frame = new JFrame("mm");
-//        frame.setBounds(0,20,20,20);
-//        add(frame);
-
-
         labelFirstName = new JLabel("*First Name");
         labelFirstName.setForeground(Color.BLACK);
-        labelFirstName.setFont(new Font("Roboto", Font.BOLD,15));
-        labelFirstName.setBounds(50,150,200,20);
+        labelFirstName.setFont(new Font("times", Font.BOLD,19));
+        labelFirstName.setBounds(50,120,200,20);
         add(labelFirstName);
 
         labelmiddleName = new JLabel("*Middle Name");
         labelmiddleName.setForeground(Color.BLACK);
-        labelmiddleName.setFont(new Font("Roboto", Font.BOLD,15));
-        labelmiddleName.setBounds(230,150,200,20);
+        labelmiddleName.setFont(new Font("times", Font.BOLD,19));
+        labelmiddleName.setBounds(210,120,200,20);
         add(labelmiddleName);
 
         labelLastName = new JLabel("*Last Name");
         labelLastName.setForeground(Color.BLACK);
-        labelLastName.setFont(new Font("Roboto", Font.BOLD,15));
-        labelLastName.setBounds(410,150,200,20);
+        labelLastName.setFont(new Font("times", Font.BOLD,19));
+        labelLastName.setBounds(370,120,200,20);
         add(labelLastName);
 
         labelMemberType = new JLabel("*Member Type");
         labelMemberType.setForeground(Color.BLACK);
-        labelMemberType.setFont(new Font("Roboto", Font.BOLD,15));
-        labelMemberType.setBounds(590,150,200,20);
+        labelMemberType.setFont(new Font("Rtimes", Font.BOLD,19));
+        labelMemberType.setBounds(530,120,200,20);
         add(labelMemberType);
 
         labelGender= new JLabel("*Gender");
         labelGender.setForeground(Color.BLACK);
-        labelGender.setFont(new Font("Roboto", Font.BOLD,15));
-        labelGender.setBounds(770,150,200,20);
+        labelGender.setFont(new Font("times", Font.BOLD,19));
+        labelGender.setBounds(690,120,200,20);
         add(labelGender);
 
         labelContact = new JLabel("*Contact");
         labelContact.setForeground(Color.BLACK);
-        labelContact.setFont(new Font("Roboto", Font.BOLD,15));
-        labelContact.setBounds(50,230,200,20);
+        labelContact.setFont(new Font("times", Font.BOLD,19));
+        labelContact.setBounds(50,210,200,20);
         add(labelContact);
 
         labelDateOfBirth=new JLabel("*DOB");
         labelDateOfBirth.setForeground(Color.BLACK);
-        labelDateOfBirth.setFont(new Font("Roboto", Font.BOLD,15));
-        labelDateOfBirth.setBounds(230,230,200,20);
+        labelDateOfBirth.setFont(new Font("times", Font.BOLD,19));
+        labelDateOfBirth.setBounds(210,210,200,20);
         add(labelDateOfBirth);
 
         labelOccupation=new JLabel("*Occupation ");
         labelOccupation.setForeground(Color.BLACK);
-        labelOccupation.setFont(new Font("Roboto", Font.BOLD,15));
-        labelOccupation.setBounds(50,310,200,20);
+        labelOccupation.setFont(new Font("times", Font.BOLD,19));
+        labelOccupation.setBounds(50,290,200,20);
         add(labelOccupation);
 
         labelemail=new JLabel("*Personal email");
         labelemail.setForeground(Color.BLACK);
-        labelemail.setFont(new Font("Roboto", Font.BOLD,15));
-        labelemail.setBounds(230,310,200,20);
+        labelemail.setFont(new Font("times", Font.BOLD,19));
+        labelemail.setBounds(210,290,200,20);
         add(labelemail);
 
         labelAddress=new JLabel("*Address");
         labelAddress.setForeground(Color.BLACK);
-        labelAddress.setFont(new Font("Roboto", Font.BOLD,15));
-        labelAddress.setBounds(50,390,200,20);
+        labelAddress.setFont(new Font("times", Font.BOLD,19));
+        labelAddress.setBounds(50,370,200,20);
         add(labelAddress);
 
         labelusername=new JLabel("*Username ");
         labelusername.setForeground(Color.BLACK);
-        labelusername.setFont(new Font("Roboto", Font.BOLD,15));
-        labelusername.setBounds(230,390,200,20);
+        labelusername.setFont(new Font("times", Font.BOLD,19));
+        labelusername.setBounds(210,370,200,20);
         add(labelusername);
 
         labelpassword=new JLabel("*Password ");
         labelpassword.setForeground(Color.BLACK);
-        labelpassword.setFont(new Font("Roboto", Font.BOLD,15));
-        labelpassword.setBounds(50,475,200,20);
+        labelpassword.setFont(new Font("times", Font.BOLD,19));
+        labelpassword.setBounds(50,465,200,20);
         add(labelpassword);
 
         labelrepassword=new JLabel("*Re-password");
         labelrepassword.setForeground(Color.BLACK);
-        labelrepassword.setFont(new Font("Roboto", Font.BOLD,15));
-        labelrepassword.setBounds(230,475,200,20);
+        labelrepassword.setFont(new Font("times", Font.BOLD,19));
+        labelrepassword.setBounds(210,465,200,20);
         add( labelrepassword);
+
+        //for title
+        panel = new JPanel();
+        panel.setBorder(new EmptyBorder(10,10,10,10));
+        panel.setBounds(150, 20, 530, 70);
+        panel.setBackground(Color.decode("#00994c"));
+        panel.setOpaque(true);
 
         label1= new JLabel("HURRY UP,");
         label1.setForeground(Color.BLACK);
-        label1.setFont(new Font("Saira", Font.BOLD,38));
-        label1.setBounds(230,50,220,80);
+        label1.setFont(new Font("Saira", Font.BOLD,39));
+        label1.setBounds(205,17,220,80);
         add( label1);
 
         label2= new JLabel("SIGN UP");
         label2.setForeground(Color.BLACK);
-        label2.setFont(new Font("Saira", Font.BOLD,38));
-        label2.setBounds(450,50,220,80);
+        label2.setFont(new Font("Saira", Font.BOLD,39));
+        label2.setBounds(430,17,220,80);
         label2.setForeground(Color.YELLOW);
         add( label2);
 
         label3= new JLabel("!!");
         label3.setForeground(Color.BLACK);
-        label3.setFont(new Font("Saira", Font.BOLD,38));
-        label3.setBounds(620,50,100,80);
+        label3.setFont(new Font("Saira", Font.BOLD,39));
+        label3.setBounds(600,17,100,80);
         label3.setForeground(Color.YELLOW);
         add( label3);
-
-
-
-
-
-
+        add(panel);
 
 
 
         //textfields
         FirstName = new JTextField();
-        FirstName.setBounds(50,175,100,20);
+        FirstName.setBounds(50,145,120,25);
         FirstName.setBackground(Color.decode("#C0C0C0"));
-        FirstName.setFont(new Font("chiller", Font.BOLD,22));
+        FirstName.setFont(new Font("times", Font.BOLD,15));
         add(FirstName);
 
         MiddleName = new JTextField();
-        MiddleName.setBounds(230,175,100,20);
+        MiddleName.setBounds(210,145,120,25);
         MiddleName.setBackground(Color.decode("#C0C0C0"));
-        MiddleName.setFont(new Font("chiller", Font.BOLD,22));
+        MiddleName.setFont(new Font("times", Font.BOLD,15));
         add(MiddleName);
 
         LastName = new JTextField();
-        LastName.setBounds(410,175,120,20);
+        LastName.setBounds(370,145,120,25);
         LastName.setBackground(Color.decode("#C0C0C0"));
-        LastName.setFont(new Font("chiller", Font.BOLD,22));
+        LastName.setFont(new Font("times", Font.BOLD,15));
 
         add(LastName);
 
 
         String[] Membertype= {"Admin", "owner", "Renter"};
         JComboBox comboBox=new JComboBox(Membertype);
-        comboBox.setBounds(590,175,120,20);
+        comboBox.setBounds(530,145,120,25);
         comboBox.setBackground(Color.decode("#C0C0C0"));
-        comboBox.setFont(new Font("chiller", Font.BOLD,22));
+        comboBox.setFont(new Font("times", Font.BOLD,15));
         add(comboBox);
 
         //dropdown for membertype
@@ -207,9 +211,9 @@ public class Registration extends JFrame {
 
         String[] Gender= {"Male", "Female", "Others"};
         JComboBox comboBox1=new JComboBox(Gender);
-        comboBox1.setBounds(770,175,120,20);
+        comboBox1.setBounds(690,145,120,25);
         comboBox1.setBackground(Color.decode("#C0C0C0"));
-        comboBox1.setFont(new Font("chiller", Font.BOLD,22));
+        comboBox1.setFont(new Font("times", Font.BOLD,15));
         add(comboBox1);
 
 
@@ -219,24 +223,24 @@ public class Registration extends JFrame {
 //        add(Gender);
 
         contact = new JTextField();
-        contact.setBounds(50,255,120,20);
+        contact.setBounds(50,235,120,25);
         contact.setBackground(Color.decode("#C0C0C0"));
-        contact.setFont(new Font("chiller", Font.BOLD,22));
+        contact.setFont(new Font("times", Font.BOLD,15));
         add(contact);
 
         dateofbirth = new JTextField();
-        dateofbirth.setBounds(230,255,120,20);
+        dateofbirth.setBounds(210,235,120,25);
         dateofbirth.setBackground(Color.decode("#C0C0C0"));
-        dateofbirth.setFont(new Font("chiller", Font.BOLD,22));
+        dateofbirth.setFont(new Font("times", Font.BOLD,15));
         add(dateofbirth);
 
 
 
-        String[] occupation= {"", "Student", "Worker", "Professional"};
+        String[] occupation= { "Student", "Worker", "Professional"};
         JComboBox comboBox2=new JComboBox(occupation);
-        comboBox2.setBounds(50,340,120,20);
+        comboBox2.setBounds(50,315,120,25);
         comboBox2.setBackground(Color.decode("#C0C0C0"));
-        comboBox2.setFont(new Font("chiller", Font.BOLD,22));
+        comboBox2.setFont(new Font("times", Font.BOLD,15));
         add(comboBox2);
 
 //        occupation = new JTextField();
@@ -245,42 +249,44 @@ public class Registration extends JFrame {
 //        add(occupation);
 
         email = new JTextField();
-        email.setBounds(230,340,120,20);
+        email.setBounds(210,315,120,25);
         email.setBackground(Color.decode("#C0C0C0"));
-        email.setFont(new Font("chiller", Font.BOLD,22));
+        email.setFont(new Font("times", Font.BOLD,15));
         add(email);
 
         address = new JTextField();
-        address.setBounds(50,425,120,20);
+        address.setBounds(50,395,120,25);
         address.setBackground(Color.decode("#C0C0C0"));
-        address.setFont(new Font("chiller", Font.BOLD,22));
+        address.setFont(new Font("times", Font.BOLD,15));
         add(address);
 
         username = new JTextField();
-        username.setBounds(230,425,120,20);
+        username.setBounds(210,395,120,25);
         username.setBackground(Color.decode("#C0C0C0"));
-        username.setFont(new Font("chiller", Font.BOLD,22));
+        username.setFont(new Font("times", Font.BOLD,15));
         add(username);
 
         password = new JTextField();
-        password.setBounds(50,510,120,20);
+        password.setBounds(50,490,120,25);
         password.setBackground(Color.decode("#C0C0C0"));
-        password.setFont(new Font("chiller", Font.BOLD,22));
+        password.setFont(new Font("times", Font.BOLD,15));
         add(password);
 
         repassword = new JTextField();
-        repassword.setBounds(230,510,120,20);
+        repassword.setBounds(210,490,120,25);
         repassword.setBackground(Color.decode("#C0C0C0"));
-        repassword.setFont(new Font("chiller", Font.BOLD,22));
+        repassword.setFont(new Font("times", Font.BOLD,15));
         add(repassword);
+
 
 
 //  imageicon
         ImageIcon icon = new ImageIcon("dele.png");
 
         Btn = new JButton("Register" );
-        Btn.setBounds(130,590,130,30);
+        Btn.setBounds(125,590,130,35);
         Btn.setBackground(Color.decode("#228B22"));
+        Btn.setFont(new Font("times", Font.BOLD,20));
         Btn.setIcon(icon);
         setVisible(true);
 //        Btn.setHorizontalTextPosition(JButton.CENTER);
@@ -291,6 +297,22 @@ public class Registration extends JFrame {
 //        Btn.setEnabled(false);
 
         add(Btn);
+
+
+
+
+
+        // background image insertion
+        imgLbl = new JLabel();
+        imgLbl.setIcon(new ImageIcon(getClass().getResource("Images/registration.png")));
+        getContentPane().add(imgLbl);
+        imgLbl.setBounds(330, 170, 700, 500);
+
+        add(panel1);
+
+
+
+
 
 
 
