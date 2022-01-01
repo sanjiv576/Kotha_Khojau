@@ -1,12 +1,11 @@
 import javax.swing.*;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Objects;
 
 public class Signin extends JFrame implements ActionListener {
 
-    boolean click = false;
     JPanel panel;
     JLabel usernameLbl, passwordLbl, headingLbl_1, headingLbl_2, headingLbl_3, orLbl;
     JCheckBox showPassword;
@@ -46,12 +45,12 @@ public class Signin extends JFrame implements ActionListener {
 
         // background images insertion
         imgLbl = new JLabel();
-        imgLbl.setIcon(new ImageIcon(getClass().getResource("Images/log_cover.png")));
+        imgLbl.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/log_cover.png"))));
         getContentPane().add(imgLbl);
         imgLbl.setBounds(0, 0, 700, 700);
 
         projectLogo = new JLabel();
-        projectLogo.setIcon(new ImageIcon(getClass().getResource("Images/logo.png")));
+        projectLogo.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/logo.png"))));
         getContentPane().add(projectLogo);
         projectLogo.setBounds(680, 45, 90, 90);
 
@@ -59,7 +58,7 @@ public class Signin extends JFrame implements ActionListener {
         panel.setBounds(570, 40, 335, 420);
         panel.setBackground(Color.DARK_GRAY);
         panel.setOpaque(true);
-        add(panel);
+        panel.setBorder(BorderFactory.createRaisedBevelBorder());
 
         usernameLbl = new JLabel("Username");
         usernameLbl.setBounds(680, 145, 150, 20);
@@ -73,7 +72,7 @@ public class Signin extends JFrame implements ActionListener {
         add(usernameField);
 
         usernameImage = new JLabel();
-        usernameImage.setIcon(new ImageIcon(getClass().getResource("Images/usernameImg.png")));
+        usernameImage.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/usernameImg.png"))));
         getContentPane().add(usernameImage);
         usernameImage.setBounds(615, 175, 25, 25);
 
@@ -85,20 +84,21 @@ public class Signin extends JFrame implements ActionListener {
 
         passwordField = new JPasswordField();
         passwordField.setBounds(640, 240, 180, 25);
-        passwordField.setFont(new Font("Mshtakan", Font.ITALIC, 28));
+        passwordField.setFont(new Font("Mshtakan", Font.ITALIC, 18));
         add(passwordField);
 
         passwordImage = new JLabel();
-        passwordImage.setIcon(new ImageIcon(getClass().getResource("Images/psswdImg.png")));
+        passwordImage.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/psswdImg.png"))));
         getContentPane().add(passwordImage);
         passwordImage.setBounds(610, 240, 30, 30);
 
         showPassword = new JCheckBox();
         showPassword.setBounds(820, 235, 20, 40);
+        showPassword.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         add(showPassword);
 
         showImage = new JLabel();
-        showImage.setIcon(new ImageIcon(getClass().getResource("Images/showPassword.png")));
+        showImage.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/showPassword.png"))));
         getContentPane().add(showImage);
         showImage.setBackground(Color.DARK_GRAY);
         showImage.setOpaque(true);
@@ -112,8 +112,9 @@ public class Signin extends JFrame implements ActionListener {
         forgotPassword.setBackground(Color.DARK_GRAY);
         forgotPassword.setOpaque(true);
         forgotPassword.setBorderPainted(false);
+        // changing mouse pointer to finger
+        forgotPassword.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         add(forgotPassword);
-
 
         loginBtn = new JButton();
         // for circular button
@@ -122,8 +123,12 @@ public class Signin extends JFrame implements ActionListener {
         loginBtn.setBackground(Color.DARK_GRAY);
         loginBtn.setOpaque(true);
         loginBtn.setBorderPainted(false);
-        loginBtn.setIcon(new ImageIcon(getClass().getResource("Images/loginImage.png")));
+        loginBtn.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/loginImage.png"))));
 
+
+        // changing mouse pointer to finger
+        loginBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        add(loginBtn);
 
         orLbl = new JLabel("------------ OR ------------");
         orLbl.setBounds(625, 372, 195, 18);
@@ -138,15 +143,16 @@ public class Signin extends JFrame implements ActionListener {
         registerBtn.setBackground(Color.DARK_GRAY);
         registerBtn.setOpaque(true);
         registerBtn.setBorderPainted(false);
+        // changing mouse pointer to finger
+        registerBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         add(registerBtn);
 
-        add(loginBtn);
-        add(panel);
 
-        showPassword.addActionListener(this);
         registerBtn.addActionListener(this);
+        showPassword.addActionListener(this);
         forgotPassword.addActionListener(this);
         loginBtn.addActionListener(this);
+        add(panel);
         setVisible(true);
     }
 
@@ -171,11 +177,11 @@ public class Signin extends JFrame implements ActionListener {
 
         if (e.getSource().equals(forgotPassword)){
             JOptionPane.showMessageDialog(null, "OTP sent to Email",
-                    "OTP verification", JOptionPane.YES_NO_CANCEL_OPTION);
+                    "OTP verification", JOptionPane.INFORMATION_MESSAGE);
         }
 
         if (e.getSource().equals(showPassword)){
-           // click = true;
+
             if (showPassword.isSelected()) {
                 passwordField.setEchoChar((char) 0);
             }
@@ -183,23 +189,21 @@ public class Signin extends JFrame implements ActionListener {
                 passwordField.setEchoChar('•');
             }
 
-//            if (click){
-//                passwordField.setEchoChar((char) 0);  // shows password on check on
-//                System.out.print("Login");
-//                //click = false;
-//            }
-
 //            try {
 //                Thread.sleep(5 * 1000);
 //            } catch (InterruptedException ex) {
 //                ex.printStackTrace();
 //            }
-//            if (!click){
-//                passwordField.setEchoChar('•');
-//            }
 
+        }
 
+        if (e.getSource().equals(registerBtn)){
+            System.out.println("Registration");
+            new Registration().setVisible(true);
+        }
 
+        if (e.getSource().equals(forgotPassword)){
+            new Verification().setVisible(true);
         }
     }
 }
