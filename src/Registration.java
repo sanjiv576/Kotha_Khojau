@@ -1,10 +1,12 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.border.EmptyBorder;
 
 
-public class Registration extends JFrame {
+public class Registration extends JFrame implements ActionListener{
     JLabel labelFirstName;
     JLabel labelmiddleName;
     JLabel labelLastName;
@@ -280,27 +282,6 @@ public class Registration extends JFrame {
 
 
 
-//  imageicon
-        ImageIcon icon = new ImageIcon("dele.png");
-
-        Btn = new JButton("Register" );
-        Btn.setBounds(125,590,130,35);
-        Btn.setBackground(Color.decode("#228B22"));
-        Btn.setFont(new Font("times", Font.BOLD,20));
-        Btn.setIcon(icon);
-        setVisible(true);
-//        Btn.setHorizontalTextPosition(JButton.CENTER);
-//        Btn.setVerticalTextPosition(JButton.VERTICAL);
-//        Btn.setFont(new Font("Comic sans",Font.BOLD,25));
-//        Btn.setIconTextGap(-15);
-//        Btn.setBorder(BorderFactory.createEtchedBorder());
-//        Btn.setEnabled(false);
-
-        add(Btn);
-
-
-
-
 
         // background image insertion
         imgLbl = new JLabel();
@@ -308,7 +289,21 @@ public class Registration extends JFrame {
         getContentPane().add(imgLbl);
         imgLbl.setBounds(330, 170, 700, 500);
 
+
+
+        Btn = new JButton();
+        Btn.setBounds(80,570,230,55);
+        Btn.setBackground(Color.decode("#FFFFFF"));
+        Btn.setOpaque(true);
+        Btn.setBorderPainted(false);
+        Btn.setIcon(new ImageIcon(getClass().getResource("Images/register.png")));
+
+
+
+        add(Btn);
         add(panel1);
+
+
 
 
 
@@ -331,5 +326,23 @@ public class Registration extends JFrame {
     }
 
 
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        String FirstNameInserted, middleNameInserted,LastNameInserted;
+        FirstNameInserted = FirstNameInserted.getText();
+        middleNameInserted = middleNameInserted.getText();
+        LastNameInserted = LastNameInserted.getText();
 
+        If (e.getSource().equals(Btn)){
+
+
+
+            // creating instance of a class
+            Logic_Registration obj = new Logic_Registration(String FirstNameInserted, middleNameInserted,LastNameInserted);
+            obj.registration(String FirstNameInserted, middleNameInserted,LastNameInserted);
+
+        }
+
+
+    }
 }
