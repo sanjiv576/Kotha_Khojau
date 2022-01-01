@@ -1,5 +1,6 @@
 import javax.swing.*;
 public class Logic_Registration {
+    private boolean closeRegistrationWindow;
     private String FirstName;
     private String middleName;
     private String LastName;
@@ -19,6 +20,7 @@ public class Logic_Registration {
                                String Gender, String Contact , String DateOfBirth, String Occupation, String Email,String Address,
                                String Username, String Password, String Repassword){
 
+
         this.FirstName = FirstName;
         this.middleName = middleName;
         this.LastName= LastName;
@@ -33,7 +35,7 @@ public class Logic_Registration {
         this.Password = Password;
         this.Repassword = Repassword;
     }
-    public  void registration(String FirstName,String middleName, String LastName, String MemberType, String Gender,
+    public  boolean registration(boolean closeRegistrationWindow, String FirstName,String middleName, String LastName, String MemberType, String Gender,
                               String Contact, String DateOfBirth, String Occupation, String Email, String Address,
                               String Username, String Password, String Repassword){
         if (FirstName.isEmpty() || LastName.isEmpty() || Contact.isEmpty() ||
@@ -50,6 +52,7 @@ public class Logic_Registration {
         }
         else {
 
+            closeRegistrationWindow = true;
             System.out.println("First name : " + FirstName);
             System.out.println("Middle name : " + middleName);
             System.out.println("Last name : " + LastName);
@@ -66,8 +69,7 @@ public class Logic_Registration {
             JOptionPane.showMessageDialog(null, "Registration successfully",
                     "Registration", JOptionPane.YES_OPTION);
 
-
         }
-
+       return closeRegistrationWindow;
     }
 }
