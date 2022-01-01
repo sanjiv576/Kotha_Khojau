@@ -45,14 +45,13 @@ public class Registration extends JFrame implements ActionListener{
 
     public Registration(){
 
-
-
         setTitle("Registration");
         setSize(920,750);
         setLocation(100,50);
         setResizable(false);
         setLayout(null);
         //setDefaultCloseOperation(EXIT_ON_CLOSE);
+
 
         panel1 = new JPanel();
         panel1.setBorder(new EmptyBorder(10,10,10,10));
@@ -191,14 +190,6 @@ public class Registration extends JFrame implements ActionListener{
         memberCombo.setFont(new Font("times", Font.BOLD,15));
         add(memberCombo);
 
-        //dropdown for membertype
-
-//        Membertype= new JTextField();
-//        Membertype.setBounds(590,175,120,20);
-//        Membertype.setBackground(Color.decode("#C0C0C0"));
-//        add(Membertype);
-
-
         String[] Gender = {"Select", "Male", "Female", "Others"};
         genderCombo = new JComboBox(Gender);
         genderCombo.setBounds(690,145,120,25);
@@ -280,7 +271,6 @@ public class Registration extends JFrame implements ActionListener{
         Btn.addActionListener(this);
     }
 
-
     public static void main(String[] args) {
         new Registration().setVisible(true);
     }
@@ -288,8 +278,11 @@ public class Registration extends JFrame implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
+
+        // retrieving the data from textfields
         String FirstNameInserted, middleNameInserted,LastNameInserted, contactInserted,
                 dobInserted, emailInserted, addressInserted, usernameInserted, passwordInserted, repassInserted;
+
         FirstNameInserted = FirstName.getText();
         middleNameInserted = MiddleName.getText();
         LastNameInserted = LastName.getText();
@@ -301,13 +294,15 @@ public class Registration extends JFrame implements ActionListener{
         passwordInserted = password.getText();
         repassInserted = repassword.getText();
 
-
+        // for retrieving data from combo boxes
         String selectedOccupation, selectedGender, selectedMember;
+
         selectedOccupation = Objects.requireNonNull(occupationCombo.getSelectedItem()).toString();
         selectedGender = Objects.requireNonNull(genderCombo.getSelectedItem()).toString();
         selectedMember = Objects.requireNonNull(memberCombo.getSelectedItem()).toString();
 
-
+        // close the registration window after successful registration
+        boolean closeRegistrationWindow = false;
 
         if (e.getSource().equals(Btn)){
 
@@ -316,15 +311,15 @@ public class Registration extends JFrame implements ActionListener{
                     selectedMember, selectedGender, contactInserted, dobInserted, selectedOccupation, emailInserted,
                     addressInserted, usernameInserted, passwordInserted, repassInserted);
 
-            object.registration(FirstNameInserted, middleNameInserted,LastNameInserted,
+            boolean closeRegistration = object.registration(closeRegistrationWindow, FirstNameInserted, middleNameInserted,LastNameInserted,
                     selectedMember, selectedGender, contactInserted, dobInserted, selectedOccupation, emailInserted,
                     addressInserted, usernameInserted, passwordInserted, repassInserted);
 
-            dispose();
-            new Signin().setVisible(true);
+            //System.out.println(closeRegistration);
+            if (closeRegistration){
+                dispose();
+            }
 
         }
-
-
     }
 }
