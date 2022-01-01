@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Objects;
 import javax.swing.ImageIcon;
 import javax.swing.border.EmptyBorder;
 
@@ -22,7 +23,6 @@ public class Registration extends JFrame implements ActionListener{
     JLabel labelrepassword;
     JLabel label1;
     JLabel label2;
-    JLabel label3;;
     JLabel imgLbl;
     JPanel panel;
     JPanel panel1;
@@ -30,22 +30,16 @@ public class Registration extends JFrame implements ActionListener{
     JTextField FirstName;
     JTextField MiddleName;
     JTextField LastName;
-    JTextField Membertype;
-    JTextField Gender;
     JTextField contact;
     JTextField dateofbirth;
-    JTextField occupation;
     JTextField email;
     JTextField address;
     JTextField username;
-    JTextField password;
-    JTextField repassword;
+    JPasswordField password;
+    JPasswordField repassword;
 
     JButton Btn;
-    private ImageIcon img;
-    JComboBox comboBox;
-    JComboBox comboBox1;
-    JComboBox comboBox2;
+    JComboBox genderCombo, occupationCombo, memberCombo;
 
 
 
@@ -58,7 +52,7 @@ public class Registration extends JFrame implements ActionListener{
         setLocation(100,50);
         setResizable(false);
         setLayout(null);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        //setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         panel1 = new JPanel();
         panel1.setBorder(new EmptyBorder(10,10,10,10));
@@ -87,7 +81,7 @@ public class Registration extends JFrame implements ActionListener{
 
         labelMemberType = new JLabel("*Member Type");
         labelMemberType.setForeground(Color.BLACK);
-        labelMemberType.setFont(new Font("Rtimes", Font.BOLD,19));
+        labelMemberType.setFont(new Font("times", Font.BOLD,19));
         labelMemberType.setBounds(530,120,200,20);
         add(labelMemberType);
 
@@ -158,19 +152,13 @@ public class Registration extends JFrame implements ActionListener{
         label1.setBounds(205,17,220,80);
         add( label1);
 
-        label2= new JLabel("SIGN UP");
+        label2= new JLabel("SIGN UP!!");
         label2.setForeground(Color.BLACK);
         label2.setFont(new Font("Saira", Font.BOLD,39));
         label2.setBounds(430,17,220,80);
         label2.setForeground(Color.YELLOW);
         add( label2);
 
-        label3= new JLabel("!!");
-        label3.setForeground(Color.BLACK);
-        label3.setFont(new Font("Saira", Font.BOLD,39));
-        label3.setBounds(600,17,100,80);
-        label3.setForeground(Color.YELLOW);
-        add( label3);
         add(panel);
 
 
@@ -196,12 +184,12 @@ public class Registration extends JFrame implements ActionListener{
         add(LastName);
 
 
-        String[] Membertype= {"Admin", "owner", "Renter"};
-        JComboBox comboBox=new JComboBox(Membertype);
-        comboBox.setBounds(530,145,120,25);
-        comboBox.setBackground(Color.decode("#C0C0C0"));
-        comboBox.setFont(new Font("times", Font.BOLD,15));
-        add(comboBox);
+        String[] Membertype= {"Select", "Owner", "Renter"};
+        memberCombo = new JComboBox(Membertype);
+        memberCombo.setBounds(530,145,120,25);
+        memberCombo.setBackground(Color.decode("#C0C0C0"));
+        memberCombo.setFont(new Font("times", Font.BOLD,15));
+        add(memberCombo);
 
         //dropdown for membertype
 
@@ -211,18 +199,13 @@ public class Registration extends JFrame implements ActionListener{
 //        add(Membertype);
 
 
-        String[] Gender= {"Male", "Female", "Others"};
-        JComboBox comboBox1=new JComboBox(Gender);
-        comboBox1.setBounds(690,145,120,25);
-        comboBox1.setBackground(Color.decode("#C0C0C0"));
-        comboBox1.setFont(new Font("times", Font.BOLD,15));
-        add(comboBox1);
-
-
-//        Gender = new JTextField();
-//        Gender.setBounds(770,175,120,20);
-//        Gender.setBackground(Color.decode("#C0C0C0"));
-//        add(Gender);
+        String[] Gender = {"Select", "Male", "Female", "Others"};
+        genderCombo = new JComboBox(Gender);
+        genderCombo.setBounds(690,145,120,25);
+        genderCombo.setBackground(Color.decode("#C0C0C0"));
+        genderCombo.setFont(new Font("times", Font.BOLD,15));
+        //genderCombo.setSelectedItem("Others");
+        add(genderCombo);
 
         contact = new JTextField();
         contact.setBounds(50,235,120,25);
@@ -238,17 +221,13 @@ public class Registration extends JFrame implements ActionListener{
 
 
 
-        String[] occupation= { "Student", "Worker", "Professional"};
-        JComboBox comboBox2=new JComboBox(occupation);
-        comboBox2.setBounds(50,315,120,25);
-        comboBox2.setBackground(Color.decode("#C0C0C0"));
-        comboBox2.setFont(new Font("times", Font.BOLD,15));
-        add(comboBox2);
-
-//        occupation = new JTextField();
-//        occupation.setBounds(50,340,120,20);
-//        occupation.setBackground(Color.decode("#C0C0C0"));
-//        add(occupation);
+        String[] occupation = { "Select", "Student", "Laborer", "Teacher/Lecturer",
+                "Government officer", "Hotelier", "Retailer", "Medical worker", "Businessman", "Salesman"};
+        occupationCombo = new JComboBox(occupation);
+        occupationCombo.setBounds(50,315,120,25);
+        occupationCombo.setBackground(Color.decode("#C0C0C0"));
+        occupationCombo.setFont(new Font("times", Font.BOLD,15));
+        add(occupationCombo);
 
         email = new JTextField();
         email.setBounds(210,315,120,25);
@@ -268,27 +247,23 @@ public class Registration extends JFrame implements ActionListener{
         username.setFont(new Font("times", Font.BOLD,15));
         add(username);
 
-        password = new JTextField();
+        password = new JPasswordField();
         password.setBounds(50,490,120,25);
         password.setBackground(Color.decode("#C0C0C0"));
         password.setFont(new Font("times", Font.BOLD,15));
         add(password);
 
-        repassword = new JTextField();
+        repassword = new JPasswordField();
         repassword.setBounds(210,490,120,25);
         repassword.setBackground(Color.decode("#C0C0C0"));
         repassword.setFont(new Font("times", Font.BOLD,15));
         add(repassword);
 
-
-
-
         // background image insertion
         imgLbl = new JLabel();
-        imgLbl.setIcon(new ImageIcon(getClass().getResource("Images/registration.png")));
+        imgLbl.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/registration.png"))));
         getContentPane().add(imgLbl);
         imgLbl.setBounds(330, 170, 700, 500);
-
 
 
         Btn = new JButton();
@@ -296,28 +271,13 @@ public class Registration extends JFrame implements ActionListener{
         Btn.setBackground(Color.decode("#FFFFFF"));
         Btn.setOpaque(true);
         Btn.setBorderPainted(false);
-        Btn.setIcon(new ImageIcon(getClass().getResource("Images/register.png")));
-
+        Btn.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/register.png"))));
 
 
         add(Btn);
         add(panel1);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        Btn.addActionListener(this);
     }
 
 
@@ -328,18 +288,40 @@ public class Registration extends JFrame implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        String FirstNameInserted, middleNameInserted,LastNameInserted;
-        FirstNameInserted = FirstNameInserted.getText();
-        middleNameInserted = middleNameInserted.getText();
-        LastNameInserted = LastNameInserted.getText();
+        String FirstNameInserted, middleNameInserted,LastNameInserted, contactInserted,
+                dobInserted, emailInserted, addressInserted, usernameInserted, passwordInserted, repassInserted;
+        FirstNameInserted = FirstName.getText();
+        middleNameInserted = MiddleName.getText();
+        LastNameInserted = LastName.getText();
+        contactInserted = contact.getText();
+        dobInserted = dateofbirth.getText();
+        emailInserted = email.getText();
+        addressInserted = address.getText();
+        usernameInserted = username.getText();
+        passwordInserted = password.getText();
+        repassInserted = repassword.getText();
 
-        If (e.getSource().equals(Btn)){
+
+        String selectedOccupation, selectedGender, selectedMember;
+        selectedOccupation = Objects.requireNonNull(occupationCombo.getSelectedItem()).toString();
+        selectedGender = Objects.requireNonNull(genderCombo.getSelectedItem()).toString();
+        selectedMember = Objects.requireNonNull(memberCombo.getSelectedItem()).toString();
 
 
+
+        if (e.getSource().equals(Btn)){
 
             // creating instance of a class
-            Logic_Registration obj = new Logic_Registration(String FirstNameInserted, middleNameInserted,LastNameInserted);
-            obj.registration(String FirstNameInserted, middleNameInserted,LastNameInserted);
+            Logic_Registration object = new Logic_Registration(FirstNameInserted, middleNameInserted,LastNameInserted,
+                    selectedMember, selectedGender, contactInserted, dobInserted, selectedOccupation, emailInserted,
+                    addressInserted, usernameInserted, passwordInserted, repassInserted);
+
+            object.registration(FirstNameInserted, middleNameInserted,LastNameInserted,
+                    selectedMember, selectedGender, contactInserted, dobInserted, selectedOccupation, emailInserted,
+                    addressInserted, usernameInserted, passwordInserted, repassInserted);
+
+            dispose();
+            new Signin().setVisible(true);
 
         }
 
