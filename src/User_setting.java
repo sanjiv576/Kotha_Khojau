@@ -8,9 +8,9 @@ public class User_setting extends JFrame{
     JLabel  imgLbl1, imgLbl2, imgLbl3,imgLbl4;
     JButton Btn1;
     JPanel panel, panel1;
-    JLabel lbl1;
+
     JButton update_profile, password_change, delete_account;
-    JButton btn1,btn2, btn3;
+    JButton btn1,btn2, btn3, btn4;
 
 
 
@@ -24,31 +24,29 @@ public class User_setting extends JFrame{
 
 
 
-        lbl1=new JLabel("Kotha khojau ");
-        lbl1.setForeground(Color.BLACK);
-        lbl1.setFont(new Font("Island Moments", Font.BOLD,20));
-        lbl1.setBounds(90,20,200,30);
-        add(lbl1);
 
         imgLbl1 = new JLabel();
-        imgLbl1.setIcon(new ImageIcon(getClass().getResource("Images/Rectangle 3.png")));
+        imgLbl1.setIcon(new ImageIcon(getClass().getResource("Images/vertical_line.png")));
         getContentPane().add(imgLbl1);
         imgLbl1.setBounds(-5, -30, 400, 440);
         add(imgLbl1);
 
 
         imgLbl2 = new JLabel();
-        imgLbl2.setIcon(new ImageIcon(getClass().getResource("Images/rectangle.png")));
+        imgLbl2.setIcon(new ImageIcon(getClass().getResource("Images/rectangle_line.jpg")));
         getContentPane().add(imgLbl2);
         imgLbl2.setBounds(10, 0, 1000, 70);
+        imgLbl2.setOpaque(true);
         add(imgLbl2);
 
+        imgLbl3 = new JLabel();
+        imgLbl3.setIcon(new ImageIcon(getClass().getResource("Images/logooo.png")));
+        getContentPane().add(imgLbl3);
+        imgLbl3.setBounds(0, 0, 100, 80);
+        add(imgLbl3);
 
-//        imgLbl3 = new JLabel();
-//        imgLbl3.setIcon(new ImageIcon(getClass().getResource("Images/kotha_khojau_logo2.png")));
-//        getContentPane().add(imgLbl3);
-//        imgLbl3.setBounds(300, 20, 50, 30);
-//        add(imgLbl3);
+
+
 
         btn3= new JButton();
         btn3.setBounds(-7,70,70,70);
@@ -74,6 +72,15 @@ public class User_setting extends JFrame{
         btn2.setIcon(new ImageIcon(getClass().getResource("Images/setting.png")));
         add(btn2);
 
+        btn4= new JButton();
+        btn4.setBounds(-7,320,70,70);
+        btn4.setBackground(Color.decode("#808080"));
+        btn4.setOpaque(true);
+        btn4.setBorderPainted(false);
+        btn4.setIcon(new ImageIcon(getClass().getResource("Images/signout.png")));
+        add(btn4);
+
+
 
 
         panel = new JPanel();
@@ -90,23 +97,31 @@ public class User_setting extends JFrame{
         panel1.setOpaque(true);
 
         update_profile= new JButton("Update Profile" );
-        update_profile.setBounds(110,110,160,35);
-        update_profile.setBackground(Color.decode("#FFFFFF"));
-        update_profile.setFont(new Font("times", Font.BOLD,20));
+        update_profile.setBounds(90,95,220,50);
+        update_profile.setBackground(Color.decode("#9F9391"));
+        update_profile.setOpaque(true);
+        update_profile.setBorderPainted(false);
+        update_profile.setIcon(new ImageIcon(getClass().getResource("Images/update.png")));
         add(update_profile);
 
-        password_change= new JButton("Password Change" );
-        password_change.setBounds(300,110,200,35);
-        password_change.setBackground(Color.decode("#FFFFFF"));
-        password_change.setFont(new Font("times", Font.BOLD,20));
+        password_change= new JButton();
+        password_change.setBounds(320,95,230,50);
+        password_change.setBackground(Color.decode("#9F9391"));
+        password_change.setOpaque(true);
+        password_change.setBorderPainted(false);
+        password_change.setIcon(new ImageIcon(getClass().getResource("Images/passwordchange.png")));
         add(password_change);
 
 
-        delete_account= new JButton("Delete Account" );
-        delete_account.setBounds(520,110,200,35);
-        delete_account.setBackground(Color.decode("#FFFFFF"));
-        delete_account.setFont(new Font("times", Font.BOLD,20));
+        delete_account= new JButton();
+        delete_account.setBounds(550,95,220,50);
+        delete_account.setBackground(Color.decode("#9F9391"));
+        delete_account.setOpaque(true);
+        delete_account.setBorderPainted(false);
+        delete_account.setIcon(new ImageIcon(getClass().getResource("Images/acdel.png")));
         add(delete_account);
+
+
 
         add(panel);
         add(panel1);
