@@ -25,6 +25,8 @@ public class Dashboard extends JFrame {
         home = new JButton();
         home.setIcon(new ImageIcon(getClass().getResource("Images/home 2.png")));
         home.setBounds(15, 166, 64, 64);
+        home.setBackground(Color.decode("#9E9B9B"));
+        home.setOpaque(true);
         add(home);
 
         profile = new JButton();
@@ -34,7 +36,10 @@ public class Dashboard extends JFrame {
 
         settings = new JButton();
         settings.setIcon(new ImageIcon(getClass().getResource("Images/settings 2.png")));
-        settings.setBounds(15, 382, 64, 60);
+        settings.setBounds(15, 382, 64, 68);
+        settings.setBackground(Color.decode("#9E9B9B"));
+        settings.setBorderPainted(false);
+        settings.setOpaque(true);
 
         add(settings);
 
