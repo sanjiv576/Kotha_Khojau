@@ -17,6 +17,7 @@ public class Dashboard extends JFrame {
         setTitle("Dashboard");
         setBounds(3, 40, 1280, 720);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setBackground(Color.decode("#DFDFDF"));
         setLayout(null);
         setResizable(false);
 
@@ -62,6 +63,7 @@ public class Dashboard extends JFrame {
         next.setIcon(new ImageIcon(getClass().getResource("Images/next 1.png")));
         next.setBounds(1195, 382, 64, 64);
         next.setBackground(Color.decode("#DFDFDF"));
+        next.setForeground(Color.decode("#DFDFDF"));
         next.setBorderPainted(false);
         next.setFocusPainted(false);
         next.setOpaque(true);
@@ -146,7 +148,7 @@ public class Dashboard extends JFrame {
 
         horizontal = new JLabel();
         horizontal.setIcon(new ImageIcon((getClass().getResource("Images/Rectangle 21.png"))));
-        horizontal.setBounds(2, 2, 1278, 106);
+        horizontal.setBounds(2, 0, 1275, 106);
         horizontal.setForeground(Color.getColor("9E9B9B"));
         add(horizontal);
     }
