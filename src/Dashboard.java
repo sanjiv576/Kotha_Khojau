@@ -15,23 +15,29 @@ public class Dashboard extends JFrame {
 
 
         setTitle("Dashboard");
-        setBounds(40, 50, 1280, 720);
+        setBounds(3, 40, 1280, 720);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(null);
-        setResizable(true);
+        setResizable(false);
 
         //Buttons
 
         home = new JButton();
         home.setIcon(new ImageIcon(getClass().getResource("Images/home 2.png")));
         home.setBounds(15, 166, 64, 64);
-        home.setBackground(Color.decode("#9E9B9B"));
+        home.setBackground(Color.decode("#46C132"));
         home.setOpaque(true);
+        home.setBorderPainted(false);
+        home.setFocusPainted(false);
         add(home);
 
         profile = new JButton();
         profile.setIcon(new ImageIcon(getClass().getResource("Images/profile 2.png")));
         profile.setBounds(8, 274, 77, 64);
+        profile.setBackground(Color.decode("#9E9B9B"));
+        profile.setBorderPainted(false);
+        profile.setFocusPainted(false);
+        profile.setOpaque(true);
         add(profile);
 
         settings = new JButton();
@@ -39,32 +45,38 @@ public class Dashboard extends JFrame {
         settings.setBounds(15, 382, 64, 68);
         settings.setBackground(Color.decode("#9E9B9B"));
         settings.setBorderPainted(false);
+        settings.setFocusPainted(false);
         settings.setOpaque(true);
-
         add(settings);
 
         signout = new JButton();
         signout.setIcon(new ImageIcon(getClass().getResource("Images/signout 2.png")));
         signout.setBounds(15, 605, 64, 64);
+        signout.setBackground(Color.decode("#9E9B9B"));
+        signout.setBorderPainted(false);
+        signout.setFocusPainted(false);
+        signout.setOpaque(true);
         add(signout);
 
         next = new JButton();
         next.setIcon(new ImageIcon(getClass().getResource("Images/next 1.png")));
         next.setBounds(1195, 382, 64, 64);
+        next.setBackground(Color.decode("#DFDFDF"));
+        next.setBorderPainted(false);
+        next.setFocusPainted(false);
+        next.setOpaque(true);
         add(next);
 
         filter = new JButton();
         filter.setIcon(new ImageIcon(getClass().getResource("Images/filter.png")));
         filter.setBounds(1195, 117, 64, 61);
+        filter.setBackground(Color.decode("#DFDFDF"));
+        filter.setBorderPainted(false);
+        filter.setFocusPainted(false);
+        filter.setOpaque(true);
         add(filter);
 
         //Labels
-
-        innerframe = new JLabel();
-        innerframe.setIcon(new ImageIcon((getClass().getResource("Images/InnerFrame.png"))));
-        innerframe.setBounds(103, 108, 1177, 612);
-        innerframe.setForeground(Color.getColor("DFDFDF"));
-        add(innerframe);
 
         House1 = new JLabel();
         House1.setIcon(new ImageIcon((getClass().getResource("Images/House1.png"))));
@@ -116,7 +128,7 @@ public class Dashboard extends JFrame {
 
         logo = new JLabel();
         logo.setIcon(new ImageIcon( (getClass().getResource("Images/logo.png"))));
-        logo.setBounds(0, -19, 181, 136);
+        logo.setBounds(-5, 0, 181, 136);
         logo.setForeground(Color.getColor("000000"));
         add(logo);
 
@@ -137,21 +149,6 @@ public class Dashboard extends JFrame {
         horizontal.setBounds(2, 2, 1278, 106);
         horizontal.setForeground(Color.getColor("9E9B9B"));
         add(horizontal);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 
     public static void main(String[] args) {
