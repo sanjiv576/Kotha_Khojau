@@ -1,13 +1,20 @@
+import org.w3c.dom.ls.LSOutput;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class Verification extends JFrame {
+public class Verification extends JFrame implements ActionListener {
 
     JLabel verifyLbl;
     JTextField codeField;
     JButton resendBtn;
     JLabel lowerLbl;
     JButton submitBtn;
+
+    boolean sentOtp = false;
+    String checkOtp = confirmOtp();
 
     public Verification(){
         setTitle("Alert : Verification");
@@ -46,13 +53,52 @@ public class Verification extends JFrame {
         resendBtn.setOpaque(true);
         resendBtn.setBorderPainted(false);
         add(resendBtn);
+
+        resendBtn.addActionListener(this);
+
+
         setVisible(true);
-
-
 
     }
     public static void main(String[] args) {
 
+        //Object passedOtp = null;
         new Verification().setVisible(true);
+
     }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        String insertedOtp = codeField.getText();
+        String newGeneratedOtp;
+       // String checkOtp = confirmOtp();
+
+        if (e.getSource().equals(resendBtn)){
+            Logic_Verification verification = new Logic_Verification();
+
+            newGeneratedOtp = verification.buildCode();
+            System.out.println("Resend OTP code : " + newGeneratedOtp);
+        }
+
+        if (e.getSource().equals(submitBtn)){
+            System.out.println("inside submit button");
+            if (checkOtp.equals(insertedOtp)){
+                System.out.println("correct otp");
+            }
+            else {
+                System.out.println("Incorrect otp");
+            }
+
+        }
+    }
+
+    public String confirmOtp(){
+        String oldGeneratedOtp;
+        Logic_Verification verification = new Logic_Verification();
+
+        oldGeneratedOtp = verification.buildCode();
+        System.out.println("Send OTP code --> : " + oldGeneratedOtp);
+        return oldGeneratedOtp;
+    }
+
 }

@@ -38,7 +38,7 @@ public class Registration extends JFrame implements ActionListener{
     JPasswordField password;
     JPasswordField repassword;
 
-    JButton Btn;
+    JButton Btn, verifyEmailBtn;
     JComboBox genderCombo, occupationCombo, memberCombo;
 
 
@@ -160,8 +160,6 @@ public class Registration extends JFrame implements ActionListener{
 
         add(panel);
 
-
-
         //textfields
         FirstName = new JTextField();
         FirstName.setBounds(50,145,120,25);
@@ -256,9 +254,16 @@ public class Registration extends JFrame implements ActionListener{
         getContentPane().add(imgLbl);
         imgLbl.setBounds(330, 170, 700, 500);
 
+        verifyEmailBtn = new JButton("Send OTP to the email");
+        verifyEmailBtn.setFont(new Font("Cambria", Font.BOLD, 14));
+        verifyEmailBtn.setBounds(80, 570, 230, 55);
+        verifyEmailBtn.setBackground(Color.green);
+        verifyEmailBtn.setOpaque(true);
+        verifyEmailBtn.setBorderPainted(false);
+        add(verifyEmailBtn);
 
         Btn = new JButton();
-        Btn.setBounds(80,570,230,55);
+        Btn.setBounds(80,635,230,55);
         Btn.setBackground(Color.decode("#FFFFFF"));
         Btn.setOpaque(true);
         Btn.setBorderPainted(false);
@@ -269,6 +274,7 @@ public class Registration extends JFrame implements ActionListener{
         add(panel1);
 
         Btn.addActionListener(this);
+        verifyEmailBtn.addActionListener(this);
     }
 
     public static void main(String[] args) {
@@ -303,6 +309,7 @@ public class Registration extends JFrame implements ActionListener{
 
         // close the registration window after successful registration
         boolean closeRegistrationWindow = false;
+        boolean sentOtp = false;
 
         if (e.getSource().equals(Btn)){
 
@@ -322,5 +329,25 @@ public class Registration extends JFrame implements ActionListener{
             }
 
         }
+        if (e.getSource().equals(verifyEmailBtn)){
+            new Verification().setVisible(true);
+        }
+        // fix this linking problem with verification
+        if (e.getSource().equals(verifyEmailBtn)){
+            // creating object
+            Logic_Verification verification = new Logic_Verification();
+
+            // invoking method
+            String oldGeneratedOtp = verification.buildCode();
+            System.out.println("First otp send after 'send OTP to the email' -- old otp: " + oldGeneratedOtp);
+
+        }
     }
+
+//    public void confirmOtp(){
+//
+//        Verification object = new Verification(oldGeneratedOtp);
+//        //object.check(oldGeneratedOtp);
+//        new Verification(oldGeneratedOtp).setVisible(true);
+//    }
 }
