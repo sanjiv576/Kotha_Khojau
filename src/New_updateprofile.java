@@ -1,10 +1,8 @@
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.awt.event.ActionListener;
-import java.util.Objects;
 
-public class new_updateprofile extends JFrame {
+public class New_updateprofile extends JFrame {
 
 
 
@@ -19,7 +17,7 @@ public class new_updateprofile extends JFrame {
     JTextField First, Middle, Last, Contact, Address,Email;
     JButton backbtn, submitbtn, cancelbtn;
 
-    public new_updateprofile() {
+    public New_updateprofile() {
 
         setTitle("Dashboard");
         setBounds(3, 40, 1280, 720);
@@ -202,7 +200,7 @@ public class new_updateprofile extends JFrame {
     }
 
     public static void main(String[] args) {
-        new new_updateprofile().setVisible(true);
+        new New_updateprofile().setVisible(true);
     }
 }
 
