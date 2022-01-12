@@ -1,3 +1,5 @@
+package logic;
+
 import javax.swing.*;
 public class Logic_Registration {
     private boolean closeRegistrationWindow;
