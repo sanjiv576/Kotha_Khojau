@@ -203,7 +203,7 @@ public class Signin extends JFrame implements ActionListener {
         }
 
         if (e.getSource().equals(forgotPassword)){
-            new Verification().setVisible(true);
+           // new Verification().setVisible(true);
         }
     }
 }
