@@ -318,6 +318,7 @@ public class Registration extends JFrame implements ActionListener{
             //System.out.println(closeRegistration);
             if (closeRegistration){
                 dispose();
+                new Verification().setVisible(true);
             }
 
         }

@@ -1,12 +1,11 @@
 
-
 import javax.swing.*;
-        import java.awt.*;
-        import java.awt.event.ActionEvent;
-        import java.awt.event.ActionListener;
-        import java.util.Objects;
-        import javax.swing.GroupLayout;
-        import javax.swing.UnsupportedLookAndFeelException;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Objects;
+import javax.swing.GroupLayout;
+import javax.swing.UnsupportedLookAndFeelException;
 
 public class Home extends javax.swing.JFrame {
 
