@@ -1,4 +1,6 @@
-import org.w3c.dom.ls.LSOutput;
+package view;
+
+import logic.Logic_Verification;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,7 +19,7 @@ public class Verification extends JFrame implements ActionListener {
     String checkOtp = confirmOtp();
 
     public Verification(){
-        setTitle("Alert : Verification");
+        setTitle("Alert : view.Verification");
         setBounds(200, 100, 400, 400);
         setResizable(false);
         // setBackground(Color.decode("#9E9B9B"));
