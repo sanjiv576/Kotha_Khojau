@@ -2,6 +2,10 @@ package logic;
 
 import javax.swing.*;
 public class Logic_Registration {
+
+    int contactNum;
+    boolean contactIsString = false;
+
     private boolean closeRegistrationWindow;
     private String FirstName;
     private String middleName;
@@ -37,20 +41,56 @@ public class Logic_Registration {
         this.Password = Password;
         this.Repassword = Repassword;
     }
-    public  boolean registration(boolean closeRegistrationWindow, String FirstName,String middleName, String LastName, String MemberType, String Gender,
+    public  boolean registration(boolean closeRegistrationWindow, String FirstName, String middleName, String LastName,
+                                 String MemberType, String Gender,
                               String Contact, String DateOfBirth, String Occupation, String Email, String Address,
                               String Username, String Password, String Repassword){
+
+
+
+
+        boolean validEmail = Email.contains("@gmail.com");
+        try {
+            contactNum = Integer.parseInt(Contact);
+
+        }
+        catch (Exception exp){
+//            JOptionPane.showMessageDialog(null,"Contact can't be in the text/string form.",
+//                    "Alert !", JOptionPane.INFORMATION_MESSAGE);
+            contactIsString = true;
+            System.out.println(exp.getMessage());
+
+        }
+
+
         if (FirstName.isEmpty() || LastName.isEmpty() || Contact.isEmpty() ||
-                DateOfBirth.isEmpty() || Email.isEmpty() || Address.isEmpty() || Username.isEmpty() ||
+                DateOfBirth.equals("2000-1-1") || Email.isEmpty() || Address.isEmpty() || Username.isEmpty() ||
                 Password.isEmpty() || Repassword.isEmpty() || Gender.equals("Select") || Occupation.equals("Select")
                 || MemberType.equals("Select")){
 
-            JOptionPane.showMessageDialog(null, "Fields are empty",
+            JOptionPane.showMessageDialog(null, "Fields are empty or unchanged",
                     "Error", JOptionPane.ERROR_MESSAGE);
         }
         else if (!(Password.equals(Repassword))){
             JOptionPane.showMessageDialog(null, "Password and Re-password do not match. Try Again",
                     "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        else if (contactIsString){
+            JOptionPane.showMessageDialog(null, "Please, insert contact in numbers.",
+                    "Contact Number Error", JOptionPane.ERROR_MESSAGE);
+        }
+        else if (Contact.length() <= 9){
+            JOptionPane.showMessageDialog(null, "Lesser than 10 digits in contact field.",
+                    "Contact Number Error", JOptionPane.ERROR_MESSAGE);
+        }
+        else if (Contact.length() > 11){
+
+            JOptionPane.showMessageDialog(null, "Greater than 10 digits in contact field.",
+                    "Contact Number Error", JOptionPane.ERROR_MESSAGE);
+        }
+        else if (!(validEmail)){
+            JOptionPane.showMessageDialog(null, "@gmail.com is missing in email.",
+                    "Email Error", JOptionPane.ERROR_MESSAGE);
         }
         else {
 
@@ -74,4 +114,5 @@ public class Logic_Registration {
         }
        return closeRegistrationWindow;
     }
+
 }
