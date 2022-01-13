@@ -1,3 +1,5 @@
+package logic;
+
 import javax.swing.*;
 
 public class Logic_Signin {
@@ -10,7 +12,7 @@ public class Logic_Signin {
         this.password = password;
     }
 
-    // methods are invoked in Signin java class
+    // methods are invoked in view.Signin java class
     public void login(String username, String password){
         if (username.isEmpty() || password.isEmpty()){
             JOptionPane.showMessageDialog(null, "Fields are empty",
