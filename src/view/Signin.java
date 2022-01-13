@@ -1,8 +1,13 @@
+package view;
+
+import logic.Logic_Signin;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Objects;
+
 
 public class Signin extends JFrame implements ActionListener {
 
@@ -45,7 +50,7 @@ public class Signin extends JFrame implements ActionListener {
 
         // background images insertion
         imgLbl = new JLabel();
-        imgLbl.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/log_cover.png"))));
+        imgLbl.setIcon(new ImageIcon(getClass().getResource("Images/log_cover.png")));
         getContentPane().add(imgLbl);
         imgLbl.setBounds(0, 0, 700, 700);
 
@@ -171,7 +176,7 @@ public class Signin extends JFrame implements ActionListener {
 
             // creating instance of a class
             Logic_Signin obj = new Logic_Signin(usernameInserted, passwordInserted);
-            // invoking login method from Logic_Signin class
+            // invoking login method from logic.Logic_Signin class
             obj.login(usernameInserted, passwordInserted);
         }
 
@@ -202,8 +207,5 @@ public class Signin extends JFrame implements ActionListener {
             new Registration().setVisible(true);
         }
 
-        if (e.getSource().equals(forgotPassword)){
-           // new Verification().setVisible(true);
-        }
     }
 }

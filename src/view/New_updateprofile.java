@@ -1,14 +1,17 @@
+package view;
+
+import logic.Logic_New_updateProfile;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.net.JarURLConnection;
 import java.util.Objects;
 
 public class New_updateprofile extends JFrame implements ActionListener {
 
-    // Images Labeling
+    // view.Images Labeling
     JLabel vertical, horizontal, titleImg , projectLogoImg;
 
     JButton homeIcon, profileIcon, settingIcon, logoutIcon;
@@ -191,7 +194,14 @@ public class New_updateprofile extends JFrame implements ActionListener {
         // invokes this method to insert buttons in lower region
         insertLowerButtons();
 
+        homeIcon.addActionListener(this);
+        profileIcon.addActionListener(this);
         logoutIcon.addActionListener(this);
+        submitbtn.addActionListener(this);
+        cancelbtn.addActionListener(this);
+        backbtn.addActionListener(this);
+
+
         add(panel1);
         add(panel2);
 
@@ -282,14 +292,33 @@ public class New_updateprofile extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
+        String newFirstName, newMiddleName, newLastName, newAddress, newEmail, newContact;
+
+        newFirstName = newFNameField.getText();
+        newMiddleName = newMNameField.getText();
+        newLastName = newLNameField.getText();
+        newContact = newContactField.getText();
+        newAddress = newAddressField.getText();
+        newEmail = newEmailField.getText();
+
+
         if (e.getSource().equals(logoutIcon)){
             int choice = JOptionPane.showConfirmDialog(null, "Do you want to log out ?",
                     "Log out", JOptionPane.YES_NO_CANCEL_OPTION);
             if (choice == JOptionPane.YES_OPTION) {
                 System.exit(0);
             }
+        }
 
+        if (e.getSource().equals(submitbtn)){
 
+            // creating instance of a class
+            Logic_New_updateProfile updateProfile = new Logic_New_updateProfile();
+
+            updateProfile.filterEmptyFields(newFirstName, newMiddleName, newLastName, newContact, newAddress, newEmail);
+
+            JOptionPane.showMessageDialog(null, "Profile data are updated",
+                    "Profile update", JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
