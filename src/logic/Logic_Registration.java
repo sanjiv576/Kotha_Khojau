@@ -8,7 +8,7 @@ public class Logic_Registration {
 
     private boolean closeRegistrationWindow;
     private String FirstName;
-    private String middleName;
+    private String MiddleName;
     private String LastName;
     private String MemberType;
     private String Gender;
@@ -22,13 +22,13 @@ public class Logic_Registration {
     private String Repassword;
 
 
-    public  Logic_Registration(String FirstName,String middleName, String LastName, String MemberType,
+    public  Logic_Registration(String FirstName,String MiddleName, String LastName, String MemberType,
                                String Gender, String Contact , String DateOfBirth, String Occupation, String Email,String Address,
                                String Username, String Password, String Repassword){
 
 
         this.FirstName = FirstName;
-        this.middleName = middleName;
+        this.MiddleName = MiddleName;
         this.LastName= LastName;
         this.MemberType = MemberType;
         this.Gender = Gender;
@@ -41,7 +41,12 @@ public class Logic_Registration {
         this.Password = Password;
         this.Repassword = Repassword;
     }
-    public  boolean registration(boolean closeRegistrationWindow, String FirstName, String middleName, String LastName,
+
+    public Logic_Registration() {
+
+    }
+
+    public  boolean registration(boolean closeRegistrationWindow, String FirstName, String MiddleName, String LastName,
                                  String MemberType, String Gender,
                               String Contact, String DateOfBirth, String Occupation, String Email, String Address,
                               String Username, String Password, String Repassword){
@@ -101,6 +106,15 @@ public class Logic_Registration {
 
         }
        return closeRegistrationWindow;
+    }
+
+    public void dataInsertion(){
+//        Users users = new Users(FirstName, MiddleName, LastName, MemberType, Gender, Contact, DateOfBirth,
+//                                Occupation, Email, Address, Username, Password);
+//        UsersController usersController = new UsersController();
+
+        // inserting data into database by invoking registerUser of UserController class
+        int insert = 0;
     }
 
 }
