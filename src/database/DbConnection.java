@@ -22,32 +22,29 @@ public class DbConnection {
                 System.out.println("Database connection failed");
             }
 
-            try {
-                String tableCreate = "create table if not exists User_tbl(UserID int auto_increment, " +
-                        "FirstName varchar(30) not null, " +
-                        "MiddleName varchar(20), " +
-                        "LastName varchar(30) not null," +
-                        "MemberType varchar(20) not null, " +
-                        "Gender varchar(10) not null," +
-                        "Contact varchar(15) not null, " +
-                        "DOB date not null, " +
-                        "Occupation varchar(20) not null, " +
-                        "PersonalEmail varchar(50) not null, " +
-                        "Address varchar(50) not null, " +
-                        "Username varchar(40) not null, " +
-                        "Password varchar(40) not null," +
-                        "constraint userId_pk primary key(UserID), " +
-                        "constraint contact_uk unique(Contact), " +
-                        "constraint email_uk unique(PersonalEmail), " +
-                        "constraint username_uk unique(Username))";
+            String tableCreate = "create table if not exists User_tbl(UserID int auto_increment, " +
+                    "FirstName varchar(30) not null, " +
+                    "MiddleName varchar(20), " +
+                    "LastName varchar(30) not null," +
+                    "MemberType varchar(20) not null, " +
+                    "Gender varchar(10) not null," +
+                    "Contact varchar(15) not null, " +
+                    "DOB date not null, " +
+                    "Occupation varchar(20) not null, " +
+                    "PersonalEmail varchar(50) not null, " +
+                    "Address varchar(50) not null, " +
+                    "Username varchar(40) not null, " +
+                    "Password varchar(40) not null," +
+                    "constraint userId_pk primary key(UserID), " +
+                    "constraint contact_uk unique(Contact), " +
+                    "constraint email_uk unique(PersonalEmail), " +
+                    "constraint username_uk unique(Username))";
+
+           // PreparedStatement pst = connection.prepareStatement(tableCreate);
+            statement.execute(tableCreate);
+            System.out.println("Table has been created");
 
 
-                statement.execute(tableCreate);
-                System.out.println("Table has been created");
-            }
-            catch(SQLException exp){
-                System.out.println(exp.getMessage());
-            }
 
         }
         catch (ClassNotFoundException | SQLException exception){
@@ -55,7 +52,19 @@ public class DbConnection {
         }
     }
 
-
+    // this function of this method is to insert data into database
+    public int manipulate(String query) throws SQLException {
+        try{
+            val = statement.executeUpdate(query);
+        }
+        catch (SQLException exp){
+            exp.printStackTrace();
+        }
+        finally {
+            connection.close();
+        }
+        return val;
+    }
 
     public static void main(String[] args) {
         new DbConnection();
