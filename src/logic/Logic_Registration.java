@@ -1,6 +1,11 @@
 package logic;
 
+import controller.UserController;
+import model.User;
+
 import javax.swing.*;
+import java.sql.SQLException;
+
 public class Logic_Registration {
 
     int contactNum;
@@ -13,7 +18,7 @@ public class Logic_Registration {
     private String MemberType;
     private String Gender;
     private String Contact;
-    private String DateOfBirth;
+    private String DOB;
     private String Occupation;
     private String Email;
     private String Address;
@@ -23,7 +28,7 @@ public class Logic_Registration {
 
 
     public  Logic_Registration(String FirstName,String MiddleName, String LastName, String MemberType,
-                               String Gender, String Contact , String DateOfBirth, String Occupation, String Email,String Address,
+                               String Gender, String Contact , String DOB, String Occupation, String Email,String Address,
                                String Username, String Password, String Repassword){
 
 
@@ -33,7 +38,7 @@ public class Logic_Registration {
         this.MemberType = MemberType;
         this.Gender = Gender;
         this.Contact = Contact;
-        this.DateOfBirth = DateOfBirth;
+        this.DOB = DOB;
         this.Occupation = Occupation;
         this.Email = Email;
         this.Address = Address;
@@ -48,9 +53,8 @@ public class Logic_Registration {
 
     public  boolean registration(boolean closeRegistrationWindow, String FirstName, String MiddleName, String LastName,
                                  String MemberType, String Gender,
-                              String Contact, String DateOfBirth, String Occupation, String Email, String Address,
+                              String Contact, String DOB, String Occupation, String Email, String Address,
                               String Username, String Password, String Repassword){
-
 
 
 
@@ -67,9 +71,8 @@ public class Logic_Registration {
 
         }
 
-
         if (FirstName.isEmpty() || LastName.isEmpty() || Contact.isEmpty() ||
-                DateOfBirth.equals("2000-1-1") || Email.isEmpty() || Address.isEmpty() || Username.isEmpty() ||
+                DOB.equals("2000-01-01") || Email.isEmpty() || Address.isEmpty() || Username.isEmpty() ||
                 Password.isEmpty() || Repassword.isEmpty() || Gender.equals("Select") || Occupation.equals("Select")
                 || MemberType.equals("Select")){
 
@@ -109,12 +112,39 @@ public class Logic_Registration {
     }
 
     public void dataInsertion(){
-//        Users users = new Users(FirstName, MiddleName, LastName, MemberType, Gender, Contact, DateOfBirth,
-//                                Occupation, Email, Address, Username, Password);
-//        UsersController usersController = new UsersController();
+        System.out.println("dm" + DOB);
 
-        // inserting data into database by invoking registerUser of UserController class
-        int insert = 0;
+        // instantiate of an object
+        User user = new User(FirstName, MiddleName, LastName, MemberType, Gender, Contact, DOB,
+                                Occupation, Email, Address, Username, Password);   // encapsulation part in it
+
+        UserController usersController = new UserController();  // controls the database activities like insert, delete, update
+
+        int insertData = 0;
+
+        // now inserting data into database by invoking registerUser method of UserController class
+        try{
+            // calling the method of UserController class to insert data into database
+            insertData = usersController.registerUser(user);
+
+        } catch (SQLException exception) {
+            exception.printStackTrace();
+            System.out.println(exception.getMessage());
+        }
+
+        if (insertData > 0 ){
+            JOptionPane.showMessageDialog(null, "Your account has been verified and registered successfully",
+                    "Registration", JOptionPane.INFORMATION_MESSAGE);
+
+            System.out.println("Data are inserted into database. Successfully registered");
+
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Failed to register. Try again.",
+                    "Registration failed", JOptionPane.WARNING_MESSAGE);
+            System.out.println("Data are not inserted into database. Failed to register");
+        }
+
     }
 
 }
