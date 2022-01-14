@@ -213,9 +213,9 @@ public class Registration extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e) {
 
         String year = yearSpinner.getValue().toString();
-        String month = monthSpinner.getValue().toString();
-        String day = daySpinner.getValue().toString();
-        dob = year + "-" + month + "-" + day;
+        String month = "0" + monthSpinner.getValue().toString();
+        String day = "0" + daySpinner.getValue().toString();
+        dob = year + "/" + month + "/" + day;
         System.out.println("DOB : " + dob);
 
         // retrieving the data from textfields
