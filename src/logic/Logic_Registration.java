@@ -95,20 +95,8 @@ public class Logic_Registration {
         else {
 
             closeRegistrationWindow = true;
-            System.out.println("First name : " + FirstName);
-            System.out.println("Middle name : " + middleName);
-            System.out.println("Last name : " + LastName);
-            System.out.println("Member type : " + MemberType);
-            System.out.println("Gender : " + Gender);
-            System.out.println("Contact : " + Contact);
-            System.out.println("DOB : " + DateOfBirth);
-            System.out.println("Occupation : " + Occupation);
-            System.out.println("Email : " + Email);
-            System.out.println("Address : " + Address);
-            System.out.println("Username : " + Username);
-            System.out.println("Password : " + Password);
 
-            JOptionPane.showMessageDialog(null, "Registration successfully",
+            JOptionPane.showMessageDialog(null, "OTP has been sent. Please verify it.",
                     "Registration", JOptionPane.YES_OPTION);
 
         }
