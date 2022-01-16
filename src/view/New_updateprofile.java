@@ -27,7 +27,7 @@ public class New_updateprofile extends JFrame implements ActionListener {
     public New_updateprofile() {
 
         setTitle("User Setting - Update Profile window");
-        setBounds(30, 40, 1280, 745);
+        setBounds(100, 80, 1280, 745);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setBackground(Color.darkGray);
         setLayout(null);
@@ -200,6 +200,8 @@ public class New_updateprofile extends JFrame implements ActionListener {
         submitbtn.addActionListener(this);
         cancelbtn.addActionListener(this);
         backbtn.addActionListener(this);
+        password_change.addActionListener(this);
+        delete_account.addActionListener(this);
 
 
         add(panel1);
@@ -319,7 +321,27 @@ public class New_updateprofile extends JFrame implements ActionListener {
 
             JOptionPane.showMessageDialog(null, "Profile data are updated",
                     "Profile update", JOptionPane.INFORMATION_MESSAGE);
+            clearAll();
         }
+
+        if (e.getSource().equals(password_change)){
+            dispose();
+            new New_passwordchange().setVisible(true);
+        }
+
+        if (e.getSource().equals(cancelbtn)){
+            clearAll();
+        }
+    }
+
+    public void clearAll(){
+        newFNameField.setText("");
+        newMNameField.setText("");
+        newLNameField.setText("");
+        newContactField.setText("");
+        newAddressField.setText("");
+        newEmailField.setText("");
+
     }
 
 }

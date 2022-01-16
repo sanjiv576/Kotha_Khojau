@@ -2,8 +2,9 @@ package logic;
 
 import java.util.Random;
 
-public class Logic_Verification {
+public class Logic_Verification implements GenerateOTP{
 
+        @Override
         public String buildCode(){
             Random random = new Random();
             StringBuilder otp = new StringBuilder();

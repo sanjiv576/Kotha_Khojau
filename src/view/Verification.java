@@ -1,5 +1,6 @@
 package view;
 
+import logic.Logic_Registration;
 import logic.Logic_Verification;
 
 import javax.swing.*;
@@ -42,6 +43,7 @@ public class Verification extends JFrame implements ActionListener {
         submitBtn.setBackground(Color.GREEN);
         submitBtn.setOpaque(true);
         submitBtn.setBorderPainted(false);
+        submitBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         add(submitBtn);
 
         lowerLbl = new JLabel("Didn't receive code ?");
@@ -82,11 +84,16 @@ public class Verification extends JFrame implements ActionListener {
 
             if (currentOTP.equals(insertedOtp)){
 
-                JOptionPane.showMessageDialog(null, "Your account has been verified " +
-                        "and registered successfully", "Account Verification", JOptionPane.INFORMATION_MESSAGE);
+                // instantiate of an object
+                Logic_Registration register = new Logic_Registration();
+
+                // invokes method to insert data into database
+                register.dataInsertion();
+
+                //JOptionPane.showMessageDialog(null, "Your account has been verified " +
+                 //       "and registered successfully", "Account Verification", JOptionPane.INFORMATION_MESSAGE);
 
                 dispose();
-                new Signin().setVisible(true);
             }
             else {
                 JOptionPane.showMessageDialog(null, "Provided OTP code is incorrect." +
