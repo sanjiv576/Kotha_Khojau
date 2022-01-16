@@ -32,7 +32,7 @@ public class New_passwordchange extends JFrame implements ActionListener {
     public New_passwordchange() {
 
         setTitle("User Setting - Update Profile window");
-        setBounds(30, 40, 1280, 745);
+        setBounds(100, 80, 1280, 745);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setBackground(Color.darkGray);
         setLayout(null);
@@ -110,7 +110,7 @@ public class New_passwordchange extends JFrame implements ActionListener {
         //for update profile, text fields and label are added, inside the panel2 region
         currentpassword=new JLabel();
         currentpassword.setBounds(180,250,320,60);
-        currentpassword.setIcon(new ImageIcon(getClass().getResource("Images/currentpassword310x60.png")));
+        currentpassword.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/currentpassword310x60.png"))));
         add(currentpassword);
 
         currentpasswordfield = new JPasswordField();
@@ -121,7 +121,7 @@ public class New_passwordchange extends JFrame implements ActionListener {
 
         newpassword=new JLabel();
         newpassword.setBounds(180,350,320,60);
-        newpassword.setIcon(new ImageIcon(getClass().getResource("Images/newpassword338x60.png")));
+        newpassword.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/newpassword338x60.png"))));
         add(newpassword);
 
         newpasswordfield = new JPasswordField();
@@ -133,7 +133,7 @@ public class New_passwordchange extends JFrame implements ActionListener {
         conformpassword=new JLabel();
         conformpassword.setForeground(Color.BLACK);
         conformpassword.setBounds(180,450,320,60);
-        conformpassword.setIcon(new ImageIcon(getClass().getResource("Images/confirmpassword311x60.png")));
+        conformpassword.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/confirmpassword311x60.png"))));
         add(conformpassword);
 
         confirmpasswordfield= new JPasswordField();
@@ -202,6 +202,7 @@ public class New_passwordchange extends JFrame implements ActionListener {
         showPassword1.addActionListener(this);
         showPassword2.addActionListener(this);
         showPassword3.addActionListener(this);
+        update_profile.addActionListener(this);
         add(panel1);
         add(panel2);
 
@@ -210,6 +211,92 @@ public class New_passwordchange extends JFrame implements ActionListener {
 
     public static void main(String[] args) {
         new New_passwordchange().setVisible(true);
+    }
+
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+
+        String currentpassword, newpassword, conformpassword;
+        currentpassword = currentpasswordfield.getText();
+        newpassword = newpasswordfield.getText();
+        conformpassword = confirmpasswordfield.getText();
+
+        if (e.getSource().equals(showPassword1)) {
+
+            if (showPassword1.isSelected()) {
+                currentpasswordfield.setEchoChar((char) 0);
+
+            } else {
+                currentpasswordfield.setEchoChar('•');
+
+            }
+        }
+        if (e.getSource().equals(showPassword2)) {
+
+            if (showPassword2.isSelected()) {
+                newpasswordfield.setEchoChar((char) 0);
+
+            } else {
+                newpasswordfield.setEchoChar('•');
+
+            }
+        }
+        if (e.getSource().equals(showPassword3)) {
+
+            if (showPassword3.isSelected()) {
+                confirmpasswordfield.setEchoChar((char) 0);
+
+            } else {
+                confirmpasswordfield.setEchoChar('•');
+
+            }
+        }
+
+
+        if (e.getSource().equals(logoutIcon)) {
+            int choice = JOptionPane.showConfirmDialog(null, "Do you want to log out ?",
+                    "Log out", JOptionPane.YES_NO_CANCEL_OPTION);
+            if (choice == JOptionPane.YES_OPTION) {
+                System.exit(0);
+            }
+        }
+
+        if (e.getSource().equals(submitbtn)) {
+
+            // creating instance of a class
+            Logic_New_passwordchange passwordchange = new Logic_New_passwordchange();
+
+            passwordchange.filterEmptyFields(currentpassword, newpassword, conformpassword);
+
+            if (newpassword.equals(conformpassword)) {
+                JOptionPane.showMessageDialog(null, "Password has been changed successfully.",
+                        "Password Change ", JOptionPane.INFORMATION_MESSAGE);
+                clearAll();
+
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "Failed to change password. New password and Confirm password do not match.",
+                        "Failed", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+
+        if (e.getSource().equals(cancelbtn)){
+            clearAll();
+        }
+
+        if (e.getSource().equals(update_profile)){
+            dispose();
+            new New_updateprofile().setVisible(true);
+        }
+    }
+
+
+    public void clearAll(){
+        confirmpasswordfield.setText("");
+        currentpasswordfield.setText("");
+        newpasswordfield.setText("");
     }
 
     // this method inserts left button icons
@@ -287,71 +374,6 @@ public class New_passwordchange extends JFrame implements ActionListener {
         cancelbtn.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/cancelButton203x55.png"))));
         cancelbtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         add(cancelbtn);
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
-
-        String currentpassword, newpassword, conformpassword;
-        currentpassword = currentpasswordfield.getText();
-        newpassword = newpasswordfield.getText();
-        conformpassword = confirmpasswordfield.getText();
-
-        if (e.getSource().equals(showPassword1)) {
-
-            if (showPassword1.isSelected()) {
-                currentpasswordfield.setEchoChar((char) 0);
-
-            } else {
-                currentpasswordfield.setEchoChar('•');
-
-            }
-        }
-        if (e.getSource().equals(showPassword2)) {
-
-            if (showPassword2.isSelected()) {
-                newpasswordfield.setEchoChar((char) 0);
-
-            } else {
-                newpasswordfield.setEchoChar('•');
-
-            }
-        }
-        if (e.getSource().equals(showPassword3)) {
-
-            if (showPassword3.isSelected()) {
-                confirmpasswordfield.setEchoChar((char) 0);
-
-            } else {
-                confirmpasswordfield.setEchoChar('•');
-
-            }
-
-        }
-
-
-        if (e.getSource().equals(logoutIcon)) {
-            int choice = JOptionPane.showConfirmDialog(null, "Do you want to log out ?",
-                    "Log out", JOptionPane.YES_NO_CANCEL_OPTION);
-            if (choice == JOptionPane.YES_OPTION) {
-                System.exit(0);
-            }
-        }
-
-        if (e.getSource().equals(submitbtn)) {
-
-            // creating instance of a class
-            Logic_New_passwordchange passwordchange = new Logic_New_passwordchange();
-
-            passwordchange.filterEmptyFields(currentpassword, newpassword, conformpassword);
-
-            JOptionPane.showMessageDialog(null, "password changed",
-                    "password change", JOptionPane.INFORMATION_MESSAGE);
-
-
-        }
-
     }
 }
 
