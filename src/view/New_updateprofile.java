@@ -202,6 +202,7 @@ public class New_updateprofile extends JFrame implements ActionListener {
         backbtn.addActionListener(this);
         password_change.addActionListener(this);
         delete_account.addActionListener(this);
+        driverIcon.addActionListener(this);
 
 
         add(panel1);
@@ -332,6 +333,10 @@ public class New_updateprofile extends JFrame implements ActionListener {
                     "Profile update", JOptionPane.INFORMATION_MESSAGE);
             clearAll();
         }
+        if (e.getSource().equals(profileIcon)){
+            dispose();
+            new Renter_userprofile().setVisible(true);
+        }
 
         if (e.getSource().equals(password_change)){
             dispose();
@@ -341,6 +346,7 @@ public class New_updateprofile extends JFrame implements ActionListener {
         if (e.getSource().equals(cancelbtn)){
             clearAll();
         }
+
     }
 
     public void clearAll(){
