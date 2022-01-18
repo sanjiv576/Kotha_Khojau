@@ -4,21 +4,26 @@ package view;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.util.Objects;
 
 public class Renter_userprofile extends JFrame implements ActionListener {
 
     // view.Images Labeling
-    JLabel vertical, horizontal, titleImg , projectLogoImg;
+    JLabel vertical, horizontal, titleImg , projectLogoImg, image;
 
     JButton homeIcon, profileIcon, settingIcon, driverIcon, logoutIcon;
 
     // panel1 includes only buttons  , panel2 contains labels, text fields and buttons
-    JPanel  panel1, panel2;
-    JButton update_profile, password_change, delete_account;
+    JPanel  panel1;
+
+    JButton choosePhoto;
+    JLabel label;
+
 
 
 
@@ -70,18 +75,12 @@ public class Renter_userprofile extends JFrame implements ActionListener {
         panel1.setOpaque(true);
 
 
-//        panel2 = new JPanel();
-//        panel2.setBorder(new EmptyBorder(10,10,10,10));
-//        panel2.setBounds(140, 245, 1094, 425);
-//        panel2.setBackground(Color.decode("#9F9391"));
-//        panel2.setOpaque(true);
-
 
 
 
 
         add(panel1);
-//        add(panel2);
+
 
 
     }
@@ -163,7 +162,58 @@ public class Renter_userprofile extends JFrame implements ActionListener {
         logoutIcon.setBorderPainted(false);
         logoutIcon.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         add(logoutIcon);
+
+        //
+        image = new JLabel();
+        image.setIcon(new ImageIcon((Objects.requireNonNull(getClass().getResource("Images/130x130.png")))));
+        image.setBounds(1000, 170, 130, 110);
+
+        choosePhoto= new JButton("Upload photo");
+        choosePhoto.setBounds(1000,270,130,40);
+        choosePhoto.setIcon(new ImageIcon((Objects.requireNonNull(getClass().getResource("Images/uploadphoto135x35.png")))));
+        choosePhoto.setBackground(Color.decode("#9F9391"));
+        choosePhoto.setOpaque(true);
+        choosePhoto.setBorderPainted(false);
+        choosePhoto.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+
+        label = new JLabel();
+        label.setBounds(1000,160,130,140);
+
+        add(choosePhoto);
+        add(label);
+        add(image);
+        choosePhoto.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFileChooser file = new JFileChooser();
+                file.setCurrentDirectory(new File(System.getProperty("user.home")));
+                FileNameExtensionFilter filter = new FileNameExtensionFilter("*.Images","jpg","gif", "png");
+                file.addChoosableFileFilter(filter);
+                int result = file.showSaveDialog(null);
+                if (result == JFileChooser.APPROVE_OPTION){
+                    File selectedFile = file.getSelectedFile();
+                    String path = selectedFile.getAbsolutePath();
+                    label.setIcon(ResizeImage(path));
+                }
+                else if(result == JFileChooser.CANCEL_OPTION){
+                    System.out.println("No file is Selected");
+                }
+            }
+        });
     }
+
+    public  ImageIcon ResizeImage(String ImagePath)
+    {
+        ImageIcon MyImage  = new ImageIcon(ImagePath);
+        Image img = MyImage.getImage();
+        Image newImg = img.getScaledInstance(label.getWidth(),label.getHeight(),Image.SCALE_SMOOTH);
+        ImageIcon image = new ImageIcon(newImg);
+        return image;
+    }
+
+
+
+
 
 
 }
