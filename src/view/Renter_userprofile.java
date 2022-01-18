@@ -202,6 +202,7 @@ public class Renter_userprofile extends JFrame implements ActionListener {
         });
     }
 
+
     public  ImageIcon ResizeImage(String ImagePath)
     {
         ImageIcon MyImage  = new ImageIcon(ImagePath);
