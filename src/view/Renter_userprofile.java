@@ -25,16 +25,10 @@ public class Renter_userprofile extends JFrame implements ActionListener {
     JLabel label;
 
 
-
-
-
-
-
-
     public Renter_userprofile() {
 
         setTitle("User Setting - Renter_userprofile");
-        setBounds(100, 80, 1280, 745);
+        setBounds(5, 40, 1280, 740);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setBackground(Color.darkGray);
         setLayout(null);
@@ -75,7 +69,7 @@ public class Renter_userprofile extends JFrame implements ActionListener {
         panel1.setOpaque(true);
 
 
-
+        logoutIcon.addActionListener(this);
 
 
 
@@ -200,6 +194,7 @@ public class Renter_userprofile extends JFrame implements ActionListener {
                 }
             }
         });
+
     }
 
 
