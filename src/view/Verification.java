@@ -1,4 +1,7 @@
-import org.w3c.dom.ls.LSOutput;
+package view;
+
+import logic.Logic_Registration;
+import logic.Logic_Verification;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,13 +16,13 @@ public class Verification extends JFrame implements ActionListener {
     JLabel lowerLbl;
     JButton submitBtn;
 
-    boolean sentOtp = false;
-    String checkOtp = confirmOtp();
+    String currentOTP = confirmOtp();  //  otp is generated after executing verification class
 
     public Verification(){
-        setTitle("Alert : Verification");
+        setTitle("Alert : view.Verification");
         setBounds(200, 100, 400, 400);
         setResizable(false);
+
         // setBackground(Color.decode("#9E9B9B"));
 
         setLayout(null);
@@ -40,11 +43,11 @@ public class Verification extends JFrame implements ActionListener {
         submitBtn.setBackground(Color.GREEN);
         submitBtn.setOpaque(true);
         submitBtn.setBorderPainted(false);
+        submitBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         add(submitBtn);
 
         lowerLbl = new JLabel("Didn't receive code ?");
         lowerLbl.setBounds(80, 250, 200, 30);
-        //lowerLbl.setFont(new Font("roman", Font.BOLD, 28));
         add(lowerLbl);
 
         resendBtn = new JButton("<html><u>Resend code</u></html>");
@@ -52,9 +55,11 @@ public class Verification extends JFrame implements ActionListener {
         resendBtn.setBackground(Color.white);
         resendBtn.setOpaque(true);
         resendBtn.setBorderPainted(false);
+        resendBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         add(resendBtn);
 
         resendBtn.addActionListener(this);
+        submitBtn.addActionListener(this);
 
 
         setVisible(true);
@@ -62,7 +67,6 @@ public class Verification extends JFrame implements ActionListener {
     }
     public static void main(String[] args) {
 
-        //Object passedOtp = null;
         new Verification().setVisible(true);
 
     }
@@ -70,35 +74,43 @@ public class Verification extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         String insertedOtp = codeField.getText();
-        String newGeneratedOtp;
-       // String checkOtp = confirmOtp();
 
         if (e.getSource().equals(resendBtn)){
-            Logic_Verification verification = new Logic_Verification();
-
-            newGeneratedOtp = verification.buildCode();
-            System.out.println("Resend OTP code : " + newGeneratedOtp);
+            // new OTP code stores here by calling the method
+            currentOTP = confirmOtp();
         }
 
         if (e.getSource().equals(submitBtn)){
-            System.out.println("inside submit button");
-            if (checkOtp.equals(insertedOtp)){
-                System.out.println("correct otp");
+
+            if (currentOTP.equals(insertedOtp)){
+
+                // instantiate of an object
+                Logic_Registration register = new Logic_Registration();
+
+                // invokes method to insert data into database
+                register.dataInsertion();
+
+                //JOptionPane.showMessageDialog(null, "Your account has been verified " +
+                 //       "and registered successfully", "Account Verification", JOptionPane.INFORMATION_MESSAGE);
+
+                dispose();
             }
             else {
-                System.out.println("Incorrect otp");
+                JOptionPane.showMessageDialog(null, "Provided OTP code is incorrect." +
+                        " Resend OTP again", "Account Verification", JOptionPane.ERROR_MESSAGE);
+                codeField.setText("");
             }
 
         }
     }
 
     public String confirmOtp(){
-        String oldGeneratedOtp;
+        String generatedOtp;
         Logic_Verification verification = new Logic_Verification();
 
-        oldGeneratedOtp = verification.buildCode();
-        System.out.println("Send OTP code --> : " + oldGeneratedOtp);
-        return oldGeneratedOtp;
+        generatedOtp = verification.buildCode();
+        System.out.println("Send OTP code --> : " + generatedOtp);
+        return generatedOtp;
     }
 
 }

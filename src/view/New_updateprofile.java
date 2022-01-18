@@ -1,17 +1,20 @@
+package view;
+
+import logic.Logic_New_updateProfile;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.net.JarURLConnection;
 import java.util.Objects;
 
 public class New_updateprofile extends JFrame implements ActionListener {
 
-    // Images Labeling
+    // view.Images Labeling
     JLabel vertical, horizontal, titleImg , projectLogoImg;
 
-    JButton homeIcon, profileIcon, settingIcon, logoutIcon;
+    JButton homeIcon, profileIcon, settingIcon, driverIcon,logoutIcon;
 
     // panel1 includes only buttons  , panel2 contains labels, text fields and buttons
     JPanel  panel1, panel2;
@@ -24,7 +27,7 @@ public class New_updateprofile extends JFrame implements ActionListener {
     public New_updateprofile() {
 
         setTitle("User Setting - Update Profile window");
-        setBounds(30, 40, 1280, 745);
+        setBounds(100, 80, 1280, 745);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setBackground(Color.darkGray);
         setLayout(null);
@@ -191,7 +194,16 @@ public class New_updateprofile extends JFrame implements ActionListener {
         // invokes this method to insert buttons in lower region
         insertLowerButtons();
 
+        homeIcon.addActionListener(this);
+        profileIcon.addActionListener(this);
         logoutIcon.addActionListener(this);
+        submitbtn.addActionListener(this);
+        cancelbtn.addActionListener(this);
+        backbtn.addActionListener(this);
+        password_change.addActionListener(this);
+        delete_account.addActionListener(this);
+
+
         add(panel1);
         add(panel2);
 
@@ -212,7 +224,7 @@ public class New_updateprofile extends JFrame implements ActionListener {
 
         homeIcon = new JButton();
         homeIcon.setIcon(new ImageIcon((Objects.requireNonNull(getClass().getResource("Images/homeIcon_64x64.png")))));
-        homeIcon.setBounds(15, 166, 64, 64);
+        homeIcon.setBounds(15, 150, 64, 64);
         homeIcon.setBackground(Color.decode("#9E9B9B"));
         homeIcon.setOpaque(true);
         homeIcon.setBorderPainted(false);
@@ -222,7 +234,7 @@ public class New_updateprofile extends JFrame implements ActionListener {
 
         profileIcon = new JButton();
         profileIcon.setIcon(new ImageIcon((Objects.requireNonNull(getClass().getResource("Images/profileImg_78x64.png")))));
-        profileIcon.setBounds(8, 315, 78, 64);
+        profileIcon.setBounds(8, 250, 78, 64);
         profileIcon.setBackground(Color.decode("#9E9B9B"));
         profileIcon.setOpaque(true);
         profileIcon.setBorderPainted(false);
@@ -232,12 +244,21 @@ public class New_updateprofile extends JFrame implements ActionListener {
 
         settingIcon = new JButton();
         settingIcon.setIcon(new ImageIcon((Objects.requireNonNull(getClass().getResource("Images/greenSetting_100x100.png")))));
-        settingIcon.setBounds(1, 453, 100, 100);
+        settingIcon.setBounds(1, 353, 100, 100);
         settingIcon.setBackground(Color.decode("#9E9B9B"));
         settingIcon.setOpaque(true);
         settingIcon.setBorderPainted(false);
         settingIcon.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         add(settingIcon);
+
+        driverIcon= new JButton();
+        driverIcon.setIcon(new ImageIcon((Objects.requireNonNull(getClass().getResource("Images/driver64x64.png")))));
+        driverIcon.setBounds(1, 480, 100, 100);
+        driverIcon.setBackground(Color.decode("#9E9B9B"));
+        driverIcon.setOpaque(true);
+        driverIcon.setBorderPainted(false);
+        driverIcon.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        add(driverIcon);
 
         logoutIcon = new JButton();
         logoutIcon.setIcon(new ImageIcon((Objects.requireNonNull(getClass().getResource("Images/logout_64x64.png")))));
@@ -282,15 +303,54 @@ public class New_updateprofile extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
+        String newFirstName, newMiddleName, newLastName, newAddress, newEmail, newContact;
+
+        newFirstName = newFNameField.getText();
+        newMiddleName = newMNameField.getText();
+        newLastName = newLNameField.getText();
+        newContact = newContactField.getText();
+        newAddress = newAddressField.getText();
+        newEmail = newEmailField.getText();
+
+
         if (e.getSource().equals(logoutIcon)){
             int choice = JOptionPane.showConfirmDialog(null, "Do you want to log out ?",
                     "Log out", JOptionPane.YES_NO_CANCEL_OPTION);
             if (choice == JOptionPane.YES_OPTION) {
                 System.exit(0);
             }
-
-
         }
+
+        if (e.getSource().equals(submitbtn)){
+
+            // creating instance of a class
+            Logic_New_updateProfile updateProfile = new Logic_New_updateProfile();
+
+            updateProfile.filterEmptyFields(newFirstName, newMiddleName, newLastName, newContact, newAddress, newEmail);
+
+            JOptionPane.showMessageDialog(null, "Profile data are updated",
+                    "Profile update", JOptionPane.INFORMATION_MESSAGE);
+            clearAll();
+        }
+
+        if (e.getSource().equals(password_change)){
+            dispose();
+            new New_passwordchange().setVisible(true);
+        }
+
+        if (e.getSource().equals(cancelbtn)){
+            clearAll();
+        }
+    }
+
+    public void clearAll(){
+        newFNameField.setText("");
+        newMNameField.setText("");
+        newLNameField.setText("");
+        newContactField.setText("");
+        newAddressField.setText("");
+        newEmailField.setText("");
+
     }
 
 }
