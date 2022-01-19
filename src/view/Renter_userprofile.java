@@ -96,18 +96,38 @@ public class Renter_userprofile extends JFrame implements ActionListener {
         aboutmefield.setForeground(Color.DARK_GRAY);
         add(aboutmefield);
 
-        Gender = new JLabel("Gender");
-        Gender.setBounds(160,440,120,23);
-        Gender.setFont(new Font("Serif", Font.PLAIN, 23));
-        Gender.setForeground(Color.BLACK);
-        add(Gender);
+        saveBtn = new JButton();
+        saveBtn.setBounds(400, 460, 120, 51);
+        saveBtn.setBackground(Color.decode("#9F9391"));
+        saveBtn.setOpaque(true);
+        saveBtn.setBorderPainted(false);
+        saveBtn.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/greenSave120x51.png"))));
+        // changing mouse pointer to finger
+        saveBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        add(saveBtn);
 
-        String[] Gender = {"Select", "Male", "Female", "Others"};
-        genderCombo = new JComboBox(Gender);
-        genderCombo.setBounds(160,470,120,25);
-        genderCombo.setFont(new Font("times", Font.PLAIN,15));
-        //genderCombo.setSelectedItem("Others");
-        add(genderCombo);
+        updateBtn = new JButton("update");
+        updateBtn.setBounds(600, 460, 120, 51);
+        updateBtn.setBackground(Color.green);
+        updateBtn.setOpaque(true);
+        updateBtn.setBorderPainted(false);
+        //updateBtn.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/greenSave120x51.png"))));
+        // changing mouse pointer to finger
+        updateBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        add(updateBtn);
+
+//        Gender = new JLabel("Gender");
+//        Gender.setBounds(160,440,120,23);
+//        Gender.setFont(new Font("Serif", Font.PLAIN, 23));
+//        Gender.setForeground(Color.BLACK);
+//        add(Gender);
+//
+//        String[] Gender = {"Select", "Male", "Female", "Others"};
+//        genderCombo = new JComboBox(Gender);
+//        genderCombo.setBounds(160,470,120,25);
+//        genderCombo.setFont(new Font("times", Font.PLAIN,15));
+//        //genderCombo.setSelectedItem("Others");
+//        add(genderCombo);
 
 //        stayPeriod = new JLabel("expected period to stay");
 //        stayPeriod .setBounds(160,520,230,23);
@@ -181,20 +201,11 @@ public class Renter_userprofile extends JFrame implements ActionListener {
         add(emailLbl);
 
 
-        saveBtn = new JButton();
-        saveBtn.setBounds(1070, 610, 130, 60);
-        saveBtn.setBackground(Color.decode("#9F9391"));
-        saveBtn.setOpaque(true);
-        saveBtn.setBorderPainted(false);
-        saveBtn.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/submitBtn-128x55.png"))));
-        // changing mouse pointer to finger
-        saveBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        add(saveBtn);
-
-
         logoutIcon.addActionListener(this);
         settingIcon.addActionListener(this);
         driverIcon.addActionListener(this);
+        saveBtn.addActionListener(this);
+        updateBtn.addActionListener(this);
 
         add(panel1);
 
@@ -219,6 +230,16 @@ public class Renter_userprofile extends JFrame implements ActionListener {
         if (e.getSource().equals(settingIcon)){
             dispose();
             new New_updateprofile().setVisible(true);
+        }
+
+        if (e.getSource().equals(saveBtn)){
+            aboutmefield.setEditable(false);
+            System.out.println("save");
+        }
+
+        if (e.getSource().equals(saveBtn)){
+            aboutmefield.setEditable(true);
+            System.out.println("update");
         }
 
     }
