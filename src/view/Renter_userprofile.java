@@ -67,6 +67,7 @@ public class Renter_userprofile extends JFrame implements ActionListener {
         add(vertical);
 
 
+
         //   ------------------- panels for  Renter_userprofile ---------------------------
 
         panel1 = new JPanel();
@@ -170,6 +171,7 @@ public class Renter_userprofile extends JFrame implements ActionListener {
 
         logoutIcon.addActionListener(this);
         settingIcon.addActionListener(this);
+        driverIcon.addActionListener(this);
 
 
 
