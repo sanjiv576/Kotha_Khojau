@@ -2,6 +2,7 @@ package view;
 
 import logic.Logic_Registration;
 import logic.Logic_Verification;
+import model.User;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,16 +11,24 @@ import java.awt.event.ActionListener;
 
 public class Verification extends JFrame implements ActionListener {
 
+    boolean dataEntry = false;
+    boolean verified = false;
     JLabel verifyLbl;
     JTextField codeField;
     JButton resendBtn;
     JLabel lowerLbl;
     JButton submitBtn;
+    boolean dataInsert = false;
 
     String currentOTP = confirmOtp();  //  otp is generated after executing verification class
 
     public Verification(){
-        setTitle("Alert : view.Verification");
+
+    }
+    public Verification(String name){
+        String me = name;
+        System.out.println(me);
+        setTitle("Alert : Verification");
         setBounds(200, 100, 400, 400);
         setResizable(false);
 
@@ -62,18 +71,28 @@ public class Verification extends JFrame implements ActionListener {
         submitBtn.addActionListener(this);
 
 
+
         setVisible(true);
+
+        if (dataInsert){
+            System.out.println("my name is : " + name);
+            dataInsert = false;
+        }
 
     }
     public static void main(String[] args) {
 
-        new Verification().setVisible(true);
+        boolean insertData = false;
+        String name;
+        Verification obj = new Verification();
+        obj.setVisible(true);
 
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         String insertedOtp = codeField.getText();
+
 
         if (e.getSource().equals(resendBtn)){
             // new OTP code stores here by calling the method
@@ -84,16 +103,27 @@ public class Verification extends JFrame implements ActionListener {
 
             if (currentOTP.equals(insertedOtp)){
 
-                // instantiate of an object
-                Logic_Registration register = new Logic_Registration();
+                dataInsert = true;
+                //System.out.println(me);
 
-                // invokes method to insert data into database
-                register.dataInsertion();
+//                Logic_Registration registerMe = new Logic_Registration();
+//                dataInsert = true;
+//                System.out.println(me);
+
+
+//                verified = true;
+//                allow(dataEntry, verified);
+
+//                // instantiate of an object
+//                Registration registration = new Registration();
+//
+//                // invokes method to insert data into database
+//                registration.dataInsertion();
 
                 //JOptionPane.showMessageDialog(null, "Your account has been verified " +
                  //       "and registered successfully", "Account Verification", JOptionPane.INFORMATION_MESSAGE);
 
-                dispose();
+                //dispose();
             }
             else {
                 JOptionPane.showMessageDialog(null, "Provided OTP code is incorrect." +
@@ -105,12 +135,25 @@ public class Verification extends JFrame implements ActionListener {
     }
 
     public String confirmOtp(){
+
         String generatedOtp;
         Logic_Verification verification = new Logic_Verification();
 
         generatedOtp = verification.buildCode();
         System.out.println("Send OTP code --> : " + generatedOtp);
         return generatedOtp;
+    }
+
+    public boolean allow( boolean dataEntry, boolean verified){
+        if (verified){
+            return true;
+
+        }
+        return false;
+    }
+
+    public void go(String na){
+        System.out.println("my name is : " + na);
     }
 
 }
