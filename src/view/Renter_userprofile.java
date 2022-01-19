@@ -28,7 +28,7 @@ public class Renter_userprofile extends JFrame implements ActionListener {
     public Renter_userprofile() {
 
         setTitle("User Setting - Renter_userprofile");
-        setBounds(5, 40, 1280, 740);
+        setBounds(100, 80, 1280, 740);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setBackground(Color.darkGray);
         setLayout(null);
@@ -70,6 +70,9 @@ public class Renter_userprofile extends JFrame implements ActionListener {
 
 
         logoutIcon.addActionListener(this);
+        settingIcon.addActionListener(this);
+        homeIcon.addActionListener(this);
+        profileIcon.addActionListener(this);
 
 
 
@@ -94,6 +97,11 @@ public class Renter_userprofile extends JFrame implements ActionListener {
             if (choice == JOptionPane.YES_OPTION) {
                 System.exit(0);
             }
+        }
+
+        if (e.getSource().equals(settingIcon)){
+            dispose();
+            new New_updateprofile().setVisible(true);
         }
 
 
@@ -181,7 +189,7 @@ public class Renter_userprofile extends JFrame implements ActionListener {
             public void actionPerformed(ActionEvent e) {
                 JFileChooser file = new JFileChooser();
                 file.setCurrentDirectory(new File(System.getProperty("user.home")));
-                FileNameExtensionFilter filter = new FileNameExtensionFilter("*.Images","jpg","gif", "png");
+                FileNameExtensionFilter filter = new FileNameExtensionFilter("*.Images","jpeg","gif", "png");
                 file.addChoosableFileFilter(filter);
                 int result = file.showSaveDialog(null);
                 if (result == JFileChooser.APPROVE_OPTION){
