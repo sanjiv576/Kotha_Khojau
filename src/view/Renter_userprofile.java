@@ -18,11 +18,18 @@ public class Renter_userprofile extends JFrame implements ActionListener {
 
     JButton homeIcon, profileIcon, settingIcon, driverIcon, logoutIcon;
 
-    // panel1 includes only buttons  , panel2 contains labels, text fields and buttons
+    //panel
     JPanel  panel1;
 
     JButton choosePhoto;
     JLabel label;
+
+    //label and text fields or textarea
+    JLabel aboutme ,Gender, stayPeriod, nameLbl,renterIDLbl, addressLbl;
+    JTextField namefield, renterIDfield, stayPeriodField, addressFiled;
+    JTextArea aboutmefield;
+    JComboBox genderCombo;
+    JButton submitBtn;
 
 
     public Renter_userprofile() {
@@ -60,6 +67,7 @@ public class Renter_userprofile extends JFrame implements ActionListener {
         add(vertical);
 
 
+
         //   ------------------- panels for  Renter_userprofile ---------------------------
 
         panel1 = new JPanel();
@@ -68,11 +76,102 @@ public class Renter_userprofile extends JFrame implements ActionListener {
         panel1.setBackground(Color.decode("#9F9391"));
         panel1.setOpaque(true);
 
+        //  -----------------label and text fields for renter profile---------------------------
+
+        aboutme = new JLabel("About Me");
+        aboutme.setBounds(160,280,150,50);
+        aboutme.setFont(new Font("Serif", Font.PLAIN, 23));
+        aboutme.setForeground(Color.BLACK);
+        add(aboutme);
+
+        aboutmefield = new JTextArea();
+        aboutmefield.setBounds(160, 330, 700,90);
+        aboutmefield.setLineWrap(true);
+        aboutmefield.setWrapStyleWord(true);
+        aboutmefield.setFont(new Font("Serif", Font.PLAIN, 20));
+//      aboutmefield.setBorder(BorderFactory.createEmptyBorder());
+//      aboutmefield.setOpaque(false);
+        aboutmefield.setForeground(Color.DARK_GRAY);
+        add(aboutmefield);
+
+        Gender = new JLabel("Gender");
+        Gender.setBounds(160,440,120,23);
+        Gender.setFont(new Font("Serif", Font.PLAIN, 23));
+        Gender.setForeground(Color.BLACK);
+        add(Gender);
+
+        String[] Gender = {"Select", "Male", "Female", "Others"};
+        genderCombo = new JComboBox(Gender);
+        genderCombo.setBounds(160,470,120,25);
+        genderCombo.setFont(new Font("times", Font.PLAIN,15));
+        //genderCombo.setSelectedItem("Others");
+        add(genderCombo);
+
+        stayPeriod = new JLabel("expected period to stay");
+        stayPeriod .setBounds(160,520,230,23);
+        stayPeriod .setFont(new Font("Serif", Font.PLAIN, 23));
+        stayPeriod .setForeground(Color.BLACK);
+        add( stayPeriod );
+
+        stayPeriodField = new JTextField();
+        stayPeriodField.setBounds(160, 550, 230,25);
+        stayPeriodField.setFont(new Font("Serif", Font.PLAIN, 20));
+        stayPeriodField.setForeground(Color.DARK_GRAY);
+        add(stayPeriodField);
+
+        addressLbl = new JLabel("Permanent address");
+        addressLbl .setBounds(160,590,230,23);
+        addressLbl .setFont(new Font("Serif", Font.PLAIN, 23));
+        addressLbl .setForeground(Color.BLACK);
+        add( addressLbl );
+
+        addressFiled = new JTextField();
+        addressFiled.setBounds(160, 620, 230,25);
+        addressFiled.setFont(new Font("Serif", Font.PLAIN, 20));
+        addressFiled.setForeground(Color.DARK_GRAY);
+        add(addressFiled);
+
+
+
+        nameLbl = new JLabel("Name");
+        nameLbl.setBounds(500,130,100,23);
+        nameLbl.setFont(new Font("Serif", Font.PLAIN, 23));
+        nameLbl.setForeground(Color.BLACK);
+        add(nameLbl);
+
+        namefield = new JTextField();
+        namefield.setBounds(650, 130, 180,25);
+        namefield.setFont(new Font("Serif", Font.PLAIN, 20));
+        namefield.setForeground(Color.DARK_GRAY);
+        add(namefield);
+
+        renterIDLbl = new JLabel("Renter ID");
+        renterIDLbl.setBounds(500,170,150,25);
+        renterIDLbl.setFont(new Font("Serif", Font.PLAIN, 23));
+        renterIDLbl.setForeground(Color.BLACK);
+        add(renterIDLbl);
+
+        renterIDfield = new JTextField();
+        renterIDfield .setBounds(650, 170, 180,30);
+        renterIDfield .setFont(new Font("Serif", Font.PLAIN, 20));
+        renterIDfield .setForeground(Color.DARK_GRAY);
+        add(renterIDfield );
+
+
+        submitBtn = new JButton();
+        submitBtn.setBounds(1070, 610, 130, 60);
+        submitBtn.setBackground(Color.decode("#9F9391"));
+        submitBtn.setOpaque(true);
+        submitBtn.setBorderPainted(false);
+        submitBtn.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/submitBtn-128x55.png"))));
+        // changing mouse pointer to finger
+        submitBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        add(submitBtn);
+
 
         logoutIcon.addActionListener(this);
         settingIcon.addActionListener(this);
-        homeIcon.addActionListener(this);
-        profileIcon.addActionListener(this);
+        driverIcon.addActionListener(this);
 
 
 
@@ -98,7 +197,6 @@ public class Renter_userprofile extends JFrame implements ActionListener {
                 System.exit(0);
             }
         }
-
         if (e.getSource().equals(settingIcon)){
             dispose();
             new New_updateprofile().setVisible(true);
@@ -165,13 +263,13 @@ public class Renter_userprofile extends JFrame implements ActionListener {
         logoutIcon.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         add(logoutIcon);
 
-        //
+        //    ----------------label ,image, button for upload photo
         image = new JLabel();
         image.setIcon(new ImageIcon((Objects.requireNonNull(getClass().getResource("Images/130x130.png")))));
-        image.setBounds(1000, 170, 130, 110);
+        image.setBounds(160, 130, 130, 130);
 
         choosePhoto= new JButton("Upload photo");
-        choosePhoto.setBounds(1000,270,130,40);
+        choosePhoto.setBounds(160,230,130,40);
         choosePhoto.setIcon(new ImageIcon((Objects.requireNonNull(getClass().getResource("Images/uploadphoto135x35.png")))));
         choosePhoto.setBackground(Color.decode("#9F9391"));
         choosePhoto.setOpaque(true);
@@ -179,17 +277,18 @@ public class Renter_userprofile extends JFrame implements ActionListener {
         choosePhoto.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
         label = new JLabel();
-        label.setBounds(1000,160,130,140);
+        label.setBounds(160,130,120,140);
 
         add(choosePhoto);
         add(label);
         add(image);
+
         choosePhoto.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFileChooser file = new JFileChooser();
                 file.setCurrentDirectory(new File(System.getProperty("user.home")));
-                FileNameExtensionFilter filter = new FileNameExtensionFilter("*.Images","jpeg","gif", "png");
+                FileNameExtensionFilter filter = new FileNameExtensionFilter("*.Images","jpg","gif", "png");
                 file.addChoosableFileFilter(filter);
                 int result = file.showSaveDialog(null);
                 if (result == JFileChooser.APPROVE_OPTION){
