@@ -25,19 +25,21 @@ public class Renter_userprofile extends JFrame implements ActionListener {
     JLabel label;
 
     //label and text fields or textarea
-    JLabel aboutme ,Gender, stayPeriod, nameLbl,renterIDLbl, addressLbl;
+    JLabel aboutme ,Gender, stayPeriod, nameLbl,renterIDLbl, addressLbl, typeLbl,
+            genderLbl, contactLbl, dobLbl, emailLbl, occupationLbl;
     JTextField namefield, renterIDfield, stayPeriodField, addressFiled;
     JTextArea aboutmefield;
     JComboBox genderCombo;
-    JButton submitBtn;
+    JButton saveBtn, updateBtn;
 
 
     public Renter_userprofile() {
 
-        setTitle("User Setting - Renter_userprofile");
+        setTitle("Renter Profile");
         setBounds(100, 80, 1280, 740);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setBackground(Color.darkGray);
+        setUndecorated(true);
         setLayout(null);
         setResizable(false);
 
@@ -94,90 +96,118 @@ public class Renter_userprofile extends JFrame implements ActionListener {
         aboutmefield.setForeground(Color.DARK_GRAY);
         add(aboutmefield);
 
-        Gender = new JLabel("Gender");
-        Gender.setBounds(160,440,120,23);
-        Gender.setFont(new Font("Serif", Font.PLAIN, 23));
-        Gender.setForeground(Color.BLACK);
-        add(Gender);
+        saveBtn = new JButton();
+        saveBtn.setBounds(400, 460, 120, 51);
+        saveBtn.setBackground(Color.decode("#9F9391"));
+        saveBtn.setOpaque(true);
+        saveBtn.setBorderPainted(false);
+        saveBtn.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/greenSave120x51.png"))));
+        // changing mouse pointer to finger
+        saveBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        add(saveBtn);
 
-        String[] Gender = {"Select", "Male", "Female", "Others"};
-        genderCombo = new JComboBox(Gender);
-        genderCombo.setBounds(160,470,120,25);
-        genderCombo.setFont(new Font("times", Font.PLAIN,15));
-        //genderCombo.setSelectedItem("Others");
-        add(genderCombo);
+        updateBtn = new JButton("update");
+        updateBtn.setBounds(600, 460, 120, 51);
+        updateBtn.setBackground(Color.green);
+        updateBtn.setOpaque(true);
+        updateBtn.setBorderPainted(false);
+        //updateBtn.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/greenSave120x51.png"))));
+        // changing mouse pointer to finger
+        updateBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        add(updateBtn);
 
-        stayPeriod = new JLabel("expected period to stay");
-        stayPeriod .setBounds(160,520,230,23);
-        stayPeriod .setFont(new Font("Serif", Font.PLAIN, 23));
-        stayPeriod .setForeground(Color.BLACK);
-        add( stayPeriod );
+//        Gender = new JLabel("Gender");
+//        Gender.setBounds(160,440,120,23);
+//        Gender.setFont(new Font("Serif", Font.PLAIN, 23));
+//        Gender.setForeground(Color.BLACK);
+//        add(Gender);
+//
+//        String[] Gender = {"Select", "Male", "Female", "Others"};
+//        genderCombo = new JComboBox(Gender);
+//        genderCombo.setBounds(160,470,120,25);
+//        genderCombo.setFont(new Font("times", Font.PLAIN,15));
+//        //genderCombo.setSelectedItem("Others");
+//        add(genderCombo);
 
-        stayPeriodField = new JTextField();
-        stayPeriodField.setBounds(160, 550, 230,25);
-        stayPeriodField.setFont(new Font("Serif", Font.PLAIN, 20));
-        stayPeriodField.setForeground(Color.DARK_GRAY);
-        add(stayPeriodField);
+//        stayPeriod = new JLabel("expected period to stay");
+//        stayPeriod .setBounds(160,520,230,23);
+//        stayPeriod .setFont(new Font("Serif", Font.PLAIN, 23));
+//        stayPeriod .setForeground(Color.BLACK);
+//        add( stayPeriod );
+//
+//
+//
+//        addressLbl = new JLabel("Permanent address");
+//        addressLbl .setBounds(160,590,230,23);
+//        addressLbl .setFont(new Font("Serif", Font.PLAIN, 23));
+//        addressLbl .setForeground(Color.BLACK);
+//        add( addressLbl );
 
-        addressLbl = new JLabel("Permanent address");
-        addressLbl .setBounds(160,590,230,23);
-        addressLbl .setFont(new Font("Serif", Font.PLAIN, 23));
-        addressLbl .setForeground(Color.BLACK);
-        add( addressLbl );
-
-        addressFiled = new JTextField();
-        addressFiled.setBounds(160, 620, 230,25);
-        addressFiled.setFont(new Font("Serif", Font.PLAIN, 20));
-        addressFiled.setForeground(Color.DARK_GRAY);
-        add(addressFiled);
+//        addressFiled = new JTextField();
+//        addressFiled.setBounds(160, 620, 230,25);
+//        addressFiled.setFont(new Font("Serif", Font.PLAIN, 20));
+//        addressFiled.setForeground(Color.DARK_GRAY);
+//        add(addressFiled);
 
 
 
-        nameLbl = new JLabel("Name");
-        nameLbl.setBounds(500,130,100,23);
+        nameLbl = new JLabel("Name :");
+        nameLbl.setBounds(500,140,100,23);
         nameLbl.setFont(new Font("Serif", Font.PLAIN, 23));
         nameLbl.setForeground(Color.BLACK);
         add(nameLbl);
 
-        namefield = new JTextField();
-        namefield.setBounds(650, 130, 180,25);
-        namefield.setFont(new Font("Serif", Font.PLAIN, 20));
-        namefield.setForeground(Color.DARK_GRAY);
-        add(namefield);
 
-        renterIDLbl = new JLabel("Renter ID");
-        renterIDLbl.setBounds(500,170,150,25);
+        renterIDLbl = new JLabel("Renter ID :");
+        renterIDLbl.setBounds(500,180,150,25);
         renterIDLbl.setFont(new Font("Serif", Font.PLAIN, 23));
         renterIDLbl.setForeground(Color.BLACK);
         add(renterIDLbl);
 
-        renterIDfield = new JTextField();
-        renterIDfield .setBounds(650, 170, 180,30);
-        renterIDfield .setFont(new Font("Serif", Font.PLAIN, 20));
-        renterIDfield .setForeground(Color.DARK_GRAY);
-        add(renterIDfield );
+        typeLbl = new JLabel("Member Type :");
+        typeLbl.setBounds(500,220,160,23);
+        typeLbl.setFont(new Font("Serif", Font.PLAIN, 23));
+        typeLbl.setForeground(Color.BLACK);
+        add(typeLbl);
 
+        genderLbl = new JLabel("Gender :");
+        genderLbl.setBounds(500,260,150,25);
+        genderLbl.setFont(new Font("Serif", Font.PLAIN, 23));
+        genderLbl.setForeground(Color.BLACK);
+        add(genderLbl);
 
-        submitBtn = new JButton();
-        submitBtn.setBounds(1070, 610, 130, 60);
-        submitBtn.setBackground(Color.decode("#9F9391"));
-        submitBtn.setOpaque(true);
-        submitBtn.setBorderPainted(false);
-        submitBtn.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/submitBtn-128x55.png"))));
-        // changing mouse pointer to finger
-        submitBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        add(submitBtn);
+        contactLbl = new JLabel("Contact :");
+        contactLbl.setBounds(900,140,100,23);
+        contactLbl.setFont(new Font("Serif", Font.PLAIN, 23));
+        contactLbl.setForeground(Color.BLACK);
+        add(contactLbl);
+
+        dobLbl = new JLabel("DOB:");
+        dobLbl.setBounds(900,180,150,25);
+        dobLbl.setFont(new Font("Serif", Font.PLAIN, 23));
+        dobLbl.setForeground(Color.BLACK);
+        add(dobLbl);
+
+        occupationLbl = new JLabel("Occupation :");
+        occupationLbl.setBounds(900,220,160,23);
+        occupationLbl.setFont(new Font("Serif", Font.PLAIN, 23));
+        occupationLbl.setForeground(Color.BLACK);
+        add(occupationLbl);
+
+        emailLbl = new JLabel("Email :");
+        emailLbl.setBounds(900,260,150,25);
+        emailLbl.setFont(new Font("Serif", Font.PLAIN, 23));
+        emailLbl.setForeground(Color.BLACK);
+        add(emailLbl);
 
 
         logoutIcon.addActionListener(this);
         settingIcon.addActionListener(this);
         driverIcon.addActionListener(this);
-
-
+        saveBtn.addActionListener(this);
+        updateBtn.addActionListener(this);
 
         add(panel1);
-
-
 
     }
 
@@ -202,8 +232,15 @@ public class Renter_userprofile extends JFrame implements ActionListener {
             new New_updateprofile().setVisible(true);
         }
 
+        if (e.getSource().equals(saveBtn)){
+            aboutmefield.setEditable(false);
+            System.out.println("save");
+        }
 
-
+        if (e.getSource().equals(saveBtn)){
+            aboutmefield.setEditable(true);
+            System.out.println("update");
+        }
 
     }
 
@@ -313,11 +350,6 @@ public class Renter_userprofile extends JFrame implements ActionListener {
         ImageIcon image = new ImageIcon(newImg);
         return image;
     }
-
-
-
-
-
 
 }
 

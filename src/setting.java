@@ -7,7 +7,7 @@ public class setting extends JFrame {
     JPanel panel, panel1, panel2;
     JButton update_profile, password_change, delete_account;
 
-    // Images Labeling
+    // view.Images Labeling
     JLabel House1, House2, House3, House4, House5, House6, title, logo, pagemark, vertical, horizontal, innerframe;
     JButton home, profile, settings, signout, next, filter;
 
@@ -23,7 +23,7 @@ public class setting extends JFrame {
 
         //Buttons
         home = new JButton();
-        //home.setIcon(new ImageIcon(getClass().getResource("Images/home 2.png")));
+        //home.setIcon(new ImageIcon(getClass().getResource("view.Images/home 2.png")));
         home.setBounds(15, 166, 64, 64);
         home.setBackground(Color.decode("#46C132"));
         home.setForeground(Color.decode("#46C132"));
@@ -33,7 +33,7 @@ public class setting extends JFrame {
         add(home);
 
         profile = new JButton();
-        //profile.setIcon(new ImageIcon(getClass().getResource("Images/profile 2.png")));
+        //profile.setIcon(new ImageIcon(getClass().getResource("view.Images/profile 2.png")));
         profile.setBounds(8, 274, 77, 64);
         profile.setBackground(Color.decode("#9E9B9B"));
         profile.setForeground(Color.decode("#9E9B9B"));
@@ -43,7 +43,7 @@ public class setting extends JFrame {
         add(profile);
 
         settings = new JButton();
-        //   settings.setIcon(new ImageIcon(getClass().getResource("Images/settings 2.png")));
+        //   settings.setIcon(new ImageIcon(getClass().getResource("view.Images/settings 2.png")));
         settings.setBounds(15, 382, 64, 68);
         settings.setBackground(Color.decode("#9E9B9B"));
         settings.setForeground(Color.decode("#9E9B9B"));
@@ -53,7 +53,7 @@ public class setting extends JFrame {
         add(settings);
 
         signout = new JButton();
-        //   signout.setIcon(new ImageIcon(getClass().getResource("Images/signout 2.png")));
+        //   signout.setIcon(new ImageIcon(getClass().getResource("view.Images/signout 2.png")));
         signout.setBounds(15, 605, 64, 64);
         signout.setBackground(Color.decode("#9E9B9B"));
         signout.setBorderPainted(false);
@@ -63,13 +63,13 @@ public class setting extends JFrame {
 
 
         vertical = new JLabel();
-        //   vertical.setIcon(new ImageIcon((getClass().getResource("Images/Rectangle 20.png"))));
+        //   vertical.setIcon(new ImageIcon((getClass().getResource("view.Images/Rectangle 20.png"))));
         vertical.setBounds(-1, 0, 104, 720);
         vertical.setForeground(Color.getColor("9E9B9B"));
         add(vertical);
 
         horizontal = new JLabel();
-        //   horizontal.setIcon(new ImageIcon((getClass().getResource("Images/Rectangle 21.png"))));
+        //   horizontal.setIcon(new ImageIcon((getClass().getResource("view.Images/Rectangle 21.png"))));
         horizontal.setBounds(2, 0, 1275, 106);
         horizontal.setForeground(Color.getColor("9E9B9B"));
         add(horizontal);
