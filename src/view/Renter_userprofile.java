@@ -25,10 +25,11 @@ public class Renter_userprofile extends JFrame implements ActionListener {
     JLabel label;
 
     //label and text fields or textarea
-    JLabel aboutme ,Gender, stayPeriod, nameLbl,renterIDLbl;
-    JTextField namefield, renterIDfield, stayPeriodField;
+    JLabel aboutme ,Gender, stayPeriod, nameLbl,renterIDLbl, addressLbl;
+    JTextField namefield, renterIDfield, stayPeriodField, addressFiled;
     JTextArea aboutmefield;
     JComboBox genderCombo;
+    JButton submitBtn;
 
 
     public Renter_userprofile() {
@@ -101,7 +102,6 @@ public class Renter_userprofile extends JFrame implements ActionListener {
         String[] Gender = {"Select", "Male", "Female", "Others"};
         genderCombo = new JComboBox(Gender);
         genderCombo.setBounds(160,470,120,25);
-        genderCombo.setBackground(Color.decode("#C0C0C0"));
         genderCombo.setFont(new Font("times", Font.PLAIN,15));
         //genderCombo.setSelectedItem("Others");
         add(genderCombo);
@@ -117,6 +117,18 @@ public class Renter_userprofile extends JFrame implements ActionListener {
         stayPeriodField.setFont(new Font("Serif", Font.PLAIN, 20));
         stayPeriodField.setForeground(Color.DARK_GRAY);
         add(stayPeriodField);
+
+        addressLbl = new JLabel("Permanent address");
+        addressLbl .setBounds(160,590,230,23);
+        addressLbl .setFont(new Font("Serif", Font.PLAIN, 23));
+        addressLbl .setForeground(Color.BLACK);
+        add( addressLbl );
+
+        addressFiled = new JTextField();
+        addressFiled.setBounds(160, 620, 230,25);
+        addressFiled.setFont(new Font("Serif", Font.PLAIN, 20));
+        addressFiled.setForeground(Color.DARK_GRAY);
+        add(addressFiled);
 
 
 
@@ -145,6 +157,15 @@ public class Renter_userprofile extends JFrame implements ActionListener {
         add(renterIDfield );
 
 
+        submitBtn = new JButton();
+        submitBtn.setBounds(1070, 610, 130, 60);
+        submitBtn.setBackground(Color.decode("#9F9391"));
+        submitBtn.setOpaque(true);
+        submitBtn.setBorderPainted(false);
+        submitBtn.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/submitBtn-128x55.png"))));
+        // changing mouse pointer to finger
+        submitBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        add(submitBtn);
 
 
         logoutIcon.addActionListener(this);
