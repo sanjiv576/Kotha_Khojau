@@ -1,11 +1,14 @@
 package database;
 
+import model.LoginData;
+
 import java.sql.*;
 public class DbConnection {
 
     Statement statement;
     Connection connection;
     int val;
+    ResultSet resultSet;
 
     public DbConnection(){
         try {
@@ -64,6 +67,30 @@ public class DbConnection {
             connection.close();
         }
         return val;
+    }
+
+    // this functions checks whether provided username and passwords are in the database or not.
+
+    public ResultSet matchValues(String query, String username, String password){
+
+        try{
+            // 1st try
+//            PreparedStatement pst = (PreparedStatement) connection.prepareStatement(query);
+//            pst.setString(1, username);
+//            pst.setString(2, password);
+//
+//            resultSet = pst.executeQuery(query);
+
+            // this does not work : memberType
+            //System.out.println(statement.executeQuery(memberCategory));
+            resultSet = statement.executeQuery(query);
+        }
+        catch (Exception exception){
+            exception.getStackTrace();
+            System.out.println(exception.getMessage());
+        }
+
+        return resultSet;
     }
 
     public static void main(String[] args) {
