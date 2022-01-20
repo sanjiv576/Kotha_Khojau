@@ -1,7 +1,6 @@
 package logic;
 
-import controller.UserController;
-import model.User;
+import view.Verification;
 
 import javax.swing.*;
 import java.sql.SQLException;
@@ -11,47 +10,12 @@ public class Logic_Registration {
     int contactNum;
     boolean contactIsString = false;
 
-    private boolean closeRegistrationWindow;
-    private String FirstName;
-    private String MiddleName;
-    private String LastName;
-    private String MemberType;
-    private String Gender;
-    private String Contact;
-    private String DOB;
-    private String Occupation;
-    private String Email;
-    private String Address;
-    private String Username;
-    private String Password;
-    private String Repassword;
-
-
-    public  Logic_Registration(String FirstName,String MiddleName, String LastName, String MemberType,
-                               String Gender, String Contact , String DOB, String Occupation, String Email,String Address,
-                               String Username, String Password, String Repassword){
-
-
-        this.FirstName = FirstName;
-        this.MiddleName = MiddleName;
-        this.LastName= LastName;
-        this.MemberType = MemberType;
-        this.Gender = Gender;
-        this.Contact = Contact;
-        this.DOB = DOB;
-        this.Occupation = Occupation;
-        this.Email = Email;
-        this.Address = Address;
-        this.Username = Username;
-        this.Password = Password;
-        this.Repassword = Repassword;
-    }
-
     public Logic_Registration() {
 
     }
 
-    public  boolean registration(boolean closeRegistrationWindow, String FirstName, String MiddleName, String LastName,
+    public  boolean registration(boolean closeRegistrationWindow, boolean dataEntry, boolean OTP_verified,
+                                 String FirstName, String MiddleName, String LastName,
                                  String MemberType, String Gender,
                               String Contact, String DOB, String Occupation, String Email, String Address,
                               String Username, String Password, String Repassword){
@@ -104,47 +68,17 @@ public class Logic_Registration {
 
             closeRegistrationWindow = true;
 
+            // if OTP system is not kept, then insertion in the database in here or after this logic_registration class
+
             JOptionPane.showMessageDialog(null, "OTP has been sent. Please verify it.",
                     "Registration", JOptionPane.YES_OPTION);
+
+           new Verification(FirstName, MiddleName, LastName, MemberType, Gender, Contact, DOB, Occupation, Email, Address, Username, Password).setVisible(true);
 
         }
        return closeRegistrationWindow;
     }
 
-    public void dataInsertion(){
-        System.out.println("dm" + DOB);
 
-        // instantiate of an object
-        User user = new User(FirstName, MiddleName, LastName, MemberType, Gender, Contact, DOB,
-                                Occupation, Email, Address, Username, Password);   // encapsulation part in it
-
-        UserController usersController = new UserController();  // controls the database activities like insert, delete, update
-
-        int insertData = 0;
-
-        // now inserting data into database by invoking registerUser method of UserController class
-        try{
-            // calling the method of UserController class to insert data into database
-            insertData = usersController.registerUser(user);
-
-        } catch (SQLException exception) {
-            exception.printStackTrace();
-            System.out.println(exception.getMessage());
-        }
-
-        if (insertData > 0 ){
-            JOptionPane.showMessageDialog(null, "Your account has been verified and registered successfully",
-                    "Registration", JOptionPane.INFORMATION_MESSAGE);
-
-            System.out.println("Data are inserted into database. Successfully registered");
-
-        }
-        else {
-            JOptionPane.showMessageDialog(null, "Failed to register. Try again.",
-                    "Registration failed", JOptionPane.WARNING_MESSAGE);
-            System.out.println("Data are not inserted into database. Failed to register");
-        }
-
-    }
 
 }
