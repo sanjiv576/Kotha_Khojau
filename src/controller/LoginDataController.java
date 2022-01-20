@@ -12,9 +12,14 @@ public class LoginDataController {
     public ResultSet checkValidation(String username, String password){
         String query;
 
-        query = "select Username, Password from User_tbl where Username=? and Password=?";
+        // 1st try
+        //query = "select Username, Password from User_tbl where Username=? and Password=?";
 
+        // 2nd try
+        query = "select * from User_tbl where Username='"+username+"' and Password='"+password+"'";
 
+        // Note: to select memberType is remaining for whom Dashboard
+        //String memberCategory = "select MemberType from User_tbl";
         db = new DbConnection();
         return db.matchValues(query, username, password);
     }
