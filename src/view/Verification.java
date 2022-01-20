@@ -1,5 +1,6 @@
 package view;
 
+import controller.UserController;
 import logic.Logic_Registration;
 import logic.Logic_Verification;
 import model.User;
@@ -8,26 +9,44 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 public class Verification extends JFrame implements ActionListener {
 
-    boolean dataEntry = false;
-    boolean verified = false;
     JLabel verifyLbl;
     JTextField codeField;
     JButton resendBtn;
     JLabel lowerLbl;
     JButton submitBtn;
-    boolean dataInsert = false;
 
     String currentOTP = confirmOtp();  //  otp is generated after executing verification class
+
+
+    String FirstName, MiddleName, LastName, MemberType, Gender, Contact,
+            DOB, Occupation, PersonalEmail, Address, Username, Password;
+
 
     public Verification(){
 
     }
-    public Verification(String name){
-        String me = name;
-        System.out.println(me);
+    public Verification(String firstName, String middleName, String lastName,
+                        String memberType, String gender,
+                        String contact, String dob, String occupation, String email, String address,
+                        String username, String password){
+
+         FirstName = firstName;
+         MiddleName = middleName;
+         LastName = lastName;
+         MemberType = memberType;
+         Gender = gender;
+         Contact = contact;
+         DOB = dob;
+         Occupation = occupation;
+         PersonalEmail = email;
+         Address = address;
+         Username = username;
+         Password = password;
+
         setTitle("Alert : Verification");
         setBounds(200, 100, 400, 400);
         setResizable(false);
@@ -74,16 +93,10 @@ public class Verification extends JFrame implements ActionListener {
 
         setVisible(true);
 
-        if (dataInsert){
-            System.out.println("my name is : " + name);
-            dataInsert = false;
-        }
 
     }
     public static void main(String[] args) {
 
-        boolean insertData = false;
-        String name;
         Verification obj = new Verification();
         obj.setVisible(true);
 
@@ -92,6 +105,7 @@ public class Verification extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         String insertedOtp = codeField.getText();
+
 
 
         if (e.getSource().equals(resendBtn)){
@@ -103,27 +117,41 @@ public class Verification extends JFrame implements ActionListener {
 
             if (currentOTP.equals(insertedOtp)){
 
-                dataInsert = true;
-                //System.out.println(me);
+                System.out.println("your name : " + FirstName + MiddleName + LastName + Gender + Contact + PersonalEmail);
 
-//                Logic_Registration registerMe = new Logic_Registration();
-//                dataInsert = true;
-//                System.out.println(me);
+                        // instantiate of an object
+                User user = new User(FirstName, MiddleName, LastName, MemberType, Gender, Contact, DOB,
+                        Occupation, PersonalEmail, Address, Username, Password);   // encapsulation part in it
 
+                UserController usersController = new UserController();  // controls the database activities like insert, delete, update
 
-//                verified = true;
-//                allow(dataEntry, verified);
+                int insertData = 0;
 
-//                // instantiate of an object
-//                Registration registration = new Registration();
-//
-//                // invokes method to insert data into database
-//                registration.dataInsertion();
+                // now inserting data into database by invoking registerUser method of UserController class
+                try{
+                    // calling the method of UserController class to insert data into database
+                    insertData = usersController.registerUser(user);
 
-                //JOptionPane.showMessageDialog(null, "Your account has been verified " +
-                 //       "and registered successfully", "Account Verification", JOptionPane.INFORMATION_MESSAGE);
+                } catch (SQLException exception) {
+                    exception.printStackTrace();
+                    System.out.println(exception.getMessage());
+                }
 
-                //dispose();
+                if (insertData > 0 ){
+                    JOptionPane.showMessageDialog(null, "Your account has been verified and registered successfully",
+                            "Registration", JOptionPane.INFORMATION_MESSAGE);
+
+                    System.out.println("Data are inserted into database. Successfully registered");
+                    dispose();
+                    new Registration().setVisible(false);
+
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Failed to register. Try again.",
+                            "Registration failed", JOptionPane.WARNING_MESSAGE);
+                    System.out.println("Data are not inserted into database. Failed to register");
+                }
+
             }
             else {
                 JOptionPane.showMessageDialog(null, "Provided OTP code is incorrect." +
@@ -144,16 +172,5 @@ public class Verification extends JFrame implements ActionListener {
         return generatedOtp;
     }
 
-    public boolean allow( boolean dataEntry, boolean verified){
-        if (verified){
-            return true;
-
-        }
-        return false;
-    }
-
-    public void go(String na){
-        System.out.println("my name is : " + na);
-    }
 
 }
