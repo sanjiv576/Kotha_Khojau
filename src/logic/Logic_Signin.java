@@ -2,18 +2,16 @@ package logic;
 
 import controller.LoginDataController;
 import model.LoginData;
+import view.Renter_userprofile;
+import view.Signin;
 
 import javax.swing.*;
 import java.sql.ResultSet;
 
 public class Logic_Signin {
-    private String username;
-    private String password;
 
     // creating parametrized constructor
     public Logic_Signin(String username, String password){
-        this.username = username;
-        this.password = password;
     }
 
     // methods are invoked in view.Signin java class
@@ -31,13 +29,19 @@ public class Logic_Signin {
             ResultSet result;
 
             try{
+                // result stores Resultset value by calling checkValidation method
                 result = loginDataController.checkValidation(username, password);
 
                 if (result.next()){
-                    JOptionPane.showMessageDialog(null, "Provided username and password are in the database.", "Check in database", JOptionPane.INFORMATION_MESSAGE);
+                    //JOptionPane.showMessageDialog(null, "Provided username and password are in the database.", "Check in database", JOptionPane.INFORMATION_MESSAGE);
+
+                    Signin sign = new Signin();
+                    sign.clearAll();
+                    sign.setVisible(false);
+                    new Renter_userprofile().setVisible(true);
                 }
                 else {
-                    JOptionPane.showMessageDialog(null, "Provided username and password are not in the database.", "Check in database", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Account has not been found in the database", "Check in database", JOptionPane.WARNING_MESSAGE);
                 }
 
             }
@@ -50,6 +54,7 @@ public class Logic_Signin {
 //            JOptionPane.showMessageDialog(null, "Login successfully",
 //                    "Logged In ", JOptionPane.YES_OPTION);
         }
-        //return 0;
+
     }
+
 }
