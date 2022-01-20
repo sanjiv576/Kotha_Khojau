@@ -1,11 +1,15 @@
 package view;
 
+import controller.UserController;
 import logic.Logic_Registration;
 import logic.Logic_Verification;
+import model.User;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.Objects;
 import javax.swing.ImageIcon;
@@ -36,9 +40,9 @@ public class Registration extends JFrame implements ActionListener{
     JPanel panel;
     JPanel panel1;
 
-    JTextField FirstName;
-    JTextField MiddleName;
-    JTextField LastName;
+    JTextField firstName;
+    JTextField middleName;
+    JTextField lastName;
     JTextField contact;
     JTextField dateofbirth;
     JTextField email;
@@ -54,7 +58,7 @@ public class Registration extends JFrame implements ActionListener{
 
     public Registration(){
 
-        setTitle("view.Registration");
+        setTitle("Registration");
         setSize(920,750);
         setLocation(100,50);
         setResizable(false);
@@ -78,24 +82,24 @@ public class Registration extends JFrame implements ActionListener{
 
 
         //text fields
-        FirstName = new JTextField();
-        FirstName.setBounds(50,145,120,25);
-        FirstName.setBackground(Color.decode("#C0C0C0"));
-        FirstName.setFont(new Font("times", Font.BOLD,15));
-        add(FirstName);
+        firstName = new JTextField();
+        firstName.setBounds(50,145,120,25);
+        firstName.setBackground(Color.decode("#C0C0C0"));
+        firstName.setFont(new Font("times", Font.BOLD,15));
+        add(firstName);
 
-        MiddleName = new JTextField();
-        MiddleName.setBounds(210,145,120,25);
-        MiddleName.setBackground(Color.decode("#C0C0C0"));
-        MiddleName.setFont(new Font("times", Font.BOLD,15));
-        add(MiddleName);
+        middleName = new JTextField();
+        middleName.setBounds(210,145,120,25);
+        middleName.setBackground(Color.decode("#C0C0C0"));
+        middleName.setFont(new Font("times", Font.BOLD,15));
+        add(middleName);
 
-        LastName = new JTextField();
-        LastName.setBounds(370,145,120,25);
-        LastName.setBackground(Color.decode("#C0C0C0"));
-        LastName.setFont(new Font("times", Font.BOLD,15));
+        lastName = new JTextField();
+        lastName.setBounds(370,145,120,25);
+        lastName.setBackground(Color.decode("#C0C0C0"));
+        lastName.setFont(new Font("times", Font.BOLD,15));
 
-        add(LastName);
+        add(lastName);
 
 
         String[] Membertype= {"Select", "Owner", "Renter"};
@@ -204,11 +208,13 @@ public class Registration extends JFrame implements ActionListener{
 
     }
 
+    // -------------------------------------- main method ----------------------------------
     public static void main(String[] args) {
         new Registration().setVisible(true);
     }
 
 
+    // --------------------------------- events handling -----------------------------------
     @Override
     public void actionPerformed(ActionEvent e) {
 
@@ -222,9 +228,9 @@ public class Registration extends JFrame implements ActionListener{
         String FirstNameInserted, middleNameInserted,LastNameInserted, contactInserted,
                 dobInserted, emailInserted, addressInserted, usernameInserted, passwordInserted, repassInserted;
 
-        FirstNameInserted = FirstName.getText();
-        middleNameInserted = MiddleName.getText();
-        LastNameInserted = LastName.getText();
+        FirstNameInserted = firstName.getText();
+        middleNameInserted = middleName.getText();
+        LastNameInserted = lastName.getText();
         contactInserted = contact.getText();
         dobInserted = dob;
         emailInserted = email.getText();
@@ -243,26 +249,27 @@ public class Registration extends JFrame implements ActionListener{
 
         // close the registration window after successful registration
         boolean closeRegistrationWindow = false;
+        boolean dataEntry = false;
+        boolean OTP_Verified = false;
 
         if (e.getSource().equals(Btn)){
 
             // creating instance of a class
-            Logic_Registration object = new Logic_Registration(FirstNameInserted, middleNameInserted,LastNameInserted,
+            Logic_Registration object = new Logic_Registration();
+
+            object.registration(closeRegistrationWindow, dataEntry, OTP_Verified,
+                    FirstNameInserted, middleNameInserted,LastNameInserted,
                     selectedMember, selectedGender, contactInserted, dobInserted, selectedOccupation, emailInserted,
                     addressInserted, usernameInserted, passwordInserted, repassInserted);
 
-            boolean closeRegistration = object.registration(closeRegistrationWindow, FirstNameInserted, middleNameInserted,LastNameInserted,
-                    selectedMember, selectedGender, contactInserted, dobInserted, selectedOccupation, emailInserted,
-                    addressInserted, usernameInserted, passwordInserted, repassInserted);
 
-            //System.out.println(closeRegistration);
-            if (closeRegistration){
-                dispose();
-                new Verification().setVisible(true);
-            }
 
         }
+
+
     }
+
+    // ------------------------------ User defined methods -------------------------------------
 
     public void addSpinners(){
 
