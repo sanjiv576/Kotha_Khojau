@@ -74,11 +74,16 @@ public class DbConnection {
     public ResultSet matchValues(String query, String username, String password){
 
         try{
-            PreparedStatement pst = (PreparedStatement) connection.prepareStatement(query);
-            pst.setString(1, username);
-            pst.setString(2, password);
+            // 1st try
+//            PreparedStatement pst = (PreparedStatement) connection.prepareStatement(query);
+//            pst.setString(1, username);
+//            pst.setString(2, password);
+//
+//            resultSet = pst.executeQuery(query);
 
-            resultSet = pst.executeQuery(query);
+            // this does not work : memberType
+            //System.out.println(statement.executeQuery(memberCategory));
+            resultSet = statement.executeQuery(query);
         }
         catch (Exception exception){
             exception.getStackTrace();
