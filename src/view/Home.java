@@ -6,7 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Objects;
 
-public class DriverDetails extends JFrame implements ActionListener {
+public class Home extends JFrame implements ActionListener {
 
     // view.Images Labeling
     JLabel vertical, horizontal, titleImg , projectLogoImg;
@@ -14,9 +14,9 @@ public class DriverDetails extends JFrame implements ActionListener {
     JButton homeIcon, profileIcon, settingIcon,driverIcon, logoutIcon;
 
 
-    public DriverDetails() {
+    public Home() {
 
-        setTitle("Driver Details window");
+        setTitle("Home Page");
         setBounds(100, 80, 1280, 745);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setBackground(Color.darkGray);
@@ -44,7 +44,7 @@ public class DriverDetails extends JFrame implements ActionListener {
     }
 
     public static void main(String[] args) {
-        new DriverDetails().setVisible(true);
+        new Home().setVisible(true);
     }
 
     //  event handling
@@ -64,9 +64,9 @@ public class DriverDetails extends JFrame implements ActionListener {
             new New_updateprofile().setVisible(true);
         }
 
-        if (e.getSource().equals(settingIcon)){
+        if (e.getSource().equals(profileIcon)){
             dispose();
-            new New_updateprofile().setVisible(true);
+            new Renter_userprofile().setVisible(true);
         }
     }
 
@@ -80,8 +80,8 @@ public class DriverDetails extends JFrame implements ActionListener {
         add(projectLogoImg);
 
         homeIcon = new JButton();
-        homeIcon.setIcon(new ImageIcon((Objects.requireNonNull(getClass().getResource("Images/homeIcon_64x64.png")))));
-        homeIcon.setBounds(15, 150, 64, 64);
+        homeIcon.setIcon(new ImageIcon((Objects.requireNonNull(getClass().getResource("Images/greenhome_100x93.png")))));
+        homeIcon.setBounds(1, 150, 100, 100);
         homeIcon.setBackground(Color.decode("#9E9B9B"));
         homeIcon.setOpaque(true);
         homeIcon.setBorderPainted(false);
@@ -109,7 +109,7 @@ public class DriverDetails extends JFrame implements ActionListener {
         add(settingIcon);
 
         driverIcon= new JButton();
-        driverIcon.setIcon(new ImageIcon((Objects.requireNonNull(getClass().getResource("Images/greendriver_100x100.png")))));
+        driverIcon.setIcon(new ImageIcon((Objects.requireNonNull(getClass().getResource("Images/driver64X64.png")))));
         driverIcon.setBounds(1, 480, 100, 100);
         driverIcon.setBackground(Color.decode("#9E9B9B"));
         driverIcon.setOpaque(true);

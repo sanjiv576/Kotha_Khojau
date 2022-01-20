@@ -343,6 +343,15 @@ public class New_updateprofile extends JFrame implements ActionListener {
             new New_passwordchange().setVisible(true);
         }
 
+        if(e.getSource().equals(driverIcon)){
+            dispose();
+            new DriverDetails().setVisible(true);
+        }
+        if(e.getSource().equals(homeIcon)){
+            dispose();
+            new Home().setVisible(true);
+        }
+
         if (e.getSource().equals(cancelbtn)){
             clearAll();
         }
