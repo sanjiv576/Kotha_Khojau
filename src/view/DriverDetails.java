@@ -11,7 +11,7 @@ public class DriverDetails extends JFrame implements ActionListener {
     // view.Images Labeling
     JLabel vertical, horizontal, titleImg , projectLogoImg;
 
-    JButton homeIcon, profileIcon, settingIcon, logoutIcon;
+    JButton homeIcon, profileIcon, settingIcon,driverIcon, logoutIcon;
 
 
     public DriverDetails() {
@@ -81,7 +81,7 @@ public class DriverDetails extends JFrame implements ActionListener {
 
         homeIcon = new JButton();
         homeIcon.setIcon(new ImageIcon((Objects.requireNonNull(getClass().getResource("Images/homeIcon_64x64.png")))));
-        homeIcon.setBounds(15, 166, 64, 64);
+        homeIcon.setBounds(15, 150, 64, 64);
         homeIcon.setBackground(Color.decode("#9E9B9B"));
         homeIcon.setOpaque(true);
         homeIcon.setBorderPainted(false);
@@ -91,7 +91,7 @@ public class DriverDetails extends JFrame implements ActionListener {
 
         profileIcon = new JButton();
         profileIcon.setIcon(new ImageIcon((Objects.requireNonNull(getClass().getResource("Images/profileImg_78x64.png")))));
-        profileIcon.setBounds(8, 315, 78, 64);
+        profileIcon.setBounds(1, 250, 100, 100);
         profileIcon.setBackground(Color.decode("#9E9B9B"));
         profileIcon.setOpaque(true);
         profileIcon.setBorderPainted(false);
@@ -100,13 +100,22 @@ public class DriverDetails extends JFrame implements ActionListener {
 
 
         settingIcon = new JButton();
-        settingIcon.setIcon(new ImageIcon((Objects.requireNonNull(getClass().getResource("Images/greenSetting_100x100.png")))));
-        settingIcon.setBounds(1, 453, 100, 100);
+        settingIcon.setIcon(new ImageIcon((Objects.requireNonNull(getClass().getResource("Images/settingIcon64x61.png")))));
+        settingIcon.setBounds(1, 353, 100, 100);
         settingIcon.setBackground(Color.decode("#9E9B9B"));
         settingIcon.setOpaque(true);
         settingIcon.setBorderPainted(false);
         settingIcon.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         add(settingIcon);
+
+        driverIcon= new JButton();
+        driverIcon.setIcon(new ImageIcon((Objects.requireNonNull(getClass().getResource("Images/greendriver_100x100.png")))));
+        driverIcon.setBounds(1, 480, 100, 100);
+        driverIcon.setBackground(Color.decode("#9E9B9B"));
+        driverIcon.setOpaque(true);
+        driverIcon.setBorderPainted(false);
+        driverIcon.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        add(driverIcon);
 
         logoutIcon = new JButton();
         logoutIcon.setIcon(new ImageIcon((Objects.requireNonNull(getClass().getResource("Images/logout_64x64.png")))));
