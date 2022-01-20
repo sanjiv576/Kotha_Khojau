@@ -23,7 +23,7 @@ public class Signin extends JFrame implements ActionListener {
     JButton forgotPassword, loginBtn, registerBtn;
     public Signin(){
         setTitle("Sign In window");
-        setBounds(40, 50, 940, 650);
+        setBounds(100, 80, 940, 650);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(null);
         setResizable(false);
@@ -50,14 +50,14 @@ public class Signin extends JFrame implements ActionListener {
 
         // background images insertion
         imgLbl = new JLabel();
-        imgLbl.setIcon(new ImageIcon(getClass().getResource("Images/log_cover.png")));
+        imgLbl.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/log_cover.png"))));
         getContentPane().add(imgLbl);
         imgLbl.setBounds(0, 0, 700, 700);
 
         projectLogo = new JLabel();
-        projectLogo.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/logo.png"))));
+        projectLogo.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/logo101x98.png"))));
         getContentPane().add(projectLogo);
-        projectLogo.setBounds(680, 45, 90, 90);
+        projectLogo.setBounds(680, 45, 101, 98);
 
         panel = new JPanel();
         panel.setBounds(570, 40, 335, 420);
@@ -99,6 +99,8 @@ public class Signin extends JFrame implements ActionListener {
 
         showPassword = new JCheckBox();
         showPassword.setBounds(820, 235, 20, 40);
+        showPassword.setBackground(Color.darkGray);
+        showPassword.setOpaque(true);
         showPassword.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         add(showPassword);
 
@@ -122,8 +124,6 @@ public class Signin extends JFrame implements ActionListener {
         add(forgotPassword);
 
         loginBtn = new JButton();
-        // for circular button
-        //loginBtn.setBounds(670, 312, 95, 95);
         loginBtn.setBounds(665, 312, 145, 50);
         loginBtn.setBackground(Color.DARK_GRAY);
         loginBtn.setOpaque(true);
@@ -163,6 +163,12 @@ public class Signin extends JFrame implements ActionListener {
 
     public static void main(String[] args) {
         new Signin().setVisible(true);
+    }
+
+    // --------------------- user-defined methods-----------------------
+    public void clearAll(){
+        passwordField.setText("");
+        usernameField.setText("");
     }
 
     @Override
