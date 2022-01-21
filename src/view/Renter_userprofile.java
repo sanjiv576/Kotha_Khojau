@@ -13,7 +13,7 @@ import java.util.Objects;
 
 public class Renter_userprofile extends JFrame implements ActionListener {
 
-    // view.Images Labeling
+    // Images Labeling
     JLabel vertical, horizontal, titleImg , projectLogoImg, image;
 
     JButton homeIcon, profileIcon, settingIcon, driverIcon, logoutIcon;
@@ -116,40 +116,6 @@ public class Renter_userprofile extends JFrame implements ActionListener {
         updateBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         add(updateBtn);
 
-//        Gender = new JLabel("Gender");
-//        Gender.setBounds(160,440,120,23);
-//        Gender.setFont(new Font("Serif", Font.PLAIN, 23));
-//        Gender.setForeground(Color.BLACK);
-//        add(Gender);
-//
-//        String[] Gender = {"Select", "Male", "Female", "Others"};
-//        genderCombo = new JComboBox(Gender);
-//        genderCombo.setBounds(160,470,120,25);
-//        genderCombo.setFont(new Font("times", Font.PLAIN,15));
-//        //genderCombo.setSelectedItem("Others");
-//        add(genderCombo);
-
-//        stayPeriod = new JLabel("expected period to stay");
-//        stayPeriod .setBounds(160,520,230,23);
-//        stayPeriod .setFont(new Font("Serif", Font.PLAIN, 23));
-//        stayPeriod .setForeground(Color.BLACK);
-//        add( stayPeriod );
-//
-//
-//
-//        addressLbl = new JLabel("Permanent address");
-//        addressLbl .setBounds(160,590,230,23);
-//        addressLbl .setFont(new Font("Serif", Font.PLAIN, 23));
-//        addressLbl .setForeground(Color.BLACK);
-//        add( addressLbl );
-
-//        addressFiled = new JTextField();
-//        addressFiled.setBounds(160, 620, 230,25);
-//        addressFiled.setFont(new Font("Serif", Font.PLAIN, 20));
-//        addressFiled.setForeground(Color.DARK_GRAY);
-//        add(addressFiled);
-
-
 
         nameLbl = new JLabel("Name :");
         nameLbl.setBounds(500,140,100,23);
@@ -211,7 +177,10 @@ public class Renter_userprofile extends JFrame implements ActionListener {
 
     }
 
+    // ------------------- main method -------------------
+
     public static void main(String[] args) {
+
         new Renter_userprofile().setVisible(true);
     }
 
@@ -300,7 +269,7 @@ public class Renter_userprofile extends JFrame implements ActionListener {
         logoutIcon.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         add(logoutIcon);
 
-        //    ----------------label ,image, button for upload photo
+        //    ----------------label ,image, button for upload photo -------------------
         image = new JLabel();
         image.setIcon(new ImageIcon((Objects.requireNonNull(getClass().getResource("Images/130x130.png")))));
         image.setBounds(160, 130, 130, 130);
