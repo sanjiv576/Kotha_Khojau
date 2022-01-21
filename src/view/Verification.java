@@ -90,7 +90,6 @@ public class Verification extends JFrame implements ActionListener {
         submitBtn.addActionListener(this);
 
 
-
         setVisible(true);
 
 
@@ -142,8 +141,10 @@ public class Verification extends JFrame implements ActionListener {
                             "Registration", JOptionPane.INFORMATION_MESSAGE);
 
                     System.out.println("Data are inserted into database. Successfully registered");
+
+                    // now, disappearing otp gui windows
                     dispose();
-                    new Registration().setVisible(false);
+
 
                 }
                 else {
@@ -171,6 +172,5 @@ public class Verification extends JFrame implements ActionListener {
         System.out.println("Send OTP code --> : " + generatedOtp);
         return generatedOtp;
     }
-
 
 }
