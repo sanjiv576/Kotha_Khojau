@@ -7,18 +7,17 @@ import java.sql.SQLException;
 
 public class Logic_Registration {
 
-    int contactNum;
+    long contactNum;
     boolean contactIsString = false;
 
     public Logic_Registration() {
 
     }
 
-    public  boolean registration(boolean closeRegistrationWindow, boolean dataEntry, boolean OTP_verified,
-                                 String FirstName, String MiddleName, String LastName,
+    public  boolean registration(boolean closeRegistrationWindow, String FirstName, String MiddleName, String LastName,
                                  String MemberType, String Gender,
-                              String Contact, String DOB, String Occupation, String Email, String Address,
-                              String Username, String Password, String Repassword){
+                                 String Contact, String DOB, String Occupation, String Email, String Address,
+                                 String Username, String Password, String Repassword){
 
 
 
