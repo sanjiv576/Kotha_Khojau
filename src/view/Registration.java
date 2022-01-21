@@ -1,15 +1,11 @@
 package view;
 
-import controller.UserController;
 import logic.Logic_Registration;
-import logic.Logic_Verification;
-import model.User;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.Objects;
 import javax.swing.ImageIcon;
@@ -21,35 +17,16 @@ import javax.swing.event.ChangeListener;
 public class Registration extends JFrame implements ActionListener{
     String dob = "";
 
-    JLabel labelFirstName;
-    JLabel labelmiddleName;
-    JLabel labelLastName;
-    JLabel labelMemberType;
-    JLabel labelGender;
-    JLabel labelContact;
-    JLabel labelDateOfBirth;
-    JLabel labelOccupation;
-    JLabel labelemail;
-    JLabel labelAddress;
-    JLabel labelusername;
-    JLabel labelpassword;
-    JLabel labelrepassword;
-    JLabel label1;
-    JLabel label2;
-    JLabel imgLbl;
+    JLabel labelFirstName, labelmiddleName, labelLastName, labelMemberType, labelGender,
+            labelContact, labelDateOfBirth, labelOccupation, labelemail, labelAddress, labelusername,
+            labelpassword, labelrepassword, label1, label2, imgLbl;
+
     JPanel panel;
     JPanel panel1;
 
-    JTextField firstName;
-    JTextField middleName;
-    JTextField lastName;
-    JTextField contact;
-    JTextField dateofbirth;
-    JTextField email;
-    JTextField address;
-    JTextField username;
-    JPasswordField password;
-    JPasswordField repassword;
+    JTextField firstName, middleName, lastName, contact, email, address, username;
+
+    JPasswordField password, repassword;
 
     JButton Btn;
     JComboBox genderCombo, occupationCombo, memberCombo;
@@ -64,7 +41,6 @@ public class Registration extends JFrame implements ActionListener{
         setResizable(false);
         setLayout(null);
         //setDefaultCloseOperation(EXIT_ON_CLOSE);
-
 
         panel1 = new JPanel();
         panel1.setBorder(new EmptyBorder(10,10,10,10));
@@ -168,7 +144,7 @@ public class Registration extends JFrame implements ActionListener{
 
         // background image insertion
         imgLbl = new JLabel();
-        imgLbl.setIcon(new ImageIcon(getClass().getResource("Images/registration.png")));
+        imgLbl.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/registration.png"))));
         getContentPane().add(imgLbl);
         imgLbl.setBounds(330, 170, 700, 500);
 
@@ -221,7 +197,7 @@ public class Registration extends JFrame implements ActionListener{
         String year = yearSpinner.getValue().toString();
         String month = "0" + monthSpinner.getValue().toString();
         String day = "0" + daySpinner.getValue().toString();
-        dob = year + "/" + month + "/" + day;
+        dob = year + "-" + month + "-" + day;
         System.out.println("DOB : " + dob);
 
         // retrieving the data from textfields
@@ -249,27 +225,37 @@ public class Registration extends JFrame implements ActionListener{
 
         // close the registration window after successful registration
         boolean closeRegistrationWindow = false;
-        boolean dataEntry = false;
-        boolean OTP_Verified = false;
 
         if (e.getSource().equals(Btn)){
 
             // creating instance of a class
             Logic_Registration object = new Logic_Registration();
 
-            object.registration(closeRegistrationWindow, dataEntry, OTP_Verified,
-                    FirstNameInserted, middleNameInserted,LastNameInserted,
+            boolean closeWindow = object.registration(closeRegistrationWindow, FirstNameInserted, middleNameInserted,LastNameInserted,
                     selectedMember, selectedGender, contactInserted, dobInserted, selectedOccupation, emailInserted,
                     addressInserted, usernameInserted, passwordInserted, repassInserted);
 
-
+            if (closeWindow){
+                // now clearing text fields and disappearing window
+                clearAll();
+                dispose();
+            }
 
         }
-
 
     }
 
     // ------------------------------ User defined methods -------------------------------------
+
+    public void clearAll(){
+        firstName.setText("");
+        middleName.setText("");
+        lastName.setText("");
+        address.setText("");
+        contact.setText("");
+        email.setText("");
+        username.setText("");
+    }
 
     public void addSpinners(){
 
@@ -313,7 +299,8 @@ public class Registration extends JFrame implements ActionListener{
 
         }
         catch(Exception exception){
-            JOptionPane.showMessageDialog(null,"Message "+ exception.getMessage(), "Alert !", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Message "+ exception.getMessage(),
+                    "Alert !", JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
