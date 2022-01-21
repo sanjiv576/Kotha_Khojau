@@ -13,11 +13,15 @@ public class test {
                 System.out.println("Enter Second Number:");
                 second_num= sc.nextInt();
 
-                if (first_num>second_num){
-                        System.out.println(first_num+" Is greater!!!");}
+                if (first_num>second_num) {
+                        System.out.println(first_num + " Is greater!!!");
+                        System.out.println("THE BOTH NUMBER EQUAL");
+                }
 
-                else if (second_num>first_num){
-                        System.out.println(second_num+" Is greater!!!");}
+                else if (second_num>first_num) {
+                        System.out.println(second_num + " Is greater!!!");
+                        System.out.println("THE BOTH NUMBER EQUAL");
+                }
 
                 else {
                         System.out.println("THE BOTH NUMBER EQUAL");
