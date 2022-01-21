@@ -15,7 +15,7 @@ public class Logic_Signin {
     }
 
     // methods are invoked in view.Signin java class
-    public void login(String username, String password){
+    public boolean login(boolean closeThis, String username, String password){
         if (username.isEmpty() || password.isEmpty()){
             JOptionPane.showMessageDialog(null, "Fields are empty",
                     "Error", JOptionPane.ERROR_MESSAGE);
@@ -35,12 +35,11 @@ public class Logic_Signin {
                 if (result.next()){
                     //JOptionPane.showMessageDialog(null, "Provided username and password are in the database.", "Check in database", JOptionPane.INFORMATION_MESSAGE);
 
-                    Signin sign = new Signin();
-                    sign.clearAll();
-                    sign.setVisible(false);
-                    new Renter_userprofile().setVisible(true);
+                    closeThis = true;
+
                 }
                 else {
+                    closeThis = false;
                     JOptionPane.showMessageDialog(null, "Account has not been found in the database", "Check in database", JOptionPane.WARNING_MESSAGE);
                 }
 
@@ -50,10 +49,10 @@ public class Logic_Signin {
                 System.out.println(exp.getMessage());
             }
 
-            System.out.println("After login Button");
 //            JOptionPane.showMessageDialog(null, "Login successfully",
 //                    "Logged In ", JOptionPane.YES_OPTION);
         }
+        return closeThis;
 
     }
 
