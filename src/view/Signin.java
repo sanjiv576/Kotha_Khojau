@@ -141,6 +141,7 @@ public class Signin extends JFrame implements ActionListener {
         orLbl.setForeground(Color.YELLOW);
         add(orLbl);
 
+        // register
         registerBtn = new JButton("<html><u>Create an account</u></html>");
         registerBtn.setBounds(625, 400, 230, 20);
         registerBtn.setFont(new Font("Mshtakan", Font.BOLD, 20));
