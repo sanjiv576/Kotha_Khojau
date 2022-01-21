@@ -11,6 +11,7 @@ import java.util.Objects;
 
 public class Signin extends JFrame implements ActionListener {
 
+    boolean closeThis = false;
     JPanel panel;
     JLabel usernameLbl, passwordLbl, headingLbl_1, headingLbl_2, headingLbl_3, orLbl;
     JCheckBox showPassword;
@@ -23,7 +24,7 @@ public class Signin extends JFrame implements ActionListener {
     JButton forgotPassword, loginBtn, registerBtn;
     public Signin(){
         setTitle("Sign In window");
-        setBounds(100, 80, 940, 650);
+        setBounds(130, 80, 940, 650);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(null);
         setResizable(false);
@@ -183,7 +184,14 @@ public class Signin extends JFrame implements ActionListener {
             // creating instance of a class
             Logic_Signin obj = new Logic_Signin(usernameInserted, passwordInserted);
             // invoking login method from logic.Logic_Signin class
-            obj.login(usernameInserted, passwordInserted);
+            boolean closeThisWindow = obj.login(closeThis, usernameInserted, passwordInserted);
+
+            if (closeThisWindow){
+                dispose();
+                // opening Renter profile
+                new Renter_userprofile().setVisible(true);
+            }
+
         }
 
         if (e.getSource().equals(forgotPassword)){
@@ -209,7 +217,10 @@ public class Signin extends JFrame implements ActionListener {
         }
 
         if (e.getSource().equals(registerBtn)){
-            System.out.println("Registration");
+            // now, clearing text fields of Signin
+            clearAll();
+
+            // now, appearing Registration window
             new Registration().setVisible(true);
         }
 
