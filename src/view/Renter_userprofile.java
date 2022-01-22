@@ -87,7 +87,7 @@ public class Renter_userprofile extends JFrame implements ActionListener {
         add(aboutme);
 
         aboutmefield = new JTextArea();
-        aboutmefield.setBounds(160, 330, 700,90);
+        aboutmefield.setBounds(160, 330, 580,90);
         aboutmefield.setLineWrap(true);
         aboutmefield.setWrapStyleWord(true);
         aboutmefield.setFont(new Font("Serif", Font.PLAIN, 20));
@@ -97,21 +97,21 @@ public class Renter_userprofile extends JFrame implements ActionListener {
         add(aboutmefield);
 
         saveBtn = new JButton();
-        saveBtn.setBounds(400, 460, 120, 51);
+        saveBtn.setBounds(400, 460, 170, 70);
         saveBtn.setBackground(Color.decode("#9F9391"));
         saveBtn.setOpaque(true);
         saveBtn.setBorderPainted(false);
-        saveBtn.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/greenSave120x51.png"))));
+        saveBtn.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/green_save_127x65.png"))));
         // changing mouse pointer to finger
         saveBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         add(saveBtn);
 
-        updateBtn = new JButton("update");
-        updateBtn.setBounds(600, 460, 120, 51);
-        updateBtn.setBackground(Color.green);
+        updateBtn = new JButton();
+        updateBtn.setBounds(600, 460, 170, 70);
+        updateBtn.setBackground(Color.decode("#9F9391"));
         updateBtn.setOpaque(true);
         updateBtn.setBorderPainted(false);
-        //updateBtn.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/greenSave120x51.png"))));
+        updateBtn.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/blue_update-120x65.png"))));
         // changing mouse pointer to finger
         updateBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         add(updateBtn);
