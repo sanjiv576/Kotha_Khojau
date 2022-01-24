@@ -67,17 +67,25 @@ public class Logic_Registration {
 
             closeRegistrationWindow = true;
 
+            String[] userDetails = gatherDetails(FirstName, Email);
+            Verification verification = new Verification();
+            String currentOtp = verification.confirmOtp(userDetails);
+
             // if OTP system is not kept, then insertion in the database in here or after this logic_registration class
 
             JOptionPane.showMessageDialog(null, "OTP has been sent. Please verify it.",
                     "Registration", JOptionPane.YES_OPTION);
 
-           new Verification(FirstName, MiddleName, LastName, MemberType, Gender, Contact, DOB, Occupation, Email, Address, Username, Password).setVisible(true);
+           new Verification(currentOtp, userDetails, FirstName, MiddleName, LastName, MemberType, Gender, Contact, DOB, Occupation, Email, Address, Username, Password).setVisible(true);
 
         }
        return closeRegistrationWindow;
     }
 
+    public String[] gatherDetails(String FirstName, String Email){
+        String[] details = {FirstName, Email};
 
+        return details;
 
+    }
 }
