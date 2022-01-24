@@ -1,9 +1,11 @@
 package view;
 
+import com.lcwd.EmailMessage;
 import controller.UserController;
 import logic.Logic_Registration;
 import logic.Logic_Verification;
 import model.User;
+import org.example.App;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,21 +21,24 @@ public class Verification extends JFrame implements ActionListener {
     JLabel lowerLbl;
     JButton submitBtn;
 
-    String currentOTP = confirmOtp();  //  otp is generated after executing verification class
+    // String currentOTP = confirmOtp();  //  otp is generated after executing verification class
 
 
-    String FirstName, MiddleName, LastName, MemberType, Gender, Contact,
+    String currentOTP, FirstName, MiddleName, LastName, MemberType, Gender, Contact,
             DOB, Occupation, PersonalEmail, Address, Username, Password;
 
 
+    String[] userDetails;
     public Verification(){
 
     }
-    public Verification(String firstName, String middleName, String lastName,
+    public Verification(String currentOtp, String[] details, String firstName, String middleName, String lastName,
                         String memberType, String gender,
                         String contact, String dob, String occupation, String email, String address,
                         String username, String password){
 
+         currentOTP = currentOtp;
+         userDetails = details;
          FirstName = firstName;
          MiddleName = middleName;
          LastName = lastName;
@@ -109,7 +114,7 @@ public class Verification extends JFrame implements ActionListener {
 
         if (e.getSource().equals(resendBtn)){
             // new OTP code stores here by calling the method
-            currentOTP = confirmOtp();
+            currentOTP = confirmOtp(userDetails);
         }
 
         if (e.getSource().equals(submitBtn)){
@@ -163,13 +168,42 @@ public class Verification extends JFrame implements ActionListener {
         }
     }
 
-    public String confirmOtp(){
+    public String confirmOtp(String[] userDetails){
 
         String generatedOtp;
         Logic_Verification verification = new Logic_Verification();
 
         generatedOtp = verification.buildCode();
         System.out.println("Send OTP code --> : " + generatedOtp);
+
+        String name = userDetails[0];
+        String email = userDetails[1];
+        System.out.println("Name : " + name + " Email : " + email);
+
+        // setting message, subject , sender and receiver
+        String message = "Dear " + name + "," + "\nYour one time password (OTP) is : " + generatedOtp +
+                " to validate your account registration." +
+                "\nThank you for your interest in Kotha Khojau.";
+
+        String subject = "Account verification";
+        String to = email;
+        String from = "noreplyKothaKhojau@gmail.com";
+
+//        // sending email  by invoking the method from another project  --> this is module dependency
+
+
+        try {
+            EmailMessage emailMessage = new EmailMessage();
+            emailMessage.sendEmail(message, subject, to, from);
+        }
+        catch (Exception exception){
+            exception.printStackTrace();
+
+            System.out.println("Once, check internet availability.");
+
+            App app = new App();
+            app.sendEmail(message, subject, to, from);
+        }
         return generatedOtp;
     }
 
