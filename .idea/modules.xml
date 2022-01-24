@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../Email/EmailSending.iml" filepath="$PROJECT_DIR$/../Email/EmailSending.iml" />
       <module fileurl="file://$PROJECT_DIR$/Kotha_Khojau.iml" filepath="$PROJECT_DIR$/Kotha_Khojau.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Send/Send.iml" filepath="$PROJECT_DIR$/../Send/Send.iml" />
     </modules>
   </component>
 </project>
