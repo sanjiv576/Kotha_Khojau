@@ -1,3 +1,5 @@
+package testing;
+
 import controller.UserController;
 import model.User;
 import org.junit.After;
