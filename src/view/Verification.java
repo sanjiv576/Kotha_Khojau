@@ -56,7 +56,6 @@ public class Verification extends JFrame implements ActionListener {
         setBounds(200, 100, 400, 400);
         setResizable(false);
 
-        // setBackground(Color.decode("#9E9B9B"));
 
         setLayout(null);
 
@@ -121,9 +120,9 @@ public class Verification extends JFrame implements ActionListener {
 
             if (currentOTP.equals(insertedOtp)){
 
-                System.out.println("your name : " + FirstName + MiddleName + LastName + Gender + Contact + PersonalEmail);
+               // System.out.println("your name : " + FirstName + MiddleName + LastName + Gender + Contact + PersonalEmail);
 
-                        // instantiate of an object
+                // instantiate of an object
                 User user = new User(FirstName, MiddleName, LastName, MemberType, Gender, Contact, DOB,
                         Occupation, PersonalEmail, Address, Username, Password);   // encapsulation part in it
 
@@ -189,8 +188,7 @@ public class Verification extends JFrame implements ActionListener {
         String to = email;
         String from = "noreplyKothaKhojau@gmail.com";
 
-//        // sending email  by invoking the method from another project  --> this is module dependency
-
+        // sending email  by invoking the method from another project  --> this is module dependency
 
         try {
             EmailMessage emailMessage = new EmailMessage();
@@ -201,8 +199,6 @@ public class Verification extends JFrame implements ActionListener {
 
             System.out.println("Once, check internet availability.");
 
-            App app = new App();
-            app.sendEmail(message, subject, to, from);
         }
         return generatedOtp;
     }
