@@ -28,10 +28,11 @@ public class Renter_userprofile extends JFrame implements ActionListener {
     JLabel aboutme ,Gender, stayPeriod, nameLbl,renterIDLbl, addressLbl, typeLbl,
             genderLbl, contactLbl, dobLbl, emailLbl, occupationLbl;
     JTextField namefield, renterIDfield, stayPeriodField, addressFiled;
-    JTextArea aboutmefield;
+    JTextArea aboutMeField;
     JComboBox genderCombo;
     JButton saveBtn, updateBtn;
 
+    JLabel backgroundImg;
 
     public Renter_userprofile() {
 
@@ -78,26 +79,34 @@ public class Renter_userprofile extends JFrame implements ActionListener {
         panel1.setBackground(Color.decode("#9F9391"));
         panel1.setOpaque(true);
 
+        // top horizontal layer that includes project title
+        backgroundImg = new JLabel();
+        backgroundImg.setIcon(new ImageIcon((Objects.requireNonNull(getClass().getResource("Images/sky1061x200.png")))));
+        backgroundImg.setBounds(160, 150, 1061, 200);
+        //horizontal.setBackground(Color.decode("#9E9B9B"));
+        backgroundImg.setOpaque(true);
+        panel1.add(backgroundImg);
+
         //  -----------------label and text fields for renter profile---------------------------
 
         aboutme = new JLabel("About Me");
-        aboutme.setBounds(160,280,150,50);
+        aboutme.setBounds(217,370,149,73);
         aboutme.setFont(new Font("Serif", Font.PLAIN, 23));
         aboutme.setForeground(Color.BLACK);
         add(aboutme);
 
-        aboutmefield = new JTextArea();
-        aboutmefield.setBounds(160, 330, 580,90);
-        aboutmefield.setLineWrap(true);
-        aboutmefield.setWrapStyleWord(true);
-        aboutmefield.setFont(new Font("Serif", Font.PLAIN, 20));
-//      aboutmefield.setBorder(BorderFactory.createEmptyBorder());
-//      aboutmefield.setOpaque(false);
-        aboutmefield.setForeground(Color.DARK_GRAY);
-        add(aboutmefield);
+        aboutMeField = new JTextArea();
+        aboutMeField.setBounds(207, 445, 393,124);
+        aboutMeField.setLineWrap(true);
+        aboutMeField.setWrapStyleWord(true);
+        aboutMeField.setFont(new Font("Serif", Font.PLAIN, 20));
+//      aboutMeField.setBorder(BorderFactory.createEmptyBorder());
+//      aboutMeField.setOpaque(false);
+        aboutMeField.setForeground(Color.DARK_GRAY);
+        add(aboutMeField);
 
         saveBtn = new JButton();
-        saveBtn.setBounds(400, 460, 170, 70);
+        saveBtn.setBounds(260, 599, 170, 70);
         saveBtn.setBackground(Color.decode("#9F9391"));
         saveBtn.setOpaque(true);
         saveBtn.setBorderPainted(false);
@@ -202,12 +211,12 @@ public class Renter_userprofile extends JFrame implements ActionListener {
         }
 
         if (e.getSource().equals(saveBtn)){
-            aboutmefield.setEditable(false);
+            aboutMeField.setEditable(false);
             System.out.println("save");
         }
 
-        if (e.getSource().equals(saveBtn)){
-            aboutmefield.setEditable(true);
+        if (e.getSource().equals(updateBtn)){
+            aboutMeField.setEditable(true);
             System.out.println("update");
         }
 
