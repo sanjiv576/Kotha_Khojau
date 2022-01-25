@@ -40,7 +40,7 @@ public class Renter_userprofile extends JFrame implements ActionListener {
         setBounds(100, 80, 1280, 740);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setBackground(Color.darkGray);
-        setUndecorated(true);
+        //setUndecorated(true);
         setLayout(null);
         setResizable(false);
 
@@ -79,19 +79,19 @@ public class Renter_userprofile extends JFrame implements ActionListener {
         panel1.setBackground(Color.decode("#9F9391"));
         panel1.setOpaque(true);
 
-        // top horizontal layer that includes project title
+        // background image
         backgroundImg = new JLabel();
         backgroundImg.setIcon(new ImageIcon((Objects.requireNonNull(getClass().getResource("Images/sky1061x200.png")))));
-        backgroundImg.setBounds(160, 150, 1061, 200);
-        //horizontal.setBackground(Color.decode("#9E9B9B"));
+        backgroundImg.setBounds(160, 120, 1061, 200);
+        backgroundImg.setBackground(Color.decode("#9E9B9B"));
         backgroundImg.setOpaque(true);
         panel1.add(backgroundImg);
 
         //  -----------------label and text fields for renter profile---------------------------
 
         aboutme = new JLabel("About Me");
-        aboutme.setBounds(217,370,149,73);
-        aboutme.setFont(new Font("Serif", Font.PLAIN, 23));
+        aboutme.setBounds(217,370,299,73);
+        aboutme.setFont(new Font("Copperplate", Font.BOLD, 35));
         aboutme.setForeground(Color.BLACK);
         add(aboutme);
 
@@ -99,14 +99,14 @@ public class Renter_userprofile extends JFrame implements ActionListener {
         aboutMeField.setBounds(207, 445, 393,124);
         aboutMeField.setLineWrap(true);
         aboutMeField.setWrapStyleWord(true);
-        aboutMeField.setFont(new Font("Serif", Font.PLAIN, 20));
+        aboutMeField.setFont(new Font("Serif", Font.BOLD, 20));
 //      aboutMeField.setBorder(BorderFactory.createEmptyBorder());
 //      aboutMeField.setOpaque(false);
         aboutMeField.setForeground(Color.DARK_GRAY);
         add(aboutMeField);
 
         saveBtn = new JButton();
-        saveBtn.setBounds(260, 599, 170, 70);
+        saveBtn.setBounds(230, 579, 170, 70);
         saveBtn.setBackground(Color.decode("#9F9391"));
         saveBtn.setOpaque(true);
         saveBtn.setBorderPainted(false);
@@ -116,7 +116,7 @@ public class Renter_userprofile extends JFrame implements ActionListener {
         add(saveBtn);
 
         updateBtn = new JButton();
-        updateBtn.setBounds(600, 460, 170, 70);
+        updateBtn.setBounds(414, 579, 170, 70);
         updateBtn.setBackground(Color.decode("#9F9391"));
         updateBtn.setOpaque(true);
         updateBtn.setBorderPainted(false);
@@ -127,52 +127,52 @@ public class Renter_userprofile extends JFrame implements ActionListener {
 
 
         nameLbl = new JLabel("Name :");
-        nameLbl.setBounds(500,140,100,23);
-        nameLbl.setFont(new Font("Serif", Font.PLAIN, 23));
-        nameLbl.setForeground(Color.BLACK);
+        nameLbl.setBounds(500,160,100,23);
+        nameLbl.setFont(new Font("Serif", Font.BOLD, 23));
+        nameLbl.setForeground(Color.WHITE);
         add(nameLbl);
 
 
         renterIDLbl = new JLabel("Renter ID :");
-        renterIDLbl.setBounds(500,180,150,25);
-        renterIDLbl.setFont(new Font("Serif", Font.PLAIN, 23));
-        renterIDLbl.setForeground(Color.BLACK);
+        renterIDLbl.setBounds(500,200,150,25);
+        renterIDLbl.setFont(new Font("Serif", Font.BOLD, 23));
+        renterIDLbl.setForeground(Color.WHITE);
         add(renterIDLbl);
 
         typeLbl = new JLabel("Member Type :");
-        typeLbl.setBounds(500,220,160,23);
-        typeLbl.setFont(new Font("Serif", Font.PLAIN, 23));
-        typeLbl.setForeground(Color.BLACK);
+        typeLbl.setBounds(500,240,160,23);
+        typeLbl.setFont(new Font("Serif", Font.BOLD, 23));
+        typeLbl.setForeground(Color.WHITE);
         add(typeLbl);
 
         genderLbl = new JLabel("Gender :");
-        genderLbl.setBounds(500,260,150,25);
-        genderLbl.setFont(new Font("Serif", Font.PLAIN, 23));
-        genderLbl.setForeground(Color.BLACK);
+        genderLbl.setBounds(500,280,150,25);
+        genderLbl.setFont(new Font("Serif", Font.BOLD, 23));
+        genderLbl.setForeground(Color.WHITE);
         add(genderLbl);
 
         contactLbl = new JLabel("Contact :");
-        contactLbl.setBounds(900,140,100,23);
-        contactLbl.setFont(new Font("Serif", Font.PLAIN, 23));
-        contactLbl.setForeground(Color.BLACK);
+        contactLbl.setBounds(900,160,100,23);
+        contactLbl.setFont(new Font("Serif", Font.BOLD, 23));
+        contactLbl.setForeground(Color.WHITE);
         add(contactLbl);
 
         dobLbl = new JLabel("DOB:");
-        dobLbl.setBounds(900,180,150,25);
-        dobLbl.setFont(new Font("Serif", Font.PLAIN, 23));
-        dobLbl.setForeground(Color.BLACK);
+        dobLbl.setBounds(900,200,150,25);
+        dobLbl.setFont(new Font("Serif", Font.BOLD, 23));
+        dobLbl.setForeground(Color.WHITE);
         add(dobLbl);
 
         occupationLbl = new JLabel("Occupation :");
-        occupationLbl.setBounds(900,220,160,23);
-        occupationLbl.setFont(new Font("Serif", Font.PLAIN, 23));
-        occupationLbl.setForeground(Color.BLACK);
+        occupationLbl.setBounds(900,240,160,23);
+        occupationLbl.setFont(new Font("Serif", Font.BOLD, 23));
+        occupationLbl.setForeground(Color.WHITE);
         add(occupationLbl);
 
         emailLbl = new JLabel("Email :");
-        emailLbl.setBounds(900,260,150,25);
-        emailLbl.setFont(new Font("Serif", Font.PLAIN, 23));
-        emailLbl.setForeground(Color.BLACK);
+        emailLbl.setBounds(900,280,150,25);
+        emailLbl.setFont(new Font("Serif", Font.BOLD, 23));
+        emailLbl.setForeground(Color.WHITE);
         add(emailLbl);
 
 
@@ -281,10 +281,10 @@ public class Renter_userprofile extends JFrame implements ActionListener {
         //    ----------------label ,image, button for upload photo -------------------
         image = new JLabel();
         image.setIcon(new ImageIcon((Objects.requireNonNull(getClass().getResource("Images/130x130.png")))));
-        image.setBounds(160, 130, 130, 130);
+        image.setBounds(180, 150, 130, 130);
 
         choosePhoto= new JButton("Upload photo");
-        choosePhoto.setBounds(160,230,130,40);
+        choosePhoto.setBounds(180,250,130,40);
         choosePhoto.setIcon(new ImageIcon((Objects.requireNonNull(getClass().getResource("Images/uploadphoto135x35.png")))));
         choosePhoto.setBackground(Color.decode("#9F9391"));
         choosePhoto.setOpaque(true);
