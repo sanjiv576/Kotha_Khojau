@@ -28,10 +28,11 @@ public class Renter_userprofile extends JFrame implements ActionListener {
     JLabel aboutme ,Gender, stayPeriod, nameLbl,renterIDLbl, addressLbl, typeLbl,
             genderLbl, contactLbl, dobLbl, emailLbl, occupationLbl;
     JTextField namefield, renterIDfield, stayPeriodField, addressFiled;
-    JTextArea aboutmefield;
+    JTextArea aboutMeField;
     JComboBox genderCombo;
     JButton saveBtn, updateBtn;
 
+    JLabel backgroundImg;
 
     public Renter_userprofile() {
 
@@ -39,7 +40,7 @@ public class Renter_userprofile extends JFrame implements ActionListener {
         setBounds(100, 80, 1280, 740);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setBackground(Color.darkGray);
-        setUndecorated(true);
+        //setUndecorated(true);
         setLayout(null);
         setResizable(false);
 
@@ -78,93 +79,175 @@ public class Renter_userprofile extends JFrame implements ActionListener {
         panel1.setBackground(Color.decode("#9F9391"));
         panel1.setOpaque(true);
 
+        // background image
+        backgroundImg = new JLabel();
+        backgroundImg.setIcon(new ImageIcon((Objects.requireNonNull(getClass().getResource("Images/sky1061x200.png")))));
+        backgroundImg.setBounds(160, 120, 1061, 200);
+        backgroundImg.setBackground(Color.decode("#9E9B9B"));
+        backgroundImg.setOpaque(true);
+        panel1.add(backgroundImg);
+
         //  -----------------label and text fields for renter profile---------------------------
 
         aboutme = new JLabel("About Me");
-        aboutme.setBounds(160,280,150,50);
-        aboutme.setFont(new Font("Serif", Font.PLAIN, 23));
+        aboutme.setBounds(217,370,299,73);
+        aboutme.setFont(new Font("Copperplate", Font.BOLD, 35));
         aboutme.setForeground(Color.BLACK);
         add(aboutme);
 
-        aboutmefield = new JTextArea();
-        aboutmefield.setBounds(160, 330, 580,90);
-        aboutmefield.setLineWrap(true);
-        aboutmefield.setWrapStyleWord(true);
-        aboutmefield.setFont(new Font("Serif", Font.PLAIN, 20));
-//      aboutmefield.setBorder(BorderFactory.createEmptyBorder());
-//      aboutmefield.setOpaque(false);
-        aboutmefield.setForeground(Color.DARK_GRAY);
-        add(aboutmefield);
+        aboutMeField = new JTextArea();
+        aboutMeField.setBounds(207, 445, 393,124);
+        aboutMeField.setLineWrap(true);
+        aboutMeField.setWrapStyleWord(true);
+        aboutMeField.setFont(new Font("Serif", Font.BOLD, 20));
+//      aboutMeField.setBorder(BorderFactory.createEmptyBorder());
+//      aboutMeField.setOpaque(false);
+        aboutMeField.setForeground(Color.DARK_GRAY);
+        add(aboutMeField);
 
         saveBtn = new JButton();
-        saveBtn.setBounds(400, 460, 170, 70);
+        saveBtn.setBounds(300, 579, 170, 70);
         saveBtn.setBackground(Color.decode("#9F9391"));
         saveBtn.setOpaque(true);
         saveBtn.setBorderPainted(false);
-        saveBtn.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/green_save_127x65.png"))));
+        saveBtn.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/saveButton130x65.png"))));
         // changing mouse pointer to finger
         saveBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        saveBtn.setVisible(false);
         add(saveBtn);
 
         updateBtn = new JButton();
-        updateBtn.setBounds(600, 460, 170, 70);
+        updateBtn.setBounds(300, 579, 170, 70);
         updateBtn.setBackground(Color.decode("#9F9391"));
         updateBtn.setOpaque(true);
         updateBtn.setBorderPainted(false);
-        updateBtn.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/blue_update-120x65.png"))));
+        updateBtn.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/editButton130x65.png"))));
         // changing mouse pointer to finger
         updateBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         add(updateBtn);
 
 
         nameLbl = new JLabel("Name :");
-        nameLbl.setBounds(500,140,100,23);
-        nameLbl.setFont(new Font("Serif", Font.PLAIN, 23));
-        nameLbl.setForeground(Color.BLACK);
+        nameLbl.setBounds(500,160,100,23);
+        nameLbl.setFont(new Font("Serif", Font.BOLD, 23));
+        nameLbl.setForeground(Color.WHITE);
         add(nameLbl);
 
 
         renterIDLbl = new JLabel("Renter ID :");
-        renterIDLbl.setBounds(500,180,150,25);
-        renterIDLbl.setFont(new Font("Serif", Font.PLAIN, 23));
-        renterIDLbl.setForeground(Color.BLACK);
+        renterIDLbl.setBounds(500,200,150,25);
+        renterIDLbl.setFont(new Font("Serif", Font.BOLD, 23));
+        renterIDLbl.setForeground(Color.WHITE);
         add(renterIDLbl);
 
         typeLbl = new JLabel("Member Type :");
-        typeLbl.setBounds(500,220,160,23);
-        typeLbl.setFont(new Font("Serif", Font.PLAIN, 23));
-        typeLbl.setForeground(Color.BLACK);
+        typeLbl.setBounds(500,240,160,23);
+        typeLbl.setFont(new Font("Serif", Font.BOLD, 23));
+        typeLbl.setForeground(Color.WHITE);
         add(typeLbl);
 
         genderLbl = new JLabel("Gender :");
-        genderLbl.setBounds(500,260,150,25);
-        genderLbl.setFont(new Font("Serif", Font.PLAIN, 23));
-        genderLbl.setForeground(Color.BLACK);
+        genderLbl.setBounds(500,280,150,25);
+        genderLbl.setFont(new Font("Serif", Font.BOLD, 23));
+        genderLbl.setForeground(Color.WHITE);
         add(genderLbl);
 
         contactLbl = new JLabel("Contact :");
-        contactLbl.setBounds(900,140,100,23);
-        contactLbl.setFont(new Font("Serif", Font.PLAIN, 23));
-        contactLbl.setForeground(Color.BLACK);
+        contactLbl.setBounds(900,160,100,23);
+        contactLbl.setFont(new Font("Serif", Font.BOLD, 23));
+        contactLbl.setForeground(Color.WHITE);
         add(contactLbl);
 
         dobLbl = new JLabel("DOB:");
-        dobLbl.setBounds(900,180,150,25);
-        dobLbl.setFont(new Font("Serif", Font.PLAIN, 23));
-        dobLbl.setForeground(Color.BLACK);
+        dobLbl.setBounds(900,200,150,25);
+        dobLbl.setFont(new Font("Serif", Font.BOLD, 23));
+        dobLbl.setForeground(Color.WHITE);
         add(dobLbl);
 
         occupationLbl = new JLabel("Occupation :");
-        occupationLbl.setBounds(900,220,160,23);
-        occupationLbl.setFont(new Font("Serif", Font.PLAIN, 23));
-        occupationLbl.setForeground(Color.BLACK);
+        occupationLbl.setBounds(900,240,160,23);
+        occupationLbl.setFont(new Font("Serif", Font.BOLD, 23));
+        occupationLbl.setForeground(Color.WHITE);
         add(occupationLbl);
 
         emailLbl = new JLabel("Email :");
-        emailLbl.setBounds(900,260,150,25);
-        emailLbl.setFont(new Font("Serif", Font.PLAIN, 23));
-        emailLbl.setForeground(Color.BLACK);
+        emailLbl.setBounds(900,280,150,25);
+        emailLbl.setFont(new Font("Serif", Font.BOLD, 23));
+        emailLbl.setForeground(Color.WHITE);
         add(emailLbl);
+
+        // store data after retrieving from database
+        String myName = "Sanjiv Narayan Shrestha";
+        String myUserId = "C210205";
+        String myType = "Renter";
+        String myGender = "Male";
+        String myContact = "9800000000";
+        String myDOB = "1980-03-13";
+        String myOccupation = "Student";
+        String myEmail = "shresthasanjiv576@gmail.com";
+
+
+        String[] retrieveData = {myName, myUserId, myType, myGender, myContact, myDOB, myOccupation, myEmail};
+
+        int x_position = 650;
+        int y_position = 160;
+        int counter = 0;
+
+        int fontSize = 0;
+
+        try {
+            for (int i = 0; i < retrieveData.length; i++) {
+
+                // controlling x position and y position
+                if (counter <= 3) {
+                    if (counter == 0){
+                        y_position = 160;
+                    }
+                    else {
+                        y_position += 40;
+                    }
+                }
+
+                if (counter >= 4) {
+
+                    if (counter == 4){
+                        x_position += 400;
+                        y_position -= 120;
+                    }
+                    else if (counter == retrieveData.length - 1){
+
+                        x_position -= 80;
+                        y_position += 40;
+                    }
+                    else {
+                        y_position += 40;
+                    }
+                }
+
+                // controlling the font size
+                if (counter == 0) {
+                    fontSize = 23;
+                }
+                // for odd counter
+                else if (counter % 2 == 1) {
+                    fontSize = 25;
+                    if (counter == retrieveData.length - 1){
+
+                        fontSize = 18;
+                    }
+                }
+                // for even counter
+                else if (counter % 2 == 0){
+                    fontSize = 23;
+                }
+
+                counter += 1;
+                arrangeLabels(retrieveData[i], x_position, y_position, fontSize);
+            }
+        }
+        catch (Exception exception){
+            exception.printStackTrace();
+        }
 
 
         logoutIcon.addActionListener(this);
@@ -184,6 +267,7 @@ public class Renter_userprofile extends JFrame implements ActionListener {
         new Renter_userprofile().setVisible(true);
     }
 
+    // ------------------ events handling --------------------------
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -202,17 +286,26 @@ public class Renter_userprofile extends JFrame implements ActionListener {
         }
 
         if (e.getSource().equals(saveBtn)){
-            aboutmefield.setEditable(false);
-            System.out.println("save");
+            JOptionPane.showMessageDialog(null, "Saved",
+                    "Save Confirmation", JOptionPane.INFORMATION_MESSAGE);
+
+
+
+            aboutMeField.setEditable(false);
+            saveBtn.setVisible(false);
+            updateBtn.setVisible(true);
         }
 
-        if (e.getSource().equals(saveBtn)){
-            aboutmefield.setEditable(true);
-            System.out.println("update");
+        if (e.getSource().equals(updateBtn)){
+            aboutMeField.setEditable(true);
+            updateBtn.setVisible(false);
+            saveBtn.setVisible(true);
+
         }
 
     }
 
+    // ---------------------------- user-defined methods ------------------------------
 
     // this method inserts left button icons
     public void insertButtonIcons(){
@@ -272,10 +365,10 @@ public class Renter_userprofile extends JFrame implements ActionListener {
         //    ----------------label ,image, button for upload photo -------------------
         image = new JLabel();
         image.setIcon(new ImageIcon((Objects.requireNonNull(getClass().getResource("Images/130x130.png")))));
-        image.setBounds(160, 130, 130, 130);
+        image.setBounds(180, 150, 130, 130);
 
         choosePhoto= new JButton("Upload photo");
-        choosePhoto.setBounds(160,230,130,40);
+        choosePhoto.setBounds(180,250,130,40);
         choosePhoto.setIcon(new ImageIcon((Objects.requireNonNull(getClass().getResource("Images/uploadphoto135x35.png")))));
         choosePhoto.setBackground(Color.decode("#9F9391"));
         choosePhoto.setOpaque(true);
@@ -318,6 +411,18 @@ public class Renter_userprofile extends JFrame implements ActionListener {
         Image newImg = img.getScaledInstance(label.getWidth(),label.getHeight(),Image.SCALE_SMOOTH);
         ImageIcon image = new ImageIcon(newImg);
         return image;
+    }
+
+
+    // make and arrange labels
+
+    public void arrangeLabels(String data, int x, int y, int fontSize){
+
+        JLabel label = new JLabel(data);
+        label.setBounds(x,y,300,25);
+        label.setFont(new Font("Serif", Font.BOLD, fontSize));
+        label.setForeground(Color.BLACK);
+        add(label);
     }
 
 }
