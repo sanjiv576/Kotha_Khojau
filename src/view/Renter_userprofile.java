@@ -106,21 +106,22 @@ public class Renter_userprofile extends JFrame implements ActionListener {
         add(aboutMeField);
 
         saveBtn = new JButton();
-        saveBtn.setBounds(230, 579, 170, 70);
+        saveBtn.setBounds(300, 579, 170, 70);
         saveBtn.setBackground(Color.decode("#9F9391"));
         saveBtn.setOpaque(true);
         saveBtn.setBorderPainted(false);
-        saveBtn.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/green_save_127x65.png"))));
+        saveBtn.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/saveButton130x65.png"))));
         // changing mouse pointer to finger
         saveBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        saveBtn.setVisible(false);
         add(saveBtn);
 
         updateBtn = new JButton();
-        updateBtn.setBounds(414, 579, 170, 70);
+        updateBtn.setBounds(300, 579, 170, 70);
         updateBtn.setBackground(Color.decode("#9F9391"));
         updateBtn.setOpaque(true);
         updateBtn.setBorderPainted(false);
-        updateBtn.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/blue_update-120x65.png"))));
+        updateBtn.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/editButton130x65.png"))));
         // changing mouse pointer to finger
         updateBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         add(updateBtn);
@@ -175,7 +176,8 @@ public class Renter_userprofile extends JFrame implements ActionListener {
         emailLbl.setForeground(Color.WHITE);
         add(emailLbl);
 
-        String myName = "Sanjiv";
+        // store data after retrieving from database
+        String myName = "Sanjiv Narayan Shrestha";
         String myUserId = "C210205";
         String myType = "Renter";
         String myGender = "Male";
@@ -184,7 +186,6 @@ public class Renter_userprofile extends JFrame implements ActionListener {
         String myOccupation = "Student";
         String myEmail = "shresthasanjiv576@gmail.com";
 
-        //String labelList[] = {"fullNameLabel", "userIDLabel"};
 
         String[] retrieveData = {myName, myUserId, myType, myGender, myContact, myDOB, myOccupation, myEmail};
 
@@ -193,9 +194,9 @@ public class Renter_userprofile extends JFrame implements ActionListener {
         int counter = 0;
 
         int fontSize = 0;
+
         try {
             for (int i = 0; i < retrieveData.length; i++) {
-
 
                 // controlling x position and y position
                 if (counter <= 3) {
@@ -213,6 +214,11 @@ public class Renter_userprofile extends JFrame implements ActionListener {
                         x_position += 400;
                         y_position -= 120;
                     }
+                    else if (counter == retrieveData.length - 1){
+
+                        x_position -= 80;
+                        y_position += 40;
+                    }
                     else {
                         y_position += 40;
                     }
@@ -225,6 +231,10 @@ public class Renter_userprofile extends JFrame implements ActionListener {
                 // for odd counter
                 else if (counter % 2 == 1) {
                     fontSize = 25;
+                    if (counter == retrieveData.length - 1){
+
+                        fontSize = 18;
+                    }
                 }
                 // for even counter
                 else if (counter % 2 == 0){
@@ -276,13 +286,21 @@ public class Renter_userprofile extends JFrame implements ActionListener {
         }
 
         if (e.getSource().equals(saveBtn)){
+            JOptionPane.showMessageDialog(null, "Saved",
+                    "Save Confirmation", JOptionPane.INFORMATION_MESSAGE);
+
+
+
             aboutMeField.setEditable(false);
-            System.out.println("save");
+            saveBtn.setVisible(false);
+            updateBtn.setVisible(true);
         }
 
         if (e.getSource().equals(updateBtn)){
             aboutMeField.setEditable(true);
-            System.out.println("update");
+            updateBtn.setVisible(false);
+            saveBtn.setVisible(true);
+
         }
 
     }
@@ -401,7 +419,7 @@ public class Renter_userprofile extends JFrame implements ActionListener {
     public void arrangeLabels(String data, int x, int y, int fontSize){
 
         JLabel label = new JLabel(data);
-        label.setBounds(x,y,150,25);
+        label.setBounds(x,y,300,25);
         label.setFont(new Font("Serif", Font.BOLD, fontSize));
         label.setForeground(Color.BLACK);
         add(label);
