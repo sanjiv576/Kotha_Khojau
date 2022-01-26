@@ -175,6 +175,70 @@ public class Renter_userprofile extends JFrame implements ActionListener {
         emailLbl.setForeground(Color.WHITE);
         add(emailLbl);
 
+        String myName = "Sanjiv";
+        String myUserId = "C210205";
+        String myType = "Renter";
+        String myGender = "Male";
+        String myContact = "9800000000";
+        String myDOB = "1980-03-13";
+        String myOccupation = "Student";
+        String myEmail = "shresthasanjiv576@gmail.com";
+
+        //String labelList[] = {"fullNameLabel", "userIDLabel"};
+
+        String[] retrieveData = {myName, myUserId, myType, myGender, myContact, myDOB, myOccupation, myEmail};
+
+        int x_position = 650;
+        int y_position = 160;
+        int counter = 0;
+
+        int fontSize = 0;
+        try {
+            for (int i = 0; i < retrieveData.length; i++) {
+
+
+                // controlling x position and y position
+                if (counter <= 3) {
+                    if (counter == 0){
+                        y_position = 160;
+                    }
+                    else {
+                        y_position += 40;
+                    }
+                }
+
+                if (counter >= 4) {
+
+                    if (counter == 4){
+                        x_position += 400;
+                        y_position -= 120;
+                    }
+                    else {
+                        y_position += 40;
+                    }
+                }
+
+                // controlling the font size
+                if (counter == 0) {
+                    fontSize = 23;
+                }
+                // for odd counter
+                else if (counter % 2 == 1) {
+                    fontSize = 25;
+                }
+                // for even counter
+                else if (counter % 2 == 0){
+                    fontSize = 23;
+                }
+
+                counter += 1;
+                arrangeLabels(retrieveData[i], x_position, y_position, fontSize);
+            }
+        }
+        catch (Exception exception){
+            exception.printStackTrace();
+        }
+
 
         logoutIcon.addActionListener(this);
         settingIcon.addActionListener(this);
@@ -193,6 +257,7 @@ public class Renter_userprofile extends JFrame implements ActionListener {
         new Renter_userprofile().setVisible(true);
     }
 
+    // ------------------ events handling --------------------------
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -222,6 +287,7 @@ public class Renter_userprofile extends JFrame implements ActionListener {
 
     }
 
+    // ---------------------------- user-defined methods ------------------------------
 
     // this method inserts left button icons
     public void insertButtonIcons(){
@@ -327,6 +393,18 @@ public class Renter_userprofile extends JFrame implements ActionListener {
         Image newImg = img.getScaledInstance(label.getWidth(),label.getHeight(),Image.SCALE_SMOOTH);
         ImageIcon image = new ImageIcon(newImg);
         return image;
+    }
+
+
+    // make and arrange labels
+
+    public void arrangeLabels(String data, int x, int y, int fontSize){
+
+        JLabel label = new JLabel(data);
+        label.setBounds(x,y,150,25);
+        label.setFont(new Font("Serif", Font.BOLD, fontSize));
+        label.setForeground(Color.BLACK);
+        add(label);
     }
 
 }
