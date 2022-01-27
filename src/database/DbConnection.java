@@ -9,12 +9,13 @@ public class DbConnection {
     Connection connection;
     int val;
     ResultSet resultSet;
+    ResultSet rows;
 
     public DbConnection(){
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Kotha_Khojau_Db?characterEncoding=utf8&useSSL=true&autoReconnect=true",
-                            "root", "root");
+                            "root", "MacBooK12@");
             statement = connection.createStatement();
 
 
@@ -25,6 +26,7 @@ public class DbConnection {
                 System.out.println("Database connection failed");
             }
 
+            // create table for User
             String tableCreate = "create table if not exists User_tbl(UserID int auto_increment, " +
                     "FirstName varchar(30) not null, " +
                     "MiddleName varchar(20), " +
@@ -43,16 +45,32 @@ public class DbConnection {
                     "constraint email_uk unique(PersonalEmail), " +
                     "constraint username_uk unique(Username))";
 
+
+            // create table for driver details
+            String driverTable = "create table if not exists Driver_tbl(DriverID int auto_increment, " +
+                    "FullName varchar(30) not null, " +
+                    "Contact varchar(10) not null, " +
+                    "Gender varchar(7), " +
+                    "Location varchar(100) not null, " +
+                    "ServiceCharge varchar(10) not null, " +
+                    "Description text , " +
+                    "constraint driverId_pk primary key(DriverID))";
+
+
            // PreparedStatement pst = connection.prepareStatement(tableCreate);
-            statement.execute(tableCreate);
+            String[] tables = {tableCreate, driverTable};
+            for (String element : tables) {
+                statement.execute(element);
+            }
+
+
             System.out.println("Table has been created");
 
-
-
         }
-        catch (ClassNotFoundException | SQLException exception){
+        catch (Exception exception){
             exception.printStackTrace();
         }
+
     }
 
     // this function of this method is to insert data into database
@@ -60,7 +78,7 @@ public class DbConnection {
         try{
             val = statement.executeUpdate(query);
         }
-        catch (SQLException exp){
+        catch (Exception exp){
             exp.printStackTrace();
         }
         finally {
@@ -91,6 +109,19 @@ public class DbConnection {
         }
 
         return resultSet;
+    }
+
+    // retrieving data from the database
+
+    public ResultSet retrieveData(String query){  // data stores in ResultSet (multi-dimensional array)
+        try{
+
+            rows = statement.executeQuery(query);
+        }
+        catch (Exception error){
+            error.printStackTrace();
+        }
+        return rows;
     }
 
     public static void main(String[] args) {
