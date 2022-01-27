@@ -4,8 +4,10 @@ import database.DbConnection;
 import model.User;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserController {
 
@@ -38,4 +40,45 @@ public class UserController {
         return db.manipulate(query);
 
     }
+
+    public List<User> getAllUser(){
+        String query;
+        query = "select * from User_tbl";
+        db = new DbConnection();
+        ResultSet resultSet = db.retrieveData(query);
+        List<User> userList = new ArrayList<User>();
+
+        // now, filling resultSet by each row
+        try{
+
+            while (resultSet.next()){
+                User user = new User();
+
+                user.setUserID(resultSet.getInt("UserID"));
+                user.setFirstName(resultSet.getString("FirstName"));
+                user.setMiddleName(resultSet.getString("MiddleName"));
+                user.setLastName(resultSet.getString("LastName"));
+                user.setMemberType(resultSet.getString("MemberType"));
+                user.setGender(resultSet.getString("Gender"));
+                user.setContact(resultSet.getString("Contact"));
+                user.setDOB(resultSet.getString("DOB"));
+                user.setOccupation(resultSet.getString("Occupation"));
+                user.setPersonalEmail(resultSet.getString("PersonalEmail"));
+                user.setAddress(resultSet.getString("Address"));
+                user.setUsername(resultSet.getString("Username"));
+                user.setPassword(resultSet.getString("Password"));
+
+                userList.add(user);
+
+            }
+        }
+        catch (Exception exp){
+            exp.printStackTrace();
+
+        }
+
+        return userList;
+    }
+
+
 }
