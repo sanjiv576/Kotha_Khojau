@@ -1,7 +1,5 @@
 package model;
 
-import java.io.FileDescriptor;
-
 // encapsulation part is done here
 public class User {
 
@@ -58,7 +56,12 @@ public class User {
         this.Password = Password;
     }
 
+    public User() {
+
+    }
+
     // getter method --> for read only
+
     public int getUserID(){
         return UserID;
     }
@@ -68,9 +71,9 @@ public class User {
         this.UserID = UserID;
     }
 
-    public String getFirstName(){
+   public String getFirstName(){
         return FirstName;
-    }
+   }
 
     public void setFirstName(String FirstName){
         this.FirstName = FirstName;
@@ -84,7 +87,7 @@ public class User {
         this.MiddleName = MiddleName;
     }
 
-    public String getLastName(){
+    public String getLastName (){
         return LastName;
     }
 
@@ -92,10 +95,10 @@ public class User {
         this.LastName = LastName;
     }
 
+
     public String getMemberType(){
         return MemberType;
     }
-
     public void setMemberType(String MemberType){
         this.MemberType = MemberType;
     }
