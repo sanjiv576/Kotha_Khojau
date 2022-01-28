@@ -22,6 +22,8 @@ public class Home extends JFrame implements ActionListener {
 
     JButton view1, view2, view3, view4, view5, view6;
 
+    JLabel bg1;
+
 
     public Home() {
 
@@ -118,7 +120,8 @@ public class Home extends JFrame implements ActionListener {
         add(panel7);
 
         scrollBar1 = new JScrollBar();
-        scrollBar1.setBounds(1190, 240, 30, 310);
+        scrollBar1.setBounds(1190, 240, 20, 310);
+        scrollBar1.setBackground(Color.getColor("#9E9B9B"));
         add(scrollBar1);
 
         panel1 = new JPanel();
@@ -127,13 +130,6 @@ public class Home extends JFrame implements ActionListener {
         panel1.setBackground(Color.decode("#C6C6C6"));
         panel1.setOpaque(true);
         add(panel1);
-
-
-
-
-
-
-
 
     }
 
