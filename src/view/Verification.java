@@ -5,7 +5,7 @@ import controller.UserController;
 import logic.Logic_Registration;
 import logic.Logic_Verification;
 import model.User;
-import org.example.App;
+//import org.example.App;
 
 import javax.swing.*;
 import java.awt.*;
