@@ -3,18 +3,21 @@ package database;
 import model.LoginData;
 
 import java.sql.*;
+import java.util.Random;
+
 public class DbConnection {
 
     Statement statement;
     Connection connection;
     int val;
     ResultSet resultSet;
+    ResultSet rows;
 
     public DbConnection(){
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Kotha_Khojau_Db?characterEncoding=utf8&useSSL=true&autoReconnect=true",
-                            "root", "root");
+                            "root", "MacBooK12@");
             statement = connection.createStatement();
 
 
@@ -25,6 +28,7 @@ public class DbConnection {
                 System.out.println("Database connection failed");
             }
 
+            // create table for User
             String tableCreate = "create table if not exists User_tbl(UserID int auto_increment, " +
                     "FirstName varchar(30) not null, " +
                     "MiddleName varchar(20), " +
@@ -43,16 +47,33 @@ public class DbConnection {
                     "constraint email_uk unique(PersonalEmail), " +
                     "constraint username_uk unique(Username))";
 
+
+            // create table for driver details
+            String driverTable = "create table if not exists Driver_tbl(DriverID int auto_increment, " +
+                    "FullName varchar(30) not null, " +
+                    "Contact varchar(10) not null, " +
+                    "AvailableLocations varchar(100) not null, " +
+                    "ServiceChargeStatus varchar(10) not null, " +
+                    "ShortDistance varchar(10), " +
+                    "LongDistance varchar(10), " +
+                    "VehicleSize varchar(20), " +
+                    "constraint driverId_pk primary key(DriverID))";
+
+
            // PreparedStatement pst = connection.prepareStatement(tableCreate);
-            statement.execute(tableCreate);
+            String[] tables = {tableCreate, driverTable};
+            for (String element : tables) {
+                statement.execute(element);
+            }
+
+
             System.out.println("Table has been created");
 
-
-
         }
-        catch (ClassNotFoundException | SQLException exception){
+        catch (Exception exception){
             exception.printStackTrace();
         }
+
     }
 
     // this function of this method is to insert data into database
@@ -60,7 +81,7 @@ public class DbConnection {
         try{
             val = statement.executeUpdate(query);
         }
-        catch (SQLException exp){
+        catch (Exception exp){
             exp.printStackTrace();
         }
         finally {
@@ -91,6 +112,54 @@ public class DbConnection {
         }
 
         return resultSet;
+    }
+
+    // retrieving data from the database
+
+    public ResultSet retrieveData(String query){  // data stores in ResultSet (multi-dimensional array)
+        try{
+
+            rows = statement.executeQuery(query);
+        }
+        catch (Exception error){
+            error.printStackTrace();
+        }
+        return rows;
+    }
+
+    public boolean driverDetailsInsert(){
+        String[] names = {"Bishal Kumar Karki", "Santosh Adhikari", "Lal Mani Shrestha", "Suraj Majhi", "Keshav Bhujel", "Nabin Jung Magar", "Pravin Narayan Thapa", "Manoj Ratna Shakya", "Arjun Bahadur Karki"};
+        String[] contacts = {"9861251844", "9823426229", "9864224909", "9841124819", "9844224909", "9746297792", "9848673763", "9869760012", "9808502001"};
+        String[] locations = {"Balkumari - Gongabu", "Gausala - New Baneshowr", "Imadol - Balaju", "Lazmipat - Basundhara", "Kalimati - Chandragiri", "Syambhu - Patan", "Sundhara - Jagathi", "Nepaltar - Rantapark", "Maitighar - Jawalakhel"};
+        String[] chargeStatus = {"Fix", "Negotiable", "NA"};
+        String[] shortDistance = {"Rs 500", "Rs 600", "Rs 700"};
+        String[] longDistance = {"Rs 1000", "Rs 1200", "Rs 1400"};
+        String[] vehicleStatus = {"Small", "Medium", "Large"};
+
+        int num;
+        Random random = new Random();
+
+        try {
+            for (int i = 0; i < names.length; i++) {
+
+                num = random.nextInt(chargeStatus.length);
+                statement.execute("insert into Driver_tbl(FullName, Contact, AvailableLocations, ServiceChargeStatus, ShortDistance, LongDistance, VehicleSize) values('"
+                        + names[i] + "','" +
+                        contacts[i] + "','" +
+                        locations[i] + "','" +
+                        chargeStatus[num] + "','" +
+                        shortDistance[num] + "','" +
+                        longDistance[num] + "','" +
+                        vehicleStatus[num] + "')");
+            }
+            System.out.println("Driver info inserted in the database");
+        }
+        catch (Exception exception){
+            System.out.println(exception.getMessage());
+            exception.printStackTrace();
+        }
+
+        return false;
     }
 
     public static void main(String[] args) {
