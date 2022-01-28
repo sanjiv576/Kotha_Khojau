@@ -14,7 +14,7 @@ public class DbConnection {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Kotha_Khojau_Db?characterEncoding=utf8&useSSL=true&autoReconnect=true",
-                            "root", "psychokiller123");
+                            "root", "root");
             statement = connection.createStatement();
 
 
