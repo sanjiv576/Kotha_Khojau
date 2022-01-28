@@ -271,9 +271,11 @@ public class New_passwordchange extends JFrame implements ActionListener {
             passwordchange.filterEmptyFields(currentpassword, newpassword, conformpassword);
 
             if (newpassword.equals(conformpassword)) {
+                System.out.println(currentpassword);
                 JOptionPane.showMessageDialog(null, "Password has been changed successfully.",
                         "Password Change ", JOptionPane.INFORMATION_MESSAGE);
-                clearAll();
+//                clearAll();
+
 
             }
             else {
