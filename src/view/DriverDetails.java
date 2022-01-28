@@ -1,5 +1,7 @@
 package view;
 
+import database.DbConnection;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -8,13 +10,21 @@ import java.util.Objects;
 
 public class DriverDetails extends JFrame implements ActionListener {
 
+    boolean insertDriverInfo = false;
     // view.Images Labeling
-    JLabel vertical, horizontal, titleImg , projectLogoImg;
+    JLabel vertical, horizontal, titleImg , projectLogoImg, header;
 
     JButton homeIcon, profileIcon, settingIcon,driverIcon, logoutIcon;
 
+    JPanel panel;
 
     public DriverDetails() {
+
+        // insert driver details in the database
+        if (insertDriverInfo){
+            DbConnection dbConnection = new DbConnection();
+            insertDriverInfo = dbConnection.driverDetailsInsert();
+        }
 
         setTitle("Driver Details window");
         setBounds(100, 80, 1280, 745);
@@ -30,7 +40,17 @@ public class DriverDetails extends JFrame implements ActionListener {
 
         // your code will be here
 
+        panel = new JPanel();
+        panel.setBounds(120, 128, 1121, 563);
+        panel.setBackground(Color.decode("#C7BBBB"));
+        add(panel);
 
+        header = new JLabel("Driver Details");
+        header.setBounds(0, 0, 104, 720);
+        header.setBackground(Color.getColor("9E9B9B"));
+        header.setFont(new Font("Ropa Sans", Font.BOLD, 23));
+        header.setOpaque(true);
+        panel.add(header);
 
 
 
@@ -43,7 +63,10 @@ public class DriverDetails extends JFrame implements ActionListener {
 
     }
 
+    // ---------------- main method ----------------
+
     public static void main(String[] args) {
+
         new DriverDetails().setVisible(true);
     }
 
