@@ -48,6 +48,5 @@
       </library>
     </orderEntry>
     <orderEntry type="module" module-name="EmailSending" />
-    <orderEntry type="module" module-name="Send" />
   </component>
 </module>
