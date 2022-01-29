@@ -23,7 +23,7 @@ public class DeleteUserAccount extends JFrame implements ActionListener {
 
     JButton backbtn, submitbtn, cancelbtn;
 
-    JLabel currentpassword, newpassword,conformpassword;
+    JLabel currentpassword, newpassword,conformpassword,specifyreason;
     JPasswordField currentpasswordfield, newpasswordfield, confirmpasswordfield;
     JLabel showImage1, showImage2, showImage3;
     JCheckBox showPassword1, showPassword2, showPassword3;
@@ -79,11 +79,7 @@ public class DeleteUserAccount extends JFrame implements ActionListener {
         panel2.setBackground(Color.decode("#9F9391"));
         panel2.setOpaque(true);
 
-        panel3 = new JPanel();
-        panel3.setBorder(new EmptyBorder(10,10,10,10));
-        panel3.setBounds(140, 245, 1094, 425);
-        panel3.setBackground(Color.decode("#9F9391"));
-        panel3.setOpaque(true);
+
 
 
 
@@ -103,7 +99,7 @@ public class DeleteUserAccount extends JFrame implements ActionListener {
         password_change.setOpaque(true);
         password_change.setBorderPainted(false);
         password_change.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        password_change.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/greenpassword change_352x80.png"))));
+        password_change.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/newpassword_change.png"))));
         add(password_change);
 
         delete_account= new JButton();
@@ -112,88 +108,20 @@ public class DeleteUserAccount extends JFrame implements ActionListener {
         delete_account.setOpaque(true);
         delete_account.setBorderPainted(false);
         delete_account.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        delete_account.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/newdelete.png"))));
+        delete_account.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/greenAccount delete_309x76.png"))));
         add(delete_account);
 
-        //for update profile, text fields and label are added, inside the panel2 region
-        currentpassword=new JLabel();
-        currentpassword.setBounds(180,250,320,60);
-        currentpassword.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/currentpassword310x60.png"))));
-        add(currentpassword);
-
-        currentpasswordfield = new JPasswordField();
-        currentpasswordfield.setBounds(540,250,300,60);
-        currentpasswordfield.setBackground(Color.decode("#C0C0C0"));
-        currentpasswordfield.setFont(new Font("times", Font.BOLD,25));
-        add(currentpasswordfield);
-
-        newpassword=new JLabel();
-        newpassword.setBounds(180,350,320,60);
-        newpassword.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/newpassword338x60.png"))));
-        add(newpassword);
-
-        newpasswordfield = new JPasswordField();
-        newpasswordfield .setBounds(540,350,300,60);
-        newpasswordfield .setBackground(Color.decode("#C0C0C0"));
-        newpasswordfield .setFont(new Font("times", Font.BOLD,25));
-        add(newpasswordfield );
-
-        conformpassword=new JLabel();
-        conformpassword.setForeground(Color.BLACK);
-        conformpassword.setBounds(180,450,320,60);
-        conformpassword.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/confirmpassword311x60.png"))));
-        add(conformpassword);
-
-        confirmpasswordfield= new JPasswordField();
-        confirmpasswordfield .setBounds(540,450,300,60);
-        confirmpasswordfield.setBackground(Color.decode("#C0C0C0"));
-        confirmpasswordfield .setFont(new Font("times", Font.BOLD,25));
-        add(confirmpasswordfield);
+        //for DeleteUserAccount, text fields and label are added, inside the panel2 region
+        specifyreason= new JLabel("First Name", SwingConstants.CENTER);
+        specifyreason.setForeground(Color.BLACK);
+        specifyreason.setFont(new Font("Ropa Sans", NORMAL,32));
+        specifyreason.setBounds(230,260,211,32);
+        specifyreason.setBackground(Color.decode("#5F4141"));
+        specifyreason.setForeground(Color.white);
+        specifyreason.setOpaque(true);
+        add(specifyreason);
 
 
-        //  For show password
-        showPassword1 = new JCheckBox();
-        showPassword1.setBounds(840, 250, 30, 50);
-        showPassword1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        showPassword1.setBackground(Color.decode("#9F9391"));
-        showPassword1.setOpaque(true);
-        add(showPassword1);
-
-        showPassword2 = new JCheckBox();
-        showPassword2.setBounds(840, 350, 30, 50);
-        showPassword2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        showPassword2.setBackground(Color.decode("#9F9391"));
-        showPassword2.setOpaque(true);
-        add(showPassword2);
-
-        showPassword3 = new JCheckBox();
-        showPassword3.setBounds(840, 450, 30, 50);
-        showPassword3.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        showPassword3.setBackground(Color.decode("#9F9391"));
-        showPassword3.setOpaque(true);
-        add(showPassword3);
-//images on eye
-        showImage1 = new JLabel();
-        showImage1.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/show.png"))));
-        getContentPane().add(showImage1);
-        showImage1.setBackground(Color.decode("#9F9391"));
-        showImage1.setOpaque(true);
-        showImage1.setBounds(860, 245, 91, 66);
-
-
-        showImage2 = new JLabel();
-        showImage2.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/show.png"))));
-        getContentPane().add(showImage2);
-        showImage2.setBackground(Color.decode("#9F9391"));
-        showImage2.setOpaque(true);
-        showImage2.setBounds(860, 340, 91, 66);
-
-        showImage3 = new JLabel();
-        showImage3.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/show.png"))));
-        getContentPane().add(showImage3);
-        showImage3.setBackground(Color.decode("#9F9391"));
-        showImage3.setOpaque(true);
-        showImage3.setBounds(860, 440, 91, 66);
 
 
 
@@ -203,19 +131,18 @@ public class DeleteUserAccount extends JFrame implements ActionListener {
         homeIcon.addActionListener(this);
         profileIcon.addActionListener(this);
         logoutIcon.addActionListener(this);
-        submitbtn.addActionListener(this);
-        cancelbtn.addActionListener(this);
-        backbtn.addActionListener(this);
 
-        showPassword1.addActionListener(this);
-        showPassword2.addActionListener(this);
-        showPassword3.addActionListener(this);
+
+
         update_profile.addActionListener(this);
         add(panel1);
         add(panel2);
 
 
-        //for delete profile,text fields and labels are added
+
+
+
+
 
 
 
@@ -226,7 +153,7 @@ public class DeleteUserAccount extends JFrame implements ActionListener {
     }
 
     public static void main(String[] args) {
-        new New_passwordchange().setVisible(true);
+        new DeleteUserAccount().setVisible(true);
     }
 
 
@@ -234,85 +161,7 @@ public class DeleteUserAccount extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
 
-        String currentpassword, newpassword, conformpassword;
-        currentpassword = currentpasswordfield.getText();
-        newpassword = newpasswordfield.getText();
-        conformpassword = confirmpasswordfield.getText();
 
-        if (e.getSource().equals(showPassword1)) {
-
-            if (showPassword1.isSelected()) {
-                currentpasswordfield.setEchoChar((char) 0);
-
-            } else {
-                currentpasswordfield.setEchoChar('•');
-
-            }
-        }
-        if (e.getSource().equals(showPassword2)) {
-
-            if (showPassword2.isSelected()) {
-                newpasswordfield.setEchoChar((char) 0);
-
-            } else {
-                newpasswordfield.setEchoChar('•');
-
-            }
-        }
-        if (e.getSource().equals(showPassword3)) {
-
-            if (showPassword3.isSelected()) {
-                confirmpasswordfield.setEchoChar((char) 0);
-
-            } else {
-                confirmpasswordfield.setEchoChar('•');
-
-            }
-        }
-
-
-        if (e.getSource().equals(logoutIcon)) {
-            int choice = JOptionPane.showConfirmDialog(null, "Do you want to log out ?",
-                    "Log out", JOptionPane.YES_NO_CANCEL_OPTION);
-            if (choice == JOptionPane.YES_OPTION) {
-                System.exit(0);
-            }
-        }
-
-        if (e.getSource().equals(submitbtn)) {
-
-            // creating instance of a class
-            Logic_New_passwordchange passwordchange = new Logic_New_passwordchange();
-
-            passwordchange.filterEmptyFields(currentpassword, newpassword, conformpassword);
-
-            if (newpassword.equals(conformpassword)) {
-                JOptionPane.showMessageDialog(null, "Password has been changed successfully.",
-                        "Password Change ", JOptionPane.INFORMATION_MESSAGE);
-                clearAll();
-
-            }
-            else {
-                JOptionPane.showMessageDialog(null, "Failed to change password. New password and Confirm password do not match.",
-                        "Failed", JOptionPane.ERROR_MESSAGE);
-            }
-        }
-
-        if (e.getSource().equals(cancelbtn)){
-            clearAll();
-        }
-
-        if (e.getSource().equals(update_profile)){
-            dispose();
-            new New_updateprofile().setVisible(true);
-        }
-    }
-
-
-    public void clearAll(){
-        confirmpasswordfield.setText("");
-        currentpasswordfield.setText("");
-        newpasswordfield.setText("");
     }
 
     // this method inserts left button icons
