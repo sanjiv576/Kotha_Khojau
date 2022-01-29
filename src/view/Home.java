@@ -18,9 +18,8 @@ public class Home extends JFrame implements ActionListener {
 
     JPanel panel1, panel2, panel3, panel4, panel5, panel6, panel7;
 
-    JScrollBar scrollBar1;
 
-    JButton view1, view2, view3, view4, view5, view6;
+    JButton view1, view2, view3, view4, view5, view6, next;
 
     JLabel bg1;
 
@@ -41,8 +40,12 @@ public class Home extends JFrame implements ActionListener {
 
         // your code will be here
 
+//        next = new JButton();
+
+
         view1 = new JButton();
         view1.setBounds(403, 150, 40, 34);
+        view1.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/view.png"))));
         view1.setOpaque(true);
         view1.setBorderPainted(false);
         view1.setFocusPainted(false);
@@ -119,11 +122,6 @@ public class Home extends JFrame implements ActionListener {
         panel7.setForeground(Color.DARK_GRAY);
         add(panel7);
 
-        scrollBar1 = new JScrollBar();
-        scrollBar1.setBounds(1190, 240, 20, 310);
-        scrollBar1.setBackground(Color.getColor("#9E9B9B"));
-        add(scrollBar1);
-
         panel1 = new JPanel();
         panel1.setBorder(new EmptyBorder(10,10,10,10));
         panel1.setBounds(140, 126, 1098, 550);
@@ -131,6 +129,11 @@ public class Home extends JFrame implements ActionListener {
         panel1.setOpaque(true);
         add(panel1);
 
+        homeIcon.addActionListener(this);
+        settingIcon.addActionListener(this);
+        profileIcon.addActionListener(this);
+        driverIcon.addActionListener(this);
+        logoutIcon.addActionListener(this);
     }
 
     public static void main(String[] args) {
@@ -158,6 +161,13 @@ public class Home extends JFrame implements ActionListener {
             dispose();
             new Renter_userprofile().setVisible(true);
         }
+
+        if (e.getSource().equals(driverIcon)){
+            dispose();
+            new DriverDetails().setVisible(true);
+        }
+
+
     }
 
     //  -------------- DON'T CHANGE THIS ----------------
