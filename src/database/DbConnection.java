@@ -3,6 +3,8 @@ package database;
 import model.LoginData;
 
 import java.sql.*;
+import java.util.Random;
+
 public class DbConnection {
 
     Statement statement;
@@ -50,10 +52,11 @@ public class DbConnection {
             String driverTable = "create table if not exists Driver_tbl(DriverID int auto_increment, " +
                     "FullName varchar(30) not null, " +
                     "Contact varchar(10) not null, " +
-                    "Gender varchar(7), " +
-                    "Location varchar(100) not null, " +
-                    "ServiceCharge varchar(10) not null, " +
-                    "Description text , " +
+                    "AvailableLocations varchar(100) not null, " +
+                    "ServiceChargeStatus varchar(10) not null, " +
+                    "ShortDistance varchar(10), " +
+                    "LongDistance varchar(10), " +
+                    "VehicleSize varchar(20), " +
                     "constraint driverId_pk primary key(DriverID))";
 
 
@@ -122,6 +125,41 @@ public class DbConnection {
             error.printStackTrace();
         }
         return rows;
+    }
+
+    public boolean driverDetailsInsert(){
+        String[] names = {"Bishal Kumar Karki", "Santosh Adhikari", "Lal Mani Shrestha", "Suraj Majhi", "Keshav Bhujel", "Nabin Jung Magar", "Pravin Narayan Thapa", "Manoj Ratna Shakya", "Arjun Bahadur Karki"};
+        String[] contacts = {"9861251844", "9823426229", "9864224909", "9841124819", "9844224909", "9746297792", "9848673763", "9869760012", "9808502001"};
+        String[] locations = {"Balkumari - Gongabu", "Gausala - New Baneshowr", "Imadol - Balaju", "Lazmipat - Basundhara", "Kalimati - Chandragiri", "Syambhu - Patan", "Sundhara - Jagathi", "Nepaltar - Rantapark", "Maitighar - Jawalakhel"};
+        String[] chargeStatus = {"Fix", "Negotiable", "NA"};
+        String[] shortDistance = {"Rs 500", "Rs 600", "Rs 700"};
+        String[] longDistance = {"Rs 1000", "Rs 1200", "Rs 1400"};
+        String[] vehicleStatus = {"Small", "Medium", "Large"};
+
+        int num;
+        Random random = new Random();
+
+        try {
+            for (int i = 0; i < names.length; i++) {
+
+                num = random.nextInt(chargeStatus.length);
+                statement.execute("insert into Driver_tbl(FullName, Contact, AvailableLocations, ServiceChargeStatus, ShortDistance, LongDistance, VehicleSize) values('"
+                        + names[i] + "','" +
+                        contacts[i] + "','" +
+                        locations[i] + "','" +
+                        chargeStatus[num] + "','" +
+                        shortDistance[num] + "','" +
+                        longDistance[num] + "','" +
+                        vehicleStatus[num] + "')");
+            }
+            System.out.println("Driver info inserted in the database");
+        }
+        catch (Exception exception){
+            System.out.println(exception.getMessage());
+            exception.printStackTrace();
+        }
+
+        return false;
     }
 
     public static void main(String[] args) {
