@@ -2,16 +2,29 @@ package view;
 
 
 
+import controller.UserController;
+import model.User;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.util.List;
 import java.util.Objects;
 
 public class Renter_userprofile extends JFrame implements ActionListener {
+
+
+    Object[] columns = {"id", "firstNma", "midd", "lst", "mem", "gender", "cont", "dob",
+            "occupation", "email", "address", "username", "password"};
+
+    JTable table;
+    DefaultTableModel model;
+    String  data[][];
 
     // Images Labeling
     JLabel vertical, horizontal, titleImg , projectLogoImg, image;
@@ -423,6 +436,35 @@ public class Renter_userprofile extends JFrame implements ActionListener {
         label.setFont(new Font("Serif", Font.BOLD, fontSize));
         label.setForeground(Color.BLACK);
         add(label);
+    }
+
+    public void fetchData(){
+
+        UserController userController = new UserController();
+        List<User> userList = userController.UserUpdated();
+
+         data = new String[userList.size()][11];
+
+        // conversion from list to array  , select only need columns
+        for (int i = 0; i < userList.size(); i++){
+            data[i][0] = String.valueOf(userList.get(i).getUserID());  // converting int data into String data
+            data[i][1] = userList.get(i).getFirstName();
+            data[i][2] = userList.get(i).getMiddleName();
+            data[i][3] = userList.get(i).getLastName();
+            data[i][4] = userList.get(i).getMemberType();
+            data[i][5] = userList.get(i).getGender();
+            data[i][6] = userList.get(i).getContact();
+            data[i][7] = userList.get(i).getDOB();
+            data[i][8] = userList.get(i).getOccupation();
+            data[i][9] = userList.get(i).getPersonalEmail();
+
+
+
+        }
+
+
+     model = new DefaultTableModel(data, columns);
+
     }
 
 }
