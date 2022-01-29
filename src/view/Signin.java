@@ -214,7 +214,6 @@ public class Signin extends JFrame implements ActionListener {
 //            } catch (InterruptedException ex) {
 //                ex.printStackTrace();
 //            }
-
         }
 
         if (e.getSource().equals(registerBtn)){

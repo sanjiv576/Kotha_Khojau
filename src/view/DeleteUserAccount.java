@@ -1,4 +1,7 @@
 package view;
+
+import logic.Logic_New_passwordchange;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -8,121 +11,36 @@ import java.util.Objects;
 
 public class DeleteUserAccount extends JFrame implements ActionListener {
 
-    // Images Labeling
+    // view.Images Labeling
     JLabel vertical, horizontal, titleImg , projectLogoImg;
 
-    JButton homeIcon, profileIcon, settingIcon, logoutIcon;
+    JButton homeIcon, profileIcon, settingIcon, driverIcon, logoutIcon;
 
     // panel1 includes only buttons  , panel2 contains labels, text fields and buttons
-    JPanel  panel1, panel2;
+    JPanel  panel1, panel2, panel3;
     JButton update_profile, password_change, delete_account;
 
-    JLabel firstNameLbl, middleNameLbl, lastNameLbl, contactLbl,addressLbl, emailLbl;
-    JTextField newFNameField, newMNameField, newLNameField, newContactField, newAddressField,newEmailField;
+
     JButton backbtn, submitbtn, cancelbtn;
+
+    JLabel currentpassword, newpassword,conformpassword,specifyreason;
+    JPasswordField currentpasswordfield, newpasswordfield, confirmpasswordfield;
+    JLabel showImage1, showImage2, showImage3;
+    JCheckBox showPassword1, showPassword2, showPassword3;
+
 
     public DeleteUserAccount() {
 
         setTitle("User Setting - Update Profile window");
-        setBounds(30, 40, 1280, 745);
+        setBounds(100, 80, 1280, 745);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setBackground(Color.darkGray);
         setLayout(null);
         setResizable(false);
 
 
-        // invoking user-defined method to insert and manage icons for dashboard
+        // invoking user-defined method to insert and manage icons
         insertButtonIcons();
-
-
-        // your code will be here
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        profileIcon.addActionListener(this);
-    }
-
-    public static void main(String[] args) {
-        new DeleteUserAccount().setVisible(true);
-    }
-
-    //  event handling
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
-        if (e.getSource().equals(logoutIcon)){
-            int choice = JOptionPane.showConfirmDialog(null, "Do you want to log out ?",
-                    "Log out", JOptionPane.YES_NO_CANCEL_OPTION);
-            if (choice == JOptionPane.YES_OPTION) {
-                System.exit(0);
-            }
-
-        }
-        if (e.getSource().equals(profileIcon)){
-            JOptionPane.showConfirmDialog(null, "Do you want to go to profile ?",
-                    "Profile", JOptionPane.YES_NO_CANCEL_OPTION);
-
-        }
-    }
-
-    //  -------------- DON'T CHANGE THIS ----------------
-    // this method inserts left button icons
-    public void insertButtonIcons(){
-
-        projectLogoImg = new JLabel();
-        projectLogoImg.setIcon(new ImageIcon((Objects.requireNonNull(getClass().getResource("Images/upperLogo174x137.png")))));
-        projectLogoImg.setBounds(0, -15, 165, 148);
-        add(projectLogoImg);
-
-        homeIcon = new JButton();
-        homeIcon.setIcon(new ImageIcon((Objects.requireNonNull(getClass().getResource("Images/homeIcon_64x64.png")))));
-        homeIcon.setBounds(15, 166, 64, 64);
-        homeIcon.setBackground(Color.decode("#9E9B9B"));
-        homeIcon.setOpaque(true);
-        homeIcon.setBorderPainted(false);
-        homeIcon.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        add(homeIcon);
-
-
-        profileIcon = new JButton();
-        profileIcon.setIcon(new ImageIcon((Objects.requireNonNull(getClass().getResource("Images/profileImg_78x64.png")))));
-        profileIcon.setBounds(8, 315, 78, 64);
-        profileIcon.setBackground(Color.decode("#9E9B9B"));
-        profileIcon.setOpaque(true);
-        profileIcon.setBorderPainted(false);
-        profileIcon.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        add(profileIcon);
-
-
-        settingIcon = new JButton();
-        settingIcon.setIcon(new ImageIcon((Objects.requireNonNull(getClass().getResource("Images/greenSetting_100x100.png")))));
-        settingIcon.setBounds(1, 453, 100, 100);
-        settingIcon.setBackground(Color.decode("#9E9B9B"));
-        settingIcon.setOpaque(true);
-        settingIcon.setBorderPainted(false);
-        settingIcon.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        add(settingIcon);
-
-        logoutIcon = new JButton();
-        logoutIcon.setIcon(new ImageIcon((Objects.requireNonNull(getClass().getResource("Images/logout_64x64.png")))));
-        logoutIcon.setBounds(15, 605, 64, 64);
-        logoutIcon.setBackground(Color.decode("#9E9B9B"));
-        logoutIcon.setOpaque(true);
-        logoutIcon.setBorderPainted(false);
-        logoutIcon.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        add(logoutIcon);
 
         titleImg = new JLabel();
         titleImg.setIcon(new ImageIcon((Objects.requireNonNull(getClass().getResource("Images/projectTitleImg_222x58.png")))));
@@ -144,11 +62,194 @@ public class DeleteUserAccount extends JFrame implements ActionListener {
         vertical.setBackground(Color.getColor("9E9B9B"));
         vertical.setOpaque(true);
         add(vertical);
+
+
+        //   ------------------- panels for  user setting ---------------------------
+
+        panel1 = new JPanel();
+        panel1.setBorder(new EmptyBorder(10,10,10,10));
+        panel1.setBounds(140, 126, 1098, 99);
+        panel1.setBackground(Color.decode("#9F9391"));
+        panel1.setOpaque(true);
+
+
+        panel2 = new JPanel();
+        panel2.setBorder(new EmptyBorder(10,10,10,10));
+        panel2.setBounds(140, 245, 1094, 425);
+        panel2.setBackground(Color.decode("#9F9391"));
+        panel2.setOpaque(true);
+
+
+
+
+
+
+        // --------------------- these buttons are inside the panel1 region -------------
+        update_profile= new JButton();
+        update_profile.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/whiteupdateprofile.png"))));
+        update_profile.setBounds(170,134,315,84);
+        update_profile.setBackground(Color.decode("#9F9391"));
+        update_profile.setOpaque(true);
+        update_profile.setBorderPainted(false);
+        add(update_profile);
+
+        password_change= new JButton();
+        password_change.setBounds(500,135,352,80);
+        password_change.setBackground(Color.decode("#9F9391"));
+        password_change.setOpaque(true);
+        password_change.setBorderPainted(false);
+        password_change.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        password_change.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/newpassword_change.png"))));
+        add(password_change);
+
+        delete_account= new JButton();
+        delete_account.setBounds(875,135,309,76);
+        delete_account.setBackground(Color.decode("#9F9391"));
+        delete_account.setOpaque(true);
+        delete_account.setBorderPainted(false);
+        delete_account.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        delete_account.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/greenAccount delete_309x76.png"))));
+        add(delete_account);
+
+        //for DeleteUserAccount, text fields and label are added, inside the panel2 region
+        specifyreason= new JLabel("First Name", SwingConstants.CENTER);
+        specifyreason.setForeground(Color.BLACK);
+        specifyreason.setFont(new Font("Ropa Sans", NORMAL,32));
+        specifyreason.setBounds(230,260,211,32);
+        specifyreason.setBackground(Color.decode("#5F4141"));
+        specifyreason.setForeground(Color.white);
+        specifyreason.setOpaque(true);
+        add(specifyreason);
+
+
+
+
+
+        // invokes this method to insert buttons in lower region
+        insertLowerButtons();
+
+        homeIcon.addActionListener(this);
+        profileIcon.addActionListener(this);
+        logoutIcon.addActionListener(this);
+
+
+
+        update_profile.addActionListener(this);
+        add(panel1);
+        add(panel2);
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 
+    public static void main(String[] args) {
+        new DeleteUserAccount().setVisible(true);
+    }
+
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+
+
+    }
+
+    // this method inserts left button icons
+    public void insertButtonIcons(){
+
+        projectLogoImg = new JLabel();
+        projectLogoImg.setIcon(new ImageIcon((Objects.requireNonNull(getClass().getResource("Images/upperLogo174x137.png")))));
+        projectLogoImg.setBounds(0, -15, 165, 148);
+        add(projectLogoImg);
+
+        homeIcon = new JButton();
+        homeIcon.setIcon(new ImageIcon((Objects.requireNonNull(getClass().getResource("Images/homeIcon_64x64.png")))));
+        homeIcon.setBounds(15, 150, 64, 64);
+        homeIcon.setBackground(Color.decode("#9E9B9B"));
+        homeIcon.setOpaque(true);
+        homeIcon.setBorderPainted(false);
+        homeIcon.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        add(homeIcon);
+
+
+        profileIcon = new JButton();
+        profileIcon.setIcon(new ImageIcon((Objects.requireNonNull(getClass().getResource("Images/profileImg_78x64.png")))));
+        profileIcon.setBounds(8, 250, 78, 64);
+        profileIcon.setBackground(Color.decode("#9E9B9B"));
+        profileIcon.setOpaque(true);
+        profileIcon.setBorderPainted(false);
+        profileIcon.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        add(profileIcon);
+
+
+        settingIcon = new JButton();
+        settingIcon.setIcon(new ImageIcon((Objects.requireNonNull(getClass().getResource("Images/greenSetting_100x100.png")))));
+        settingIcon.setBounds(1, 353, 100, 100);
+        settingIcon.setBackground(Color.decode("#9E9B9B"));
+        settingIcon.setOpaque(true);
+        settingIcon.setBorderPainted(false);
+        settingIcon.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        add(settingIcon);
+
+        driverIcon= new JButton();
+        driverIcon.setIcon(new ImageIcon((Objects.requireNonNull(getClass().getResource("Images/driver64x64.png")))));
+        driverIcon.setBounds(1, 480, 100, 100);
+        driverIcon.setBackground(Color.decode("#9E9B9B"));
+        driverIcon.setOpaque(true);
+        driverIcon.setBorderPainted(false);
+        driverIcon.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        add(driverIcon);
+
+        logoutIcon = new JButton();
+        logoutIcon.setIcon(new ImageIcon((Objects.requireNonNull(getClass().getResource("Images/logout_64x64.png")))));
+        logoutIcon.setBounds(15, 605, 64, 64);
+        logoutIcon.setBackground(Color.decode("#9E9B9B"));
+        logoutIcon.setOpaque(true);
+        logoutIcon.setBorderPainted(false);
+        logoutIcon.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        add(logoutIcon);
+    }
+
+    // this method inserts lower buttons for back, cancel and submit
+    public void insertLowerButtons(){
+        backbtn= new JButton();
+        backbtn.setBounds(210,570,187,55);
+        backbtn.setOpaque(true);
+        backbtn.setBorderPainted(false);
+        backbtn.setBackground(Color.decode("#9F9391"));
+        backbtn.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/backButton187x55.png"))));
+        backbtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        add(backbtn);
+
+        submitbtn= new JButton();
+        submitbtn.setBounds(550,570,205,55);
+        submitbtn.setBackground(Color.decode("#9F9391"));
+        submitbtn.setOpaque(true);
+        submitbtn.setBorderPainted(false);
+        submitbtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        submitbtn.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/submitButton203x55.png"))));
+        add(submitbtn);
+
+        cancelbtn= new JButton();
+        cancelbtn.setBounds(900,570,205,55);
+        cancelbtn.setBackground(Color.decode("#9F9391"));
+        cancelbtn.setOpaque(true);
+        cancelbtn.setBorderPainted(false);
+        cancelbtn.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/cancelButton203x55.png"))));
+        cancelbtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        add(cancelbtn);
+    }
 }
-
-
 
 
 
