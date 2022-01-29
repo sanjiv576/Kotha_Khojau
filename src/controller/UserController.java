@@ -80,6 +80,41 @@ public class UserController {
 
         return userList;
     }
+    public List<User> UserUpdated(){
+        String query;
+        query = "select * from User_tbl";
+        db = new DbConnection();
+        ResultSet resultSet = db.retrieveData(query);
+        List<User> userList = new ArrayList<User>();
+
+        // now, filling resultSet by each row
+        try{
+
+            while (resultSet.next()){
+                User user = new User();
+
+                user.setUserID(resultSet.getInt("UserID"));
+                user.setFirstName(resultSet.getString("FirstName"));
+                user.setMiddleName(resultSet.getString("MiddleName"));
+                user.setLastName(resultSet.getString("LastName"));
+                user.setMemberType(resultSet.getString("MemberType"));
+                user.setGender(resultSet.getString("Gender"));
+                user.setContact(resultSet.getString("Contact"));
+                user.setDOB(resultSet.getString("DOB"));
+                user.setOccupation(resultSet.getString("Occupation"));
+                user.setPersonalEmail(resultSet.getString("PersonalEmail"));
+
+                userList.add(user);
+
+            }
+        }
+        catch (Exception exp){
+            exp.printStackTrace();
+
+        }
+
+        return userList;
+    }
 
     public List<Driver_Details> getDriverDetails(){
         String query;
