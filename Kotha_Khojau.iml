@@ -19,6 +19,15 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
+          <root url="jar://$USER_HOME$/Downloads/mysql-connector-java-8.0.27/mysql-connector-java-8.0.27/mysql-connector-java-8.0.27.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
           <root url="jar://$USER_HOME$/Downloads/Compressed/mysql-connector-java-8.0.27/mysql-connector-java-8.0.27/mysql-connector-java-8.0.27.jar!/" />
         </CLASSES>
         <JAVADOC />
@@ -47,6 +56,7 @@
         <jarDirectory url="file://D:/apps/Downloads/mysql-connector-java-8.0.27" recursive="false" />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="apache.maven.archetypes.archetype.quickstart" level="project" />
     <orderEntry type="module" module-name="EmailSending" />
   </component>
 </module>

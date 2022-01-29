@@ -1,6 +1,8 @@
 package view;
 
-import logic.Logic_New_passwordchange;
+//import logic.Logic_New_updateProfile;
+
+import logic.Admin.Logic_UpdateProfile;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -9,29 +11,24 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Objects;
 
-public class DeleteUserAccount extends JFrame implements ActionListener {
+class Admin_Setting12 extends JFrame implements ActionListener {
 
     // view.Images Labeling
     JLabel vertical, horizontal, titleImg , projectLogoImg;
 
-    JButton homeIcon, profileIcon, settingIcon, driverIcon, logoutIcon;
+    JButton homeIcon, profileIcon, settingIcon, driverIcon,logoutIcon;
 
     // panel1 includes only buttons  , panel2 contains labels, text fields and buttons
-    JPanel  panel1, panel2, panel3;
+    JPanel  panel1, panel2;
     JButton update_profile, password_change, delete_account;
 
-
+    JLabel firstNameLbl, middleNameLbl, lastNameLbl, contactLbl,addressLbl, emailLbl;
+    JTextField newFNameField, newMNameField, newLNameField, newContactField, newAddressField,newEmailField;
     JButton backbtn, submitbtn, cancelbtn;
 
-    JLabel currentpassword, newpassword,conformpassword,specifyreason;
-    JPasswordField currentpasswordfield, newpasswordfield, confirmpasswordfield;
-    JLabel showImage1, showImage2, showImage3;
-    JCheckBox showPassword1, showPassword2, showPassword3;
+    public Admin_Setting12() {
 
-
-    public DeleteUserAccount() {
-
-        setTitle("User Setting - Update Profile window");
+        setTitle("Admin Setting - Update Profile window");
         setBounds(100, 80, 1280, 745);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setBackground(Color.darkGray);
@@ -80,13 +77,9 @@ public class DeleteUserAccount extends JFrame implements ActionListener {
         panel2.setOpaque(true);
 
 
-
-
-
-
         // --------------------- these buttons are inside the panel1 region -------------
         update_profile= new JButton();
-        update_profile.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/whiteupdateprofile.png"))));
+        update_profile.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/greenUpdateProfile_315x84.png"))));
         update_profile.setBounds(170,134,315,84);
         update_profile.setBackground(Color.decode("#9F9391"));
         update_profile.setOpaque(true);
@@ -108,22 +101,97 @@ public class DeleteUserAccount extends JFrame implements ActionListener {
         delete_account.setOpaque(true);
         delete_account.setBorderPainted(false);
         delete_account.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        delete_account.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/greenAccount delete_309x76.png"))));
+        delete_account.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/newdelete.png"))));
         add(delete_account);
 
-        //for DeleteUserAccount, text fields and label are added, inside the panel2 region
-        specifyreason= new JLabel("First Name", SwingConstants.CENTER);
-        specifyreason.setForeground(Color.BLACK);
-        specifyreason.setFont(new Font("Ropa Sans", NORMAL,32));
-        specifyreason.setBounds(230,260,211,32);
-        specifyreason.setBackground(Color.decode("#5F4141"));
-        specifyreason.setForeground(Color.white);
-        specifyreason.setOpaque(true);
-        add(specifyreason);
+        //for update profile, text fields and label are added, inside the panel2 region
+
+        firstNameLbl= new JLabel("First Name", SwingConstants.CENTER);
+        firstNameLbl.setForeground(Color.BLACK);
+        firstNameLbl.setFont(new Font("Ropa Sans", NORMAL,32));
+        firstNameLbl.setBounds(230,260,211,32);
+        firstNameLbl.setBackground(Color.decode("#5F4141"));
+        firstNameLbl.setForeground(Color.white);
+        firstNameLbl.setOpaque(true);
+        add(firstNameLbl);
+
+        newFNameField = new JTextField();
+        newFNameField.setBounds(180, 300,290,35);
+        newFNameField.setFont(new Font("times", Font.BOLD,25));
+        add(newFNameField);
 
 
+        middleNameLbl= new JLabel("Middle Name", SwingConstants.CENTER);
+        middleNameLbl.setForeground(Color.BLACK);
+        middleNameLbl.setFont(new Font("Ropa Sans", NORMAL,32));
+        middleNameLbl.setBounds(565,260,211,32);
+        middleNameLbl.setBackground(Color.decode("#5F4141"));
+        middleNameLbl.setForeground(Color.white);
+        middleNameLbl.setOpaque(true);
+        add(middleNameLbl);
+
+        newMNameField = new JTextField();
+        newMNameField.setBounds(520, 300,290,35);
+        newMNameField.setFont(new Font("times", Font.BOLD,25));
+        add(newMNameField);
 
 
+        lastNameLbl= new JLabel("Last Name", SwingConstants.CENTER);
+        lastNameLbl.setForeground(Color.BLACK);
+        lastNameLbl.setFont(new Font("Ropa Sans", NORMAL,32));
+        lastNameLbl.setBounds(925,260,211,32);
+        lastNameLbl.setBackground(Color.decode("#5F4141"));
+        lastNameLbl.setForeground(Color.white);
+        lastNameLbl.setOpaque(true);
+        add(lastNameLbl);
+
+        newLNameField = new JTextField();
+        newLNameField.setBounds(880, 300,290,35);
+        newLNameField.setFont(new Font("times", Font.BOLD,25));
+        add(newLNameField);
+
+        contactLbl= new JLabel("Contact", SwingConstants.CENTER);
+        contactLbl.setForeground(Color.BLACK);
+        contactLbl.setFont(new Font("Ropa Sans",NORMAL,32));
+        contactLbl.setBounds(420,360,190,32);
+        contactLbl.setBackground(Color.decode("#5F4141"));
+        contactLbl.setForeground(Color.white);
+        contactLbl.setOpaque(true);
+        add(contactLbl);
+
+        newContactField = new JTextField();
+        newContactField.setBounds(370, 400,290,35);
+        newContactField.setFont(new Font("times", Font.BOLD,25));
+        add(newContactField);
+
+        addressLbl= new JLabel("Address", SwingConstants.CENTER);
+        addressLbl.setForeground(Color.BLACK);
+        addressLbl.setFont(new Font("Ropa Sans",NORMAL,32));
+        addressLbl.setBounds(780,360,190,32);
+        addressLbl.setBackground(Color.decode("#5F4141"));
+        addressLbl.setForeground(Color.white);
+        addressLbl.setOpaque(true);
+        add(addressLbl);
+
+        newAddressField = new JTextField();
+        newAddressField.setBounds(720, 400,290,35);
+        newAddressField.setFont(new Font("times", Font.BOLD,25));
+        add(newAddressField);
+
+
+        emailLbl = new JLabel("Email", SwingConstants.CENTER);
+        emailLbl.setForeground(Color.BLACK);
+        emailLbl.setFont(new Font("Ropa Sans",NORMAL,32));
+        emailLbl.setBounds(650,460,100,32);
+        emailLbl.setBackground(Color.decode("#5F4141"));
+        emailLbl.setForeground(Color.white);
+        emailLbl.setOpaque(true);
+        add(emailLbl);
+
+        newEmailField = new JTextField();
+        newEmailField.setBounds(540, 500,290,35);
+        newEmailField.setFont(new Font("times", Font.BOLD,25));
+        add(newEmailField);
 
         // invokes this method to insert buttons in lower region
         insertLowerButtons();
@@ -131,37 +199,22 @@ public class DeleteUserAccount extends JFrame implements ActionListener {
         homeIcon.addActionListener(this);
         profileIcon.addActionListener(this);
         logoutIcon.addActionListener(this);
+        submitbtn.addActionListener(this);
+        cancelbtn.addActionListener(this);
+        backbtn.addActionListener(this);
+        password_change.addActionListener(this);
+        delete_account.addActionListener(this);
 
 
 
-        update_profile.addActionListener(this);
         add(panel1);
         add(panel2);
-
-
-
-
-
-
-
-
-
-
-
 
 
     }
 
     public static void main(String[] args) {
-        new DeleteUserAccount().setVisible(true);
-    }
-
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
-
-
+        new Admin_Setting12().setVisible(true);
     }
 
     // this method inserts left button icons
@@ -201,14 +254,7 @@ public class DeleteUserAccount extends JFrame implements ActionListener {
         settingIcon.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         add(settingIcon);
 
-        driverIcon= new JButton();
-        driverIcon.setIcon(new ImageIcon((Objects.requireNonNull(getClass().getResource("Images/driver64x64.png")))));
-        driverIcon.setBounds(1, 480, 100, 100);
-        driverIcon.setBackground(Color.decode("#9E9B9B"));
-        driverIcon.setOpaque(true);
-        driverIcon.setBorderPainted(false);
-        driverIcon.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        add(driverIcon);
+
 
         logoutIcon = new JButton();
         logoutIcon.setIcon(new ImageIcon((Objects.requireNonNull(getClass().getResource("Images/logout_64x64.png")))));
@@ -249,6 +295,72 @@ public class DeleteUserAccount extends JFrame implements ActionListener {
         cancelbtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         add(cancelbtn);
     }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+        String newFirstName, newMiddleName, newLastName, newAddress, newEmail, newContact;
+
+        newFirstName = newFNameField.getText();
+        newMiddleName = newMNameField.getText();
+        newLastName = newLNameField.getText();
+        newContact = newContactField.getText();
+        newAddress = newAddressField.getText();
+        newEmail = newEmailField.getText();
+
+
+        if (e.getSource().equals(logoutIcon)){
+            int choice = JOptionPane.showConfirmDialog(null, "Do you want to log out ?",
+                    "Log out", JOptionPane.YES_NO_CANCEL_OPTION);
+            if (choice == JOptionPane.YES_OPTION) {
+                System.exit(0);
+            }
+        }
+
+        if (e.getSource().equals(submitbtn)){
+
+            // creating instance of a class
+            Logic_UpdateProfile updateProfile = new Logic_UpdateProfile();
+
+            updateProfile.filterEmptyFields(newFirstName, newMiddleName, newLastName, newContact, newAddress, newEmail);
+
+            JOptionPane.showMessageDialog(null, "Profile data are updated",
+                    "Profile update", JOptionPane.INFORMATION_MESSAGE);
+            clearAll();
+        }
+//        if (e.getSource().equals(profileIcon)){
+//            dispose();
+//            new Renter_userprofile().setVisible(true);
+//        }
+//
+//        if (e.getSource().equals(password_change)){
+//            dispose();
+//            new New_passwordchange().setVisible(true);
+//        }
+//
+//
+//        }
+//        if(e.getSource().equals(homeIcon)){
+//            dispose();
+//            new Home().setVisible(true);
+//        }
+//
+        if (e.getSource().equals(cancelbtn)){
+            clearAll();
+        }
+
+    }
+
+    public void clearAll(){
+        newFNameField.setText("");
+        newMNameField.setText("");
+        newLNameField.setText("");
+        newContactField.setText("");
+        newAddressField.setText("");
+        newEmailField.setText("");
+
+    }
+
 }
 
 
