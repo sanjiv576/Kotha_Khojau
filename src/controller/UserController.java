@@ -1,6 +1,7 @@
 package controller;
 
 import database.DbConnection;
+import model.Driver_Details;
 import model.User;
 
 import java.sql.Connection;
@@ -78,6 +79,40 @@ public class UserController {
         }
 
         return userList;
+    }
+
+    public List<Driver_Details> getDriverDetails(){
+        String query;
+        query = "select * from Driver_tbl";
+        db = new DbConnection();
+        ResultSet resultSet = db.retrieveData(query);
+        List<Driver_Details> driverList = new ArrayList<>();
+
+        try{
+
+            while (resultSet.next()){
+                Driver_Details driver_details = new Driver_Details();
+
+                driver_details.setFullName(resultSet.getString("FullName"));
+                driver_details.setContact(resultSet.getString("Contact"));
+                driver_details.setAvailableLocation(resultSet.getString("AvailableLocations"));
+                driver_details.setServiceChargeStatus(resultSet.getString("ServiceChargeStatus"));
+                driver_details.setShortDistance(resultSet.getString("ShortDistance"));
+                driver_details.setLongDistance(resultSet.getString("LongDistance"));
+                driver_details.setLongDistance(resultSet.getString("LongDistance"));
+                driver_details.setVehicleSize(resultSet.getString("VehicleSize"));
+
+                driverList.add(driver_details);
+
+            }
+        }
+        catch (Exception exp){
+            exp.printStackTrace();
+
+        }
+
+        return driverList;
+
     }
 
 
