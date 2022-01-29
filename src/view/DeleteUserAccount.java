@@ -17,7 +17,7 @@ public class DeleteUserAccount extends JFrame implements ActionListener {
     JButton homeIcon, profileIcon, settingIcon, driverIcon, logoutIcon;
 
     // panel1 includes only buttons  , panel2 contains labels, text fields and buttons
-    JPanel  panel1, panel2;
+    JPanel  panel1, panel2, panel3;
     JButton update_profile, password_change, delete_account;
 
 
@@ -78,6 +78,14 @@ public class DeleteUserAccount extends JFrame implements ActionListener {
         panel2.setBounds(140, 245, 1094, 425);
         panel2.setBackground(Color.decode("#9F9391"));
         panel2.setOpaque(true);
+
+        panel3 = new JPanel();
+        panel3.setBorder(new EmptyBorder(10,10,10,10));
+        panel3.setBounds(140, 245, 1094, 425);
+        panel3.setBackground(Color.decode("#9F9391"));
+        panel3.setOpaque(true);
+
+
 
 
         // --------------------- these buttons are inside the panel1 region -------------
@@ -208,6 +216,7 @@ public class DeleteUserAccount extends JFrame implements ActionListener {
 
 
         //for delete profile,text fields and labels are added
+
 
 
 
