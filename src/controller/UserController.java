@@ -118,7 +118,7 @@ public class UserController {
 
     public List<Driver_Details> getDriverDetails(){
         String query;
-        query = "select * from Driver_tbl";
+        query = "select * from driver_tbl";
         db = new DbConnection();
         ResultSet resultSet = db.retrieveData(query);
         List<Driver_Details> driverList = new ArrayList<>();
