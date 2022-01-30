@@ -199,7 +199,7 @@ public class New_updateprofile extends JFrame implements ActionListener {
         logoutIcon.addActionListener(this);
         submitbtn.addActionListener(this);
         cancelbtn.addActionListener(this);
-        backbtn.addActionListener(this);
+    //    backbtn.addActionListener(this);
         password_change.addActionListener(this);
         delete_account.addActionListener(this);
         driverIcon.addActionListener(this);
@@ -273,17 +273,17 @@ public class New_updateprofile extends JFrame implements ActionListener {
 
     // this method inserts lower buttons for back, cancel and submit
     public void insertLowerButtons(){
-        backbtn= new JButton();
-        backbtn.setBounds(210,570,187,55);
-        backbtn.setOpaque(true);
-        backbtn.setBorderPainted(false);
-        backbtn.setBackground(Color.decode("#9F9391"));
-        backbtn.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/backButton187x55.png"))));
-        backbtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        add(backbtn);
+//        backbtn= new JButton();
+//        backbtn.setBounds(210,570,187,55);
+//        backbtn.setOpaque(true);
+//        backbtn.setBorderPainted(false);
+//        backbtn.setBackground(Color.decode("#9F9391"));
+//        backbtn.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/backButton187x55.png"))));
+//        backbtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+//        add(backbtn);
 
         submitbtn= new JButton();
-        submitbtn.setBounds(550,570,205,55);
+        submitbtn.setBounds(400,570,205,55);
         submitbtn.setBackground(Color.decode("#9F9391"));
         submitbtn.setOpaque(true);
         submitbtn.setBorderPainted(false);
@@ -292,7 +292,7 @@ public class New_updateprofile extends JFrame implements ActionListener {
         add(submitbtn);
 
         cancelbtn= new JButton();
-        cancelbtn.setBounds(900,570,205,55);
+        cancelbtn.setBounds(650,570,205,55);
         cancelbtn.setBackground(Color.decode("#9F9391"));
         cancelbtn.setOpaque(true);
         cancelbtn.setBorderPainted(false);
