@@ -11,7 +11,7 @@ public class Home extends JFrame implements ActionListener {
 
 
 //    images label
-    JLabel imgLbl1, imgLbl2, imgLbl3;
+    JLabel rentLbl1, rentLbl2, rentLbl3, rentLbl4, rentLbl5, rentLbl6;
     JButton btn1, btn2;
 
 
@@ -42,7 +42,15 @@ public class Home extends JFrame implements ActionListener {
         // invoking user-defined method to insert and manage icons for dashboard
         insertButtonIcons();
 
-
+        view1 = new JButton();
+        view1.setBounds(330, 357, 150, 30);
+        view1.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/details.png"))));
+        view1.setOpaque(true);
+        view1.setBackground(Color.decode("#FFFFFF"));
+        view1.setBorderPainted(false);
+        view1.setFocusPainted(false);
+        view1.setVisible(true);
+        add(view1);
 
 
 
@@ -91,21 +99,47 @@ public class Home extends JFrame implements ActionListener {
 //        panel2.setBounds(165, 150, 280,200);
 //        panel2.setForeground(Color.DARK_GRAY);
 
-        view1 = new JButton();
-        view1.setBounds(330, 375, 170, 30);
-        view1.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/details.png"))));
-        view1.setOpaque(true);
-        view1.setBackground(Color.decode("#FFFFFF"));
-        view1.setBorderPainted(false);
-        view1.setFocusPainted(false);
-        view1.setVisible(true);
-        add(view1);
 
-        imgLbl1 = new JLabel();
-        imgLbl1.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/rent1png"))));
-        getContentPane().add(imgLbl1);
-        imgLbl1.setBounds(160, 130, 400, 295);
-        add(imgLbl1);
+
+        rentLbl1 = new JLabel();
+        rentLbl1.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/rent1.png"))));
+        getContentPane().add(rentLbl1);
+        rentLbl1.setBounds(190, 150, 300, 240);
+        add(rentLbl1);
+
+        rentLbl2 = new JLabel();
+        rentLbl2.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/rent2.png"))));
+        getContentPane().add(rentLbl2);
+        rentLbl2.setBounds(550, 150, 300, 240);
+        add(rentLbl2);
+
+        rentLbl3 = new JLabel();
+        rentLbl3.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/rent3.png"))));
+        getContentPane().add(rentLbl3);
+        rentLbl3.setBounds(900, 150, 300, 240);
+        add(rentLbl3);
+
+        rentLbl4 = new JLabel();
+        rentLbl4.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/rent4.png"))));
+        getContentPane().add(rentLbl4);
+        rentLbl4.setBounds(190, 410, 300, 240);
+        add(rentLbl4);
+
+        rentLbl5 = new JLabel();
+        rentLbl5.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/rent5.png"))));
+        getContentPane().add(rentLbl5);
+        rentLbl5.setBounds(550, 410, 300, 240);
+        add(rentLbl5);
+
+        rentLbl6 = new JLabel();
+        rentLbl6.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/rent5.png"))));
+        getContentPane().add(rentLbl6);
+        rentLbl6.setBounds(900, 410, 300, 240);
+        add(rentLbl6);
+
+
+
+
 
 
 
