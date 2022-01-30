@@ -1,5 +1,7 @@
 package view;
 
+import view.Rent.Rent1;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -191,6 +193,8 @@ public class Home extends JFrame implements ActionListener {
         profileIcon.addActionListener(this);
         driverIcon.addActionListener(this);
         logoutIcon.addActionListener(this);
+
+        view1.addActionListener(this);
     }
 
     public static void main(String[] args) {
@@ -223,6 +227,12 @@ public class Home extends JFrame implements ActionListener {
             dispose();
             new DriverDetails().setVisible(true);
         }
+        if (e.getSource().equals(view1)){
+            dispose();
+            new Rent1().setVisible(true);
+        }
+
+
 
 
     }
