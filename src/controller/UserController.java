@@ -42,6 +42,14 @@ public class UserController {
 
     }
 
+    // for changing password
+    public void passwordChange(String oldPassword, String newPassword){
+
+        String query = "update User_tbl set Password='"+newPassword+"' where Password='"+oldPassword+"'";
+        db = new DbConnection();
+        db.updateDetails(query);
+    }
+
     public List<User> getAllUser(){
         String query;
         query = "select * from User_tbl";
@@ -149,6 +157,60 @@ public class UserController {
         return driverList;
 
     }
+
+
+    public String[] profileDetails(String username, String password){
+        String query;
+
+        String userId = null;
+        String userFirstName = null;
+        String userMiddleName = null;
+        String userLastName = null;
+        String userContact = null;
+        String userMemberType = null;
+        String userGender = null;
+        String userDOB = null;
+        String userOccupation = null;
+        String userEmail = null;
+
+        query = "select * from User_tbl where Username='"+username+"' and Password='"+password+"'";
+        db = new DbConnection();
+        ResultSet resultSet = db.retrieveData(query);
+
+
+        // now, filling resultSet by each row
+        try{
+
+            while (resultSet.next()){
+
+                userId = resultSet.getString("UserID");
+                userFirstName = resultSet.getString("FirstName");
+                userMiddleName = resultSet.getString("MiddleName");
+                userLastName = resultSet.getString("LastName");
+                userMemberType = resultSet.getString("MemberType");
+                userGender = resultSet.getString("Gender");
+                userContact = resultSet.getString("Contact");
+                userDOB = resultSet.getString("DOB");
+                userOccupation = resultSet.getString("Occupation");
+                userEmail = resultSet.getString("PersonalEmail");
+
+            }
+
+        }
+        catch (Exception exp){
+            exp.printStackTrace();
+
+        }
+        String[] userInformation = {userId, userFirstName+userMiddleName+userLastName, userMemberType, userGender, userContact, userDOB, userOccupation, userEmail};
+
+        for (int i = 0; i < userInformation.length; i++) {
+            System.out.println("From userController : " + userInformation[i]);
+        }
+
+        return userInformation;
+    }
+
+
 
 
 }
