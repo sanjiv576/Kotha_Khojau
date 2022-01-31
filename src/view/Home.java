@@ -15,8 +15,6 @@ public class Home extends JFrame implements ActionListener {
 
     JPanel panel1, panel2, panel3, panel4, panel5;
 
-
-
     public Home() {
 
         setTitle("Home Page");
@@ -29,7 +27,6 @@ public class Home extends JFrame implements ActionListener {
 
         // invoking user-defined method to insert and manage icons for dashboard
         insertButtonIcons();
-
 
         // your code will be here
 
@@ -46,7 +43,7 @@ public class Home extends JFrame implements ActionListener {
 
         view1 = new JButton();
         view1.setBounds(351, 345, 155, 35);
-        view1.setIcon(new ImageIcon((Objects.requireNonNull(getClass().getResource("Images/viewdetails.png")))));
+        view1.setIcon(new ImageIcon((Objects.requireNonNull(getClass().getResource("Images/viewdetail.png")))));
         view1.setBackground(Color.decode("#9E9B9B"));
         view1.setOpaque(true);
         view1.setBorderPainted(false);
@@ -56,7 +53,7 @@ public class Home extends JFrame implements ActionListener {
 
         view2 = new JButton();
         view2.setBounds(783, 345, 155, 35);
-        view2.setIcon(new ImageIcon((Objects.requireNonNull(getClass().getResource("Images/viewdetails.png")))));
+        view2.setIcon(new ImageIcon((Objects.requireNonNull(getClass().getResource("Images/viewdetail.png")))));
         view2.setBackground(Color.decode("#9E9B9B"));
         view2.setOpaque(true);
         view2.setBorderPainted(false);
@@ -66,7 +63,7 @@ public class Home extends JFrame implements ActionListener {
 
         view3 = new JButton();
         view3.setBounds(351, 595, 155, 35);
-        view3.setIcon(new ImageIcon((Objects.requireNonNull(getClass().getResource("Images/viewdetails.png")))));
+        view3.setIcon(new ImageIcon((Objects.requireNonNull(getClass().getResource("Images/viewdetail.png")))));
         view3.setBackground(Color.decode("#9E9B9B"));
         view3.setOpaque(true);
         view3.setBorderPainted(false);
@@ -76,7 +73,7 @@ public class Home extends JFrame implements ActionListener {
 
         view4 = new JButton();
         view4.setBounds(783, 595, 155, 35);
-        view4.setIcon(new ImageIcon((Objects.requireNonNull(getClass().getResource("Images/viewdetails.png")))));
+        view4.setIcon(new ImageIcon((Objects.requireNonNull(getClass().getResource("Images/viewdetail.png")))));
         view4.setBackground(Color.decode("#9E9B9B"));
         view4.setOpaque(true);
         view4.setBorderPainted(false);
