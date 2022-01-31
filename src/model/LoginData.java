@@ -12,6 +12,10 @@ public class LoginData {
         this.password = password;
     }
 
+    public LoginData() {
+
+    }
+
     // getter method for username
     public String getUsername(){
         return username;
