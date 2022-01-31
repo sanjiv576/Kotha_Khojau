@@ -6,16 +6,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Objects;
 
-public class Home extends JFrame implements ActionListener {
+public class Home2 extends JFrame implements ActionListener {
 
     // view.Images Labeling
     JLabel vertical, horizontal, titleImg , projectLogoImg;
 
-    JButton homeIcon, profileIcon, settingIcon,driverIcon, logoutIcon, view1, view2, view3, view4, nextpage;
+    JButton homeIcon, profileIcon, settingIcon,driverIcon, logoutIcon, view1, view2, view3, view4, nextpage, previouspage;
 
     JPanel panel1, panel2, panel3, panel4, panel5;
 
-    public Home() {
+    public Home2() {
 
         setTitle("Home Page");
         setBounds(100, 80, 1280, 745);
@@ -28,17 +28,18 @@ public class Home extends JFrame implements ActionListener {
         // invoking user-defined method to insert and manage icons for dashboard
         insertButtonIcons();
 
-        // your code will be here
 
-        nextpage = new JButton();
-        nextpage.setBounds(1080, 360, 64, 64);
-        nextpage.setIcon(new ImageIcon((Objects.requireNonNull(getClass().getResource("Images/next 1.png")))));
-        nextpage.setBackground(Color.decode("#C6C6C6"));
-        nextpage.setOpaque(true);
-        nextpage.setBorderPainted(false);
-        nextpage.setFocusPainted(false);
-        nextpage.setVisible(true);
-        add(nextpage);
+        // Your code will be here
+
+        previouspage = new JButton();
+        previouspage.setBounds(150, 360, 64, 64);
+        previouspage.setIcon(new ImageIcon((Objects.requireNonNull(getClass().getResource("Images/previouspage.png")))));
+        previouspage.setBackground(Color.decode("#C6C6C6"));
+        previouspage.setOpaque(true);
+        previouspage.setBorderPainted(false);
+        previouspage.setFocusPainted(false);
+        previouspage.setVisible(true);
+        add(previouspage);
 
 
         view1 = new JButton();
@@ -111,12 +112,12 @@ public class Home extends JFrame implements ActionListener {
         settingIcon.addActionListener(this);
         homeIcon.addActionListener(this);
         profileIcon.addActionListener(this);
-        nextpage.addActionListener(this);
+        previouspage.addActionListener(this);
 
     }
 
     public static void main(String[] args) {
-        new Home().setVisible(true);
+        new Home2().setVisible(true);
     }
 
     //  event handling
@@ -146,10 +147,11 @@ public class Home extends JFrame implements ActionListener {
             new DriverDetails().setVisible(true);
         }
 
-        if (e.getSource().equals(nextpage)){
+        if (e.getSource().equals(previouspage)){
             dispose();
-            new Home2().setVisible(true);
+            new Home().setVisible(true);
         }
+
     }
 
     //  -------------- DON'T CHANGE THIS ----------------
@@ -231,9 +233,3 @@ public class Home extends JFrame implements ActionListener {
     }
 
 }
-
-
-
-
-
-
