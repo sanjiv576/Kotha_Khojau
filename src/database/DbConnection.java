@@ -1,6 +1,6 @@
 package database;
 
-import model.LoginData;
+
 
 import java.sql.*;
 import java.util.Random;
@@ -114,6 +114,7 @@ public class DbConnection {
         return resultSet;
     }
 
+
     // retrieving data from the database
 
     public ResultSet retrieveData(String query){  // data stores in ResultSet (multi-dimensional array)
@@ -126,6 +127,20 @@ public class DbConnection {
         }
         return rows;
     }
+
+    // for updating database
+    public void updateDetails(String query){
+        try{
+            statement.executeUpdate(query);
+        }
+        catch (SQLException error){
+            error.printStackTrace();
+            System.out.println(error.getMessage());
+
+        }
+    }
+
+
 
     public boolean driverDetailsInsert(){
         String[] names = {"Bishal Kumar Karki", "Santosh Adhikari", "Lal Mani Shrestha", "Suraj Majhi", "Keshav Bhujel", "Nabin Jung Magar", "Pravin Narayan Thapa", "Manoj Ratna Shakya", "Arjun Bahadur Karki"};
@@ -161,6 +176,7 @@ public class DbConnection {
 
         return false;
     }
+
 
     public static void main(String[] args) {
         new DbConnection();
