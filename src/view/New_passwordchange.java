@@ -1,6 +1,6 @@
 package view;
 
-import logic.Logic_New_passwordchange;
+import controller.UserController;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -11,7 +11,7 @@ import java.util.Objects;
 
 public class New_passwordchange extends JFrame implements ActionListener {
 
-    // view.Images Labeling
+    // Images Labeling
     JLabel vertical, horizontal, titleImg , projectLogoImg;
 
     JButton homeIcon, profileIcon, settingIcon, driverIcon, logoutIcon;
@@ -21,7 +21,7 @@ public class New_passwordchange extends JFrame implements ActionListener {
     JButton update_profile, password_change, delete_account;
 
 
-    JButton backbtn, submitbtn, cancelbtn;
+    JButton  submitbtn, cancelbtn;
 
     JLabel currentpassword, newpassword,conformpassword;
     JPasswordField currentpasswordfield, newpasswordfield, confirmpasswordfield;
@@ -164,7 +164,7 @@ public class New_passwordchange extends JFrame implements ActionListener {
         showPassword3.setBackground(Color.decode("#9F9391"));
         showPassword3.setOpaque(true);
         add(showPassword3);
-//images on eye
+
         showImage1 = new JLabel();
         showImage1.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/show.png"))));
         getContentPane().add(showImage1);
@@ -197,7 +197,6 @@ public class New_passwordchange extends JFrame implements ActionListener {
         logoutIcon.addActionListener(this);
         submitbtn.addActionListener(this);
         cancelbtn.addActionListener(this);
-    //    backbtn.addActionListener(this);
 
         showPassword1.addActionListener(this);
         showPassword2.addActionListener(this);
@@ -208,6 +207,7 @@ public class New_passwordchange extends JFrame implements ActionListener {
 
 
     }
+    // ---------- main method ------------
 
     public static void main(String[] args) {
         new New_passwordchange().setVisible(true);
@@ -265,18 +265,22 @@ public class New_passwordchange extends JFrame implements ActionListener {
 
         if (e.getSource().equals(submitbtn)) {
 
-            // creating instance of a class
-            Logic_New_passwordchange passwordchange = new Logic_New_passwordchange();
 
-            passwordchange.filterEmptyFields(currentpassword, newpassword, conformpassword);
+            if (conformpassword.isEmpty() || newpassword.isEmpty() || conformpassword.isEmpty()){
 
-            if (newpassword.equals(conformpassword)) {
-                System.out.println(currentpassword);
+                JOptionPane.showMessageDialog(null, "Oops, fields are empty.",
+                        "Failed", JOptionPane.WARNING_MESSAGE);
+            }
+            else if (newpassword.equals(conformpassword)){
+
+                // updating password in the database by calling function
+                UserController userController = new UserController();
+                userController.passwordChange(currentpassword, newpassword);
+
+
                 JOptionPane.showMessageDialog(null, "Password has been changed successfully.",
                         "Password Change ", JOptionPane.INFORMATION_MESSAGE);
-//                clearAll();
-
-
+                clearAll();
             }
             else {
                 JOptionPane.showMessageDialog(null, "Failed to change password. New password and Confirm password do not match.",
@@ -359,14 +363,6 @@ public class New_passwordchange extends JFrame implements ActionListener {
 
     // this method inserts lower buttons for back, cancel and submit
     public void insertLowerButtons(){
-//        backbtn= new JButton();
-//        backbtn.setBounds(210,570,187,55);
-//        backbtn.setOpaque(true);
-//        backbtn.setBorderPainted(false);
-//        backbtn.setBackground(Color.decode("#9F9391"));
-//        backbtn.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/backButton187x55.png"))));
-//        backbtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-//        add(backbtn);
 
         submitbtn= new JButton();
         submitbtn.setBounds(350,570,205,55);
