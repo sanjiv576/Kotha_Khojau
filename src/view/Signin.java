@@ -183,7 +183,7 @@ public class Signin extends JFrame implements ActionListener {
         if (e.getSource().equals(loginBtn)){
 
             // creating instance of a class
-            Logic_Signin obj = new Logic_Signin(usernameInserted, passwordInserted);
+            Logic_Signin obj = new Logic_Signin();
             // invoking login method from logic.Logic_Signin class
             boolean closeThisWindow = obj.login(closeThis, usernameInserted, passwordInserted);
 
