@@ -175,10 +175,10 @@ public class DriverDetails extends JFrame implements ActionListener {
             new New_updateprofile().setVisible(true);
         }
 
-        if (e.getSource().equals(homeIcon)){
-            dispose();
-            new Home().setVisible(true);
-        }
+//        if (e.getSource().equals(homeIcon)){
+//            dispose();
+//            new Home().setVisible(true);
+//        }
 
         if (e.getSource().equals(profileIcon)){
             dispose();
