@@ -2,9 +2,12 @@ package logic;
 
 public class Logic_New_passwordchange {
 
-    public void filterEmptyFields(String crrentpassword, String newpassword, String conformpassword){
+    public void filterEmptyFields(String currentPassword, String newPassword, String conformPassword){
 
-        String[] allFields = {crrentpassword, newpassword, conformpassword};
+
+
+
+        String[] allFields = {currentPassword, newPassword, conformPassword};
         String[] fieldsName = {"currentpassword", "newpassword", "conformpassword"};
 //        for (String element: allFields){
 //            if (element.isEmpty()){
@@ -29,6 +32,8 @@ public class Logic_New_passwordchange {
 
         System.out.println("empty fields index : " + emptyFields);
         System.out.println("Filled fields index : " + filledFields);
+
+
 
     }
 }
