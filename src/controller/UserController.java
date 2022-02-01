@@ -120,7 +120,6 @@ public class UserController {
             exp.printStackTrace();
 
         }
-
         return userList;
     }
 
@@ -201,16 +200,10 @@ public class UserController {
             exp.printStackTrace();
 
         }
-        String[] userInformation = {userId, userFirstName+userMiddleName+userLastName, userMemberType, userGender, userContact, userDOB, userOccupation, userEmail};
-
-        for (int i = 0; i < userInformation.length; i++) {
-            System.out.println("From userController : " + userInformation[i]);
-        }
+        // placing all user's data in String
+        String[] userInformation = {userId, userFirstName +" "+ userMiddleName + " "+ userLastName, userMemberType, userGender, userContact, userDOB, userOccupation, userEmail};
 
         return userInformation;
     }
-
-
-
 
 }
