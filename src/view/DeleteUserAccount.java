@@ -21,7 +21,7 @@ public class DeleteUserAccount extends JFrame implements ActionListener {
     JButton update_profile, password_change, delete_account;
 
 
-    JButton backbtn, submitbtn, cancelbtn;
+    JButton nobtn, yestbtn;
 
     JLabel currentpassword, newpassword,conformpassword,specifyreason;
     JPasswordField currentpasswordfield, newpasswordfield, confirmpasswordfield;
@@ -111,15 +111,7 @@ public class DeleteUserAccount extends JFrame implements ActionListener {
         delete_account.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/greenAccount delete_309x76.png"))));
         add(delete_account);
 
-        //for DeleteUserAccount, text fields and label are added, inside the panel2 region
-        specifyreason= new JLabel("First Name", SwingConstants.CENTER);
-        specifyreason.setForeground(Color.BLACK);
-        specifyreason.setFont(new Font("Ropa Sans", NORMAL,32));
-        specifyreason.setBounds(230,260,211,32);
-        specifyreason.setBackground(Color.decode("#5F4141"));
-        specifyreason.setForeground(Color.white);
-        specifyreason.setOpaque(true);
-        add(specifyreason);
+
 
 
 
@@ -222,32 +214,25 @@ public class DeleteUserAccount extends JFrame implements ActionListener {
 
     // this method inserts lower buttons for back, cancel and submit
     public void insertLowerButtons(){
-        backbtn= new JButton();
-        backbtn.setBounds(210,570,187,55);
-        backbtn.setOpaque(true);
-        backbtn.setBorderPainted(false);
-        backbtn.setBackground(Color.decode("#9F9391"));
-        backbtn.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/backButton187x55.png"))));
-        backbtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        add(backbtn);
+        nobtn= new JButton();
+        nobtn.setBounds(210,570,165,55);
+        nobtn.setOpaque(true);
+        nobtn.setBorderPainted(false);
+        nobtn.setBackground(Color.decode("#9F9391"));
+        nobtn.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/nobtn (1).png"))));
+        nobtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        add(nobtn);
 
-        submitbtn= new JButton();
-        submitbtn.setBounds(550,570,205,55);
-        submitbtn.setBackground(Color.decode("#9F9391"));
-        submitbtn.setOpaque(true);
-        submitbtn.setBorderPainted(false);
-        submitbtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        submitbtn.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/submitButton203x55.png"))));
-        add(submitbtn);
+        yestbtn= new JButton();
+        yestbtn.setBounds(750,570,165,55);
+        yestbtn.setBackground(Color.decode("#9F9391"));
+        yestbtn.setOpaque(true);
+        yestbtn.setBorderPainted(false);
+        yestbtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        yestbtn.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/yesbtn (1).png"))));
+        add(yestbtn);
 
-        cancelbtn= new JButton();
-        cancelbtn.setBounds(900,570,205,55);
-        cancelbtn.setBackground(Color.decode("#9F9391"));
-        cancelbtn.setOpaque(true);
-        cancelbtn.setBorderPainted(false);
-        cancelbtn.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/cancelButton203x55.png"))));
-        cancelbtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        add(cancelbtn);
+
     }
 }
 
