@@ -1,9 +1,11 @@
-package view.Rent;
+package view;
+
 
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Objects;
 
 public class Rent1 extends JFrame  implements ActionListener {
     ImageIcon s[];
@@ -28,10 +30,10 @@ public class Rent1 extends JFrame  implements ActionListener {
         b2.addActionListener(this);
         s = new ImageIcon[4];
 
-        s[0] = new ImageIcon("rentImage/1.png");
-        s[1] = new ImageIcon("rentImage/2.png");
-        s[2] = new ImageIcon("rentImage/3.png");
-        s[3] = new ImageIcon("rentImage/4.png");
+        s[0] = new ImageIcon(Objects.requireNonNull(getClass().getResource("rentImage/1.png")));
+        s[1] = new ImageIcon(Objects.requireNonNull(getClass().getResource("rentImage/2.png")));
+        s[2] = new ImageIcon(Objects.requireNonNull(getClass().getResource("rentImage/3.png")));
+        s[3] = new ImageIcon(Objects.requireNonNull(getClass().getResource("rentImage/4.png")));
 
 
 
