@@ -1,60 +1,77 @@
 package view.Rent;
 
-import view.Home;
-import view.New_updateprofile;
-
-import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class Rent1 extends JFrame  {
+public class Rent1 extends JFrame  implements ActionListener {
+    ImageIcon s[];
+    JLabel l;
+    JButton b1,b2;
+    int i,l1;
+    JPanel p;
+    public Rent1()
+    {
+        setLayout(new BorderLayout( ));
+        setSize(700, 600);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
+        JPanel p=new JPanel(new FlowLayout());
+        b1=new JButton("<<");
 
-    JButton backBtn;
+        b2=new JButton(">>");
+        p.add(b1);
+        p.add(b2);
+        add(p,BorderLayout.SOUTH);
+        b1.addActionListener(this);
+        b2.addActionListener(this);
+        s = new ImageIcon[4];
+
+        s[0] = new ImageIcon("rentImage/1.png");
+        s[1] = new ImageIcon("rentImage/2.png");
+        s[2] = new ImageIcon("rentImage/3.png");
+        s[3] = new ImageIcon("rentImage/4.png");
 
 
 
-    public Rent1() {
+        l = new JLabel("",JLabel.CENTER);
+        add(l,BorderLayout.CENTER);
+        l.setIcon(s[0]);
 
-        setTitle("View details");
-        setBounds(100, 80, 1280, 745);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setBackground(Color.darkGray);
-        setLayout(null);
-        setResizable(false);
+    }
 
 
-        backBtn = new JButton("Back");
-        backBtn.setBounds(130,100,100,30);
-        add(backBtn);
 
-        backBtn.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                dispose();
-                new Home().setVisible(true);
+    public  void actionPerformed(ActionEvent e)
+    {
+        if(e.getSource()==b1)
+        {
+            if(i==0)
+            {
+                JOptionPane.showMessageDialog(null,"This is First Image");
             }
-        });
-
-
-
-
-
-
-
-
-
+            else
+            {
+                i=i-1;
+                l.setIcon(s[i]);
+            }
+        }
+        if(e.getSource()==b2)
+        {
+            if(i==s.length-1)
+            {
+                JOptionPane.showMessageDialog(null,"This is LastImage");
+            }
+            else
+            {
+                i=i+1;
+                l.setIcon(s[i]);
+            }
+        }
     }
-
-    public static void main(String[] args) {
-        new Rent1().setVisible(true);
+    public static void main(String args[])
+    {
+        Rent1 obj = new Rent1();
     }
-    //  event handling
-
 }
-
-
-
-
-
-
