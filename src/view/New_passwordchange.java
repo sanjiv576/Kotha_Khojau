@@ -197,11 +197,13 @@ public class New_passwordchange extends JFrame implements ActionListener {
         logoutIcon.addActionListener(this);
         submitbtn.addActionListener(this);
         cancelbtn.addActionListener(this);
+        driverIcon.addActionListener(this);
 
         showPassword1.addActionListener(this);
         showPassword2.addActionListener(this);
         showPassword3.addActionListener(this);
         update_profile.addActionListener(this);
+
         add(panel1);
         add(panel2);
 
@@ -259,7 +261,9 @@ public class New_passwordchange extends JFrame implements ActionListener {
             int choice = JOptionPane.showConfirmDialog(null, "Do you want to log out ?",
                     "Log out", JOptionPane.YES_NO_CANCEL_OPTION);
             if (choice == JOptionPane.YES_OPTION) {
-                System.exit(0);
+//                System.exit(0);
+                dispose();
+                new Signin().setVisible(true);
             }
         }
 
@@ -281,6 +285,8 @@ public class New_passwordchange extends JFrame implements ActionListener {
                 JOptionPane.showMessageDialog(null, "Password has been changed successfully.",
                         "Password Change ", JOptionPane.INFORMATION_MESSAGE);
                 clearAll();
+                dispose();
+                new Signin().setVisible(true);
             }
             else {
                 JOptionPane.showMessageDialog(null, "Failed to change password. New password and Confirm password do not match.",
@@ -295,6 +301,21 @@ public class New_passwordchange extends JFrame implements ActionListener {
         if (e.getSource().equals(update_profile)){
             dispose();
             new New_updateprofile().setVisible(true);
+        }
+
+        if (e.getSource().equals(driverIcon)){
+            dispose();
+            new DriverDetails().setVisible(true);
+        }
+
+        if (e.getSource().equals(profileIcon)){
+            dispose();
+            new Renter_userprofile().setVisible(true);
+        }
+        if (e.getSource().equals(homeIcon)){
+            dispose();
+            // remaining
+           // new New_updateprofile().setVisible(true);
         }
     }
 

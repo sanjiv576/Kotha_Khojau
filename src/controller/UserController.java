@@ -1,9 +1,11 @@
 package controller;
 
 import database.DbConnection;
+import logic.SaveData;
 import model.Driver_Details;
 import model.User;
 
+import javax.swing.*;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -46,10 +48,53 @@ public class UserController {
     public void passwordChange(String oldPassword, String newPassword){
 
         String query = "update User_tbl set Password='"+newPassword+"' where Password='"+oldPassword+"'";
-        db = new DbConnection();
         db.updateDetails(query);
     }
 
+    // for updating first name
+    public void updateData(String newData, int i){
+        // fetching old data
+
+        String query;
+        String[] oldData = personalData(SaveData.myUsername, SaveData.myPassword);
+
+        try {
+            if (i == 0) {
+                query = "update User_tbl set FirstName='" + newData + "' where FirstName='" + oldData[i] + "'";
+                db.updateDetails(query);
+            }
+            else if (i == 1) {
+                query = "update User_tbl set MiddleName='" + newData + "' where MiddleName='" + oldData[i] + "'";
+                db.updateDetails(query);
+            }
+            else if (i == 2) {
+                query = "update User_tbl set LastName='" + newData + "' where LastName='" + oldData[i] + "'";
+                db.updateDetails(query);
+            }
+
+            else if (i == 3) {
+                query = "update User_tbl set Contact='" + newData + "' where Contact='" + oldData[i] + "'";
+                db.updateDetails(query);
+            }
+
+            else if (i == 4) {
+                query = "update User_tbl set Address='" + newData + "' where Address='" + oldData[i] + "'";
+                db.updateDetails(query);
+            }
+
+            else if (i == 5) {
+                query = "update User_tbl set PersonalEmail='" + newData + "' where PersonalEmail='" + oldData[i] + "'";
+                db.updateDetails(query);
+            }
+        }
+        catch (Exception exception){
+            JOptionPane.showMessageDialog(null, "Message : " + exception.getMessage(), "Something Went Wrong", JOptionPane.WARNING_MESSAGE);
+        }
+
+    }
+
+
+    // for fetching entire details of a particular user, used by admin only
     public List<User> getAllUser(){
         String query;
         query = "select * from User_tbl";
@@ -88,40 +133,6 @@ public class UserController {
 
         return userList;
     }
-    public List<User> UserUpdated(){
-        String query;
-        query = "select * from User_tbl";
-        db = new DbConnection();
-        ResultSet resultSet = db.retrieveData(query);
-        List<User> userList = new ArrayList<User>();
-
-        // now, filling resultSet by each row
-        try{
-
-            while (resultSet.next()){
-                User user = new User();
-
-                user.setUserID(resultSet.getInt("UserID"));
-                user.setFirstName(resultSet.getString("FirstName"));
-                user.setMiddleName(resultSet.getString("MiddleName"));
-                user.setLastName(resultSet.getString("LastName"));
-                user.setMemberType(resultSet.getString("MemberType"));
-                user.setGender(resultSet.getString("Gender"));
-                user.setContact(resultSet.getString("Contact"));
-                user.setDOB(resultSet.getString("DOB"));
-                user.setOccupation(resultSet.getString("Occupation"));
-                user.setPersonalEmail(resultSet.getString("PersonalEmail"));
-
-                userList.add(user);
-
-            }
-        }
-        catch (Exception exp){
-            exp.printStackTrace();
-
-        }
-        return userList;
-    }
 
     public List<Driver_Details> getDriverDetails(){
         String query;
@@ -158,6 +169,7 @@ public class UserController {
     }
 
 
+    // for fetching entire details of a particular user to show in Profile
     public String[] profileDetails(String username, String password){
         String query;
 
@@ -200,8 +212,49 @@ public class UserController {
             exp.printStackTrace();
 
         }
-        // placing all user's data in String
+        // placing all user's data in String array
         String[] userInformation = {userId, userFirstName +" "+ userMiddleName + " "+ userLastName, userMemberType, userGender, userContact, userDOB, userOccupation, userEmail};
+
+        return userInformation;
+    }
+
+    // this method for fetching particular data from particular user
+    public String[] personalData(String username, String password){
+        String query;
+
+        String userFirstName = null;
+        String userMiddleName = null;
+        String userLastName = null;
+        String userContact = null;
+        String userEmail = null;
+        String userAddress = null;
+
+        query = "select * from User_tbl where Username='"+username+"' and Password='"+password+"'";
+        db = new DbConnection();
+        ResultSet resultSet = db.retrieveData(query);
+
+
+        // now, filling resultSet by each row
+        try{
+
+            while (resultSet.next()){
+
+                userFirstName = resultSet.getString("FirstName");
+                userMiddleName = resultSet.getString("MiddleName");
+                userLastName = resultSet.getString("LastName");
+                userContact = resultSet.getString("Contact");
+                userAddress = resultSet.getString("Address");
+                userEmail = resultSet.getString("PersonalEmail");
+
+            }
+
+        }
+        catch (Exception exp){
+            exp.printStackTrace();
+
+        }
+        // placing all user's data in String array
+        String[] userInformation = {userFirstName, userMiddleName, userLastName, userContact, userAddress, userEmail};
 
         return userInformation;
     }
