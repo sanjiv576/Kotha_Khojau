@@ -42,6 +42,7 @@ public class DbConnection {
                     "Address varchar(50) not null, " +
                     "Username varchar(40) not null, " +
                     "Password varchar(40) not null," +
+                    "AboutMe varchar(200) ," +
                     "constraint userId_pk primary key(UserID), " +
                     "constraint contact_uk unique(Contact), " +
                     "constraint email_uk unique(PersonalEmail), " +
@@ -61,6 +62,7 @@ public class DbConnection {
 
 
            // PreparedStatement pst = connection.prepareStatement(tableCreate);
+
             String[] tables = {tableCreate, driverTable};
             for (String element : tables) {
                 statement.execute(element);
