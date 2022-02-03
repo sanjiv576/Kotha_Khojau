@@ -20,6 +20,8 @@ public class DeleteUserAccount extends JFrame implements ActionListener {
     JPanel  panel1, panel2, panel3;
     JButton update_profile, password_change, delete_account;
 
+    JLabel areyousureLbl;
+
 
     JButton nobtn, yestbtn;
 
@@ -111,6 +113,16 @@ public class DeleteUserAccount extends JFrame implements ActionListener {
         delete_account.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/greenAccount delete_309x76.png"))));
         add(delete_account);
 
+        //label for delete account
+        areyousureLbl= new JLabel("Are you sure you want to delete your account?", SwingConstants.CENTER);
+        areyousureLbl.setForeground(Color.BLACK);
+        areyousureLbl.setFont(new Font("Ropa Sans", NORMAL,32));
+        areyousureLbl.setBounds(250,325,800,50);
+        areyousureLbl.setBackground(Color.decode("#5F4130"));
+        areyousureLbl.setForeground(Color.white);
+        areyousureLbl.setOpaque(true);
+        add(areyousureLbl);
+
 
 
 
@@ -129,6 +141,9 @@ public class DeleteUserAccount extends JFrame implements ActionListener {
         update_profile.addActionListener(this);
         add(panel1);
         add(panel2);
+
+
+        //
 
 
 
@@ -151,6 +166,11 @@ public class DeleteUserAccount extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+
+
+
+
+
 
 
 
@@ -215,7 +235,8 @@ public class DeleteUserAccount extends JFrame implements ActionListener {
     // this method inserts lower buttons for back, cancel and submit
     public void insertLowerButtons(){
         nobtn= new JButton();
-        nobtn.setBounds(210,570,165,55);
+        nobtn.setBounds(450,450,165,55);
+        nobtn.addActionListener(this);
         nobtn.setOpaque(true);
         nobtn.setBorderPainted(false);
         nobtn.setBackground(Color.decode("#9F9391"));
@@ -224,7 +245,7 @@ public class DeleteUserAccount extends JFrame implements ActionListener {
         add(nobtn);
 
         yestbtn= new JButton();
-        yestbtn.setBounds(750,570,165,55);
+        yestbtn.setBounds(750,450,165,55);
         yestbtn.setBackground(Color.decode("#9F9391"));
         yestbtn.setOpaque(true);
         yestbtn.setBorderPainted(false);
