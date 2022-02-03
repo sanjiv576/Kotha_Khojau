@@ -30,6 +30,7 @@ public class Registration extends JFrame implements ActionListener{
 
     JButton Btn;
     JComboBox genderCombo, occupationCombo, memberCombo;
+    JRadioButton Male, Female, Others;
 
     JSpinner yearSpinner, monthSpinner ,daySpinner;
 
@@ -85,13 +86,36 @@ public class Registration extends JFrame implements ActionListener{
         memberCombo.setFont(new Font("times", Font.BOLD,15));
         add(memberCombo);
 
-        String[] Gender = {"Select", "Male", "Female", "Others"};
-        genderCombo = new JComboBox(Gender);
-        genderCombo.setBounds(690,145,120,25);
-        genderCombo.setBackground(Color.decode("#C0C0C0"));
-        genderCombo.setFont(new Font("times", Font.BOLD,15));
-        //genderCombo.setSelectedItem("Others");
-        add(genderCombo);
+
+        Male = new JRadioButton("Male");
+        Male.setBounds(690,145,120,20);
+        Male.setBackground(Color.decode("#C0C0C0"));
+        Male.setFont(new Font("times", Font.BOLD,15));
+        add(Male);
+
+        Female = new JRadioButton("Female");
+        Female.setBounds(690,165,120,25);
+        Female.setBackground(Color.decode("#C0C0C0"));
+        Female.setFont(new Font("times", Font.BOLD,15));
+        add(Female);
+
+        Others = new JRadioButton("Others");
+        Others.setBounds(690,185,120,20);
+        Others.setBackground(Color.decode("#C0C0C0"));
+        Others.setFont(new Font("times", Font.BOLD,15));
+        add(Others);
+
+
+
+//        String[] Gender = {"Select", "Male", "Female", "Others"};
+//        genderCombo = new JComboBox(Gender);
+//        genderCombo.setBounds(690,145,120,25);
+//        genderCombo.setBackground(Color.decode("#C0C0C0"));
+//        genderCombo.setFont(new Font("times", Font.BOLD,15));
+//        //genderCombo.setSelectedItem("Others");
+//        add(genderCombo);
+
+
 
         contact = new JTextField();
         contact.setBounds(50,235,120,25);
