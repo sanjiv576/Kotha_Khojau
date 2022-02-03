@@ -11,6 +11,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.sql.SQLException;
 import java.util.GregorianCalendar;
 import java.util.Objects;
 
@@ -47,9 +48,12 @@ public class Renter_userprofile extends JFrame implements ActionListener {
     static JPanel pnlCalendar;
     static int realYear, realMonth, realDay, currentYear, currentMonth;
 
+    UserController userController = new UserController();
+    String aboutMeData = "";
+
     public Renter_userprofile() {
 
-
+        aboutMeData = userController.retrieveAboutMe(SaveData.myUsername, SaveData.myPassword);
         setTitle("Renter Profile");
         setBounds(100, 80, 1280, 740);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -108,7 +112,7 @@ public class Renter_userprofile extends JFrame implements ActionListener {
         aboutme.setForeground(Color.BLACK);
         add(aboutme);
 
-        aboutMeField = new JTextArea();
+        aboutMeField = new JTextArea(aboutMeData);
         aboutMeField.setBounds(207, 445, 393, 124);
         aboutMeField.setLineWrap(true);
         aboutMeField.setWrapStyleWord(true);
@@ -188,7 +192,7 @@ public class Renter_userprofile extends JFrame implements ActionListener {
         emailLbl.setForeground(Color.WHITE);
         add(emailLbl);
 
-        UserController userController = new UserController();
+
         String[] userList = userController.profileDetails(SaveData.myUsername, SaveData.myPassword);
 
         String myName = userList[1];
@@ -477,6 +481,7 @@ public class Renter_userprofile extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
+        String About_Me = aboutMeField.getText();
 
         if (e.getSource().equals(logoutIcon)) {
             int choice = JOptionPane.showConfirmDialog(null, "Do you want to log out ?",
@@ -493,8 +498,13 @@ public class Renter_userprofile extends JFrame implements ActionListener {
         if (e.getSource().equals(saveBtn)) {
             JOptionPane.showMessageDialog(null, "Saved",
                     "Save Confirmation", JOptionPane.INFORMATION_MESSAGE);
+            try {
+                userController.insertAboutMe(About_Me);
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
 
-
+            System.out.println(About_Me);
             aboutMeField.setEditable(false);
             saveBtn.setVisible(false);
             updateBtn.setVisible(true);
@@ -572,7 +582,7 @@ public class Renter_userprofile extends JFrame implements ActionListener {
         image.setBounds(180, 150, 130, 130);
 
         choosePhoto = new JButton("Upload photo");
-        choosePhoto.setBounds(180, 250, 130, 40);
+        choosePhoto.setBounds(180, 300, 130, 40);
         choosePhoto.setIcon(new ImageIcon((Objects.requireNonNull(getClass().getResource("Images/uploadphoto135x35.png")))));
         choosePhoto.setBackground(Color.decode("#9F9391"));
         choosePhoto.setOpaque(true);
@@ -580,7 +590,7 @@ public class Renter_userprofile extends JFrame implements ActionListener {
         choosePhoto.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
         label = new JLabel();
-        label.setBounds(160, 130, 120, 140);
+        label.setBounds(190, 150, 120, 140);
 
         add(choosePhoto);
         add(label);
@@ -597,6 +607,7 @@ public class Renter_userprofile extends JFrame implements ActionListener {
                 if (result == JFileChooser.APPROVE_OPTION) {
                     File selectedFile = file.getSelectedFile();
                     String path = selectedFile.getAbsolutePath();
+                    image.setVisible(false);
                     label.setIcon(ResizeImage(path));
                 } else if (result == JFileChooser.CANCEL_OPTION) {
                     System.out.println("No file is Selected");

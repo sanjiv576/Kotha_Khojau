@@ -21,9 +21,10 @@ public class UserController {
     public int registerUser(User user) throws SQLException {
 
         String query;
+        String aboutMe = "Empty";
 
         // user.getFirstName() calls getter method that in User class
-        query = "insert into User_tbl(FirstName, MiddleName, LastName, MemberType, Gender, Contact, DOB, Occupation, PersonalEmail, Address," + "Username, Password) values('" +
+        query = "insert into User_tbl(FirstName, MiddleName, LastName, MemberType, Gender, Contact, DOB, Occupation, PersonalEmail, Address," + "Username, Password, AboutMe) values('" +
                 user.getFirstName() + "','" +
                 user.getMiddleName() + "','" +
                 user.getLastName() + "','" +
@@ -35,7 +36,7 @@ public class UserController {
                 user.getPersonalEmail() + "','" +
                 user.getAddress() + "','" +
                 user.getUsername() + "','" +
-                user.getPassword() + "');";
+                user.getPassword() + "','" + aboutMe + "');";
 
        // PreparedStatement pst = connection.prepareStatement(DO)
         db = new DbConnection();
@@ -44,14 +45,26 @@ public class UserController {
 
     }
 
+    // for inserting data in about me
+    public void insertAboutMe(String about_Me) throws SQLException {
+
+        String oldAboutMe = retrieveAboutMe(SaveData.myUsername, SaveData.myPassword);
+
+        String query = "update User_tbl set AboutMe='"+about_Me+"' where AboutMe='"+oldAboutMe+"'";
+        db.updateDetails(query);
+    }
+
     // for changing password
     public void passwordChange(String oldPassword, String newPassword){
 
+        DbConnection db = new DbConnection();
         String query = "update User_tbl set Password='"+newPassword+"' where Password='"+oldPassword+"'";
         db.updateDetails(query);
     }
 
-    // for updating first name
+
+
+    // for updating first, middle , last names, email, address, contact
     public void updateData(String newData, int i){
         // fetching old data
 
@@ -257,6 +270,28 @@ public class UserController {
         String[] userInformation = {userFirstName, userMiddleName, userLastName, userContact, userAddress, userEmail};
 
         return userInformation;
+    }
+
+    public String retrieveAboutMe(String username, String password){
+
+        String userAboutMe = null;
+        String query = "select AboutMe from User_tbl where Username='"+username+"' and Password='"+password+"'";
+        db = new DbConnection();
+        ResultSet resultSet = db.retrieveData(query);
+
+        try {
+
+            while (resultSet.next()){
+
+                userAboutMe = resultSet.getString("AboutMe");
+            }
+        }
+        catch (Exception exception){
+            System.out.println(exception.getMessage());
+            exception.printStackTrace();
+        }
+
+        return userAboutMe;
     }
 
 }

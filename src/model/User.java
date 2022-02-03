@@ -16,6 +16,8 @@ public class User {
     private String Address;
     private String Username;
     private String Password;
+    private String AboutMe;
+    private int ProfileID;
 
     public User(String FirstName, String MiddleName, String LastName, String MemberType, String Gender, String Contact,
                 String DOB, String Occupation, String PersonalEmail, String Address,
@@ -33,6 +35,15 @@ public class User {
         this.Address = Address;
         this.Username = Username;
         this.Password = Password;
+    }
+
+    public User(String AboutMe){
+        this.AboutMe = AboutMe;
+    }
+
+    public User(int ProfileID, String AboutMe){
+        this.ProfileID = ProfileID;
+        this.AboutMe = AboutMe;
     }
 
     // method overloading
@@ -165,6 +176,14 @@ public class User {
 
     public void setPassword(String Password){
         this.Password = Password;
+    }
+
+    public String getAboutMe(){
+        return AboutMe;
+    }
+
+    public void setAboutMe(String AboutMe){
+        this.AboutMe = AboutMe;
     }
 
 }
