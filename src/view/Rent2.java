@@ -8,7 +8,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Objects;
 
-public class Rent6 extends JFrame implements ActionListener {
+public class Rent2 extends JFrame implements ActionListener {
     JPanel panel, panel1,panel2;
 
     JLabel propertytype,city, bedroom, offertype, Bathroom, ZipCode;
@@ -22,9 +22,9 @@ public class Rent6 extends JFrame implements ActionListener {
     JButton b1,b2;
     int i,l1;
 
-    public Rent6() {
+    public Rent2() {
 
-        setTitle("Home - Rent5");
+        setTitle("Home - Rent3");
         //setLayout(new BorderLayout());
         setBounds(100, 80, 750, 700);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -34,15 +34,12 @@ public class Rent6 extends JFrame implements ActionListener {
         setResizable(false);
 
 
-
-
-
         s = new ImageIcon[4];
 
-        s[0] = new ImageIcon(Objects.requireNonNull(getClass().getResource("rentImage/1.png")));
-        s[1] = new ImageIcon(Objects.requireNonNull(getClass().getResource("rentImage/2.png")));
-        s[2] = new ImageIcon(Objects.requireNonNull(getClass().getResource("rentImage/3.png")));
-        s[3] = new ImageIcon(Objects.requireNonNull(getClass().getResource("rentImage/4.png")));
+        s[0] = new ImageIcon(Objects.requireNonNull(getClass().getResource("rentImage/13.png")));
+        s[1] = new ImageIcon(Objects.requireNonNull(getClass().getResource("rentImage/14.png")));
+        s[2] = new ImageIcon(Objects.requireNonNull(getClass().getResource("rentImage/15.png")));
+        s[3] = new ImageIcon(Objects.requireNonNull(getClass().getResource("rentImage/16.png")));
 
 
         l = new JLabel("");
@@ -80,7 +77,7 @@ public class Rent6 extends JFrame implements ActionListener {
 
 
 
-        propertytype = new JLabel("Property Type: Flat");
+        propertytype = new JLabel("Property Type: Room");
         propertytype.setForeground(Color.BLACK);
         propertytype.setFont(new Font("times", Font.PLAIN,20));
         propertytype.setBounds(30,80,200,30);
@@ -99,19 +96,19 @@ public class Rent6 extends JFrame implements ActionListener {
         lowerPanel.add(Bathroom);
 
 
-        bedroom = new JLabel("Bedroom: 4");
+        bedroom = new JLabel("Bedroom: 2");
         bedroom.setForeground(Color.BLACK);
         bedroom.setFont(new Font("times", Font.PLAIN,20));
         bedroom.setBounds(400,80,120,30);
         lowerPanel.add(bedroom);
 
-        offertype = new JLabel("Kitchen : 1");
+        offertype = new JLabel("Offer Type: For Rent");
         offertype.setForeground(Color.BLACK);
         offertype.setFont(new Font("times", Font.PLAIN,20));
         offertype.setBounds(400,120,200,30);
         lowerPanel.add(offertype);
 
-        ZipCode = new JLabel("ZipCode: 91089");
+        ZipCode = new JLabel("ZipCode: 98234");
         ZipCode.setForeground(Color.BLACK);
         ZipCode.setFont(new Font("times", Font.PLAIN,20));
         ZipCode.setBounds(400,150,200,30);
@@ -120,32 +117,32 @@ public class Rent6 extends JFrame implements ActionListener {
 
 
 
-        detail1 = new JLabel("There is 1 Flat available near United-College, Lalitpur Nepal");
+        detail1 = new JLabel("There is a room available for rent in Satdobato, lalitpur near Anfa.");
         detail1.setForeground(Color.BLACK);
         detail1.setFont(new Font("times", Font.PLAIN,20));
         detail1.setBounds(30,190,700,30);
         lowerPanel.add(detail1);
 
-        price = new JLabel("Price : Rs.20000 ");
+        price = new JLabel("Price : Rs 14,5000 ");
         price.setForeground(Color.BLACK);
         price.setFont(new Font("times", Font.PLAIN,20));
-        price.setBounds(30,220,500,30);
+        price.setBounds(30,220,200,30);
         lowerPanel.add(price);
 
-        detail3 = new JLabel("Water and parking facilities are priority . ");
+        detail3 = new JLabel("2 bedrooms including Kitchen bathroom is available ");
         detail3.setForeground(Color.BLACK);
         detail3.setFont(new Font("times", Font.PLAIN,20));
-        detail3.setBounds(30,250,700,30);
+        detail3.setBounds(30,250,500,30);
         lowerPanel.add(detail3);
 
 
-        houseowner_name = new JLabel("House Owner : Sachin Thapa ");
+        houseowner_name = new JLabel("House Owner : Deepak Adhikari ");
         houseowner_name.setForeground(Color.BLACK);
         houseowner_name.setFont(new Font("times", Font.PLAIN,20));
         houseowner_name.setBounds(30,280,350,30);
         lowerPanel.add(houseowner_name);
 
-        contact = new JLabel("Contact Number:  9848064439");
+        contact = new JLabel("Contact Number: 9800562061");
         contact.setForeground(Color.BLACK);
         contact.setFont(new Font("times", Font.PLAIN,20));
         contact.setBounds(30,310,350,30);
@@ -159,7 +156,7 @@ public class Rent6 extends JFrame implements ActionListener {
             @Override
             public void mouseClicked(MouseEvent e) {
                 dispose();
-                new Home2().setVisible(true);
+                new Home().setVisible(true);
             }
         });
 
@@ -202,6 +199,6 @@ public class Rent6 extends JFrame implements ActionListener {
     }
 
     public static void main(String[] args) {
-        new Rent6().setVisible(true);
+        new Rent2().setVisible(true);
     }
 }

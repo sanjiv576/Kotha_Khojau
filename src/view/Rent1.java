@@ -11,7 +11,7 @@ import java.util.Objects;
 public class Rent1 extends JFrame implements ActionListener {
     JPanel panel, panel1,panel2;
 
-    JLabel propertytype,city, bedroom, offertype, Bathroom;
+    JLabel propertytype,city, bedroom, offertype, Bathroom, ZipCode;
     JLabel detail, detail1, price, detail3, houseowner_name, contact;
 
     //Button for Back
@@ -111,6 +111,13 @@ public class Rent1 extends JFrame implements ActionListener {
         offertype.setBounds(400,120,200,30);
         lowerPanel.add(offertype);
 
+        ZipCode = new JLabel("ZipCode: 12935");
+        ZipCode.setForeground(Color.BLACK);
+        ZipCode.setFont(new Font("times", Font.PLAIN,20));
+        ZipCode.setBounds(400,150,200,30);
+        lowerPanel.add(ZipCode);
+
+
 
 
         detail1 = new JLabel("There is a Single room available at Pepsicola Kathmandu.");
@@ -141,7 +148,7 @@ public class Rent1 extends JFrame implements ActionListener {
         contact = new JLabel("Contact Number: 9823582919");
         contact.setForeground(Color.BLACK);
         contact.setFont(new Font("times", Font.PLAIN,20));
-        contact.setBounds(30,310,250,30);
+        contact.setBounds(30,310,350,30);
         lowerPanel.add(contact);
 
         //back button
