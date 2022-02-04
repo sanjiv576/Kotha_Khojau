@@ -11,7 +11,7 @@ import java.util.Objects;
 public class Rent3 extends JFrame implements ActionListener {
     JPanel panel, panel1,panel2;
 
-    JLabel propertytype,city, bedroom, offertype, Bathroom;
+    JLabel propertytype,city, bedroom, offertype, Bathroom, ZipCode;
     JLabel detail, detail1, price, detail3, houseowner_name, contact;
 
     //Button for Back
@@ -33,23 +33,16 @@ public class Rent3 extends JFrame implements ActionListener {
         setVisible(true);
         setResizable(false);
 
-        // JPanel p = new JPanel(new FlowLayout());
-        //       JPanel p = new JPanel();
-        //p.setBounds(30, 0, 700, 600);
-        //p.setLayout(new GridLayout(1,1, 0, 10));
-        //      p.setBounds(400, 20,400, 100);
-        //      p.setBackground(Color.CYAN);
-
 
 
 
 
         s = new ImageIcon[4];
 
-        s[0] = new ImageIcon(Objects.requireNonNull(getClass().getResource("rentImage/13.png")));
-        s[1] = new ImageIcon(Objects.requireNonNull(getClass().getResource("rentImage/14.png")));
-        s[2] = new ImageIcon(Objects.requireNonNull(getClass().getResource("rentImage/15.png")));
-        s[3] = new ImageIcon(Objects.requireNonNull(getClass().getResource("rentImage/16.png")));
+        s[0] = new ImageIcon(Objects.requireNonNull(getClass().getResource("rentImage/17.png")));
+        s[1] = new ImageIcon(Objects.requireNonNull(getClass().getResource("rentImage/18.png")));
+        s[2] = new ImageIcon(Objects.requireNonNull(getClass().getResource("rentImage/19.png")));
+        s[3] = new ImageIcon(Objects.requireNonNull(getClass().getResource("rentImage/20.png")));
 
 
         l = new JLabel("");
@@ -106,7 +99,7 @@ public class Rent3 extends JFrame implements ActionListener {
         lowerPanel.add(Bathroom);
 
 
-        bedroom = new JLabel("Bedroom: 2");
+        bedroom = new JLabel("Bedroom: 1");
         bedroom.setForeground(Color.BLACK);
         bedroom.setFont(new Font("times", Font.PLAIN,20));
         bedroom.setBounds(400,80,120,30);
@@ -118,37 +111,44 @@ public class Rent3 extends JFrame implements ActionListener {
         offertype.setBounds(400,120,200,30);
         lowerPanel.add(offertype);
 
+        ZipCode = new JLabel("ZipCode: 85397");
+        ZipCode.setForeground(Color.BLACK);
+        ZipCode.setFont(new Font("times", Font.PLAIN,20));
+        ZipCode.setBounds(400,150,200,30);
+        lowerPanel.add(ZipCode);
 
 
-        detail1 = new JLabel("There is a room available for rent in Satdobato, lalitpur near Anfa.");
+
+
+        detail1 = new JLabel("There is 1 room available at koteshwor.");
         detail1.setForeground(Color.BLACK);
         detail1.setFont(new Font("times", Font.PLAIN,20));
         detail1.setBounds(30,190,700,30);
         lowerPanel.add(detail1);
 
-        price = new JLabel("Price : Rs 14,5000 ");
+        price = new JLabel("Price : Rs 5000 ");
         price.setForeground(Color.BLACK);
         price.setFont(new Font("times", Font.PLAIN,20));
         price.setBounds(30,220,200,30);
         lowerPanel.add(price);
 
-        detail3 = new JLabel("2 bedrooms including Kitchen bathroom is available ");
+        detail3 = new JLabel("Parking and water available. ");
         detail3.setForeground(Color.BLACK);
         detail3.setFont(new Font("times", Font.PLAIN,20));
         detail3.setBounds(30,250,500,30);
         lowerPanel.add(detail3);
 
 
-        houseowner_name = new JLabel("House Owner : Deepak Adhikari ");
+        houseowner_name = new JLabel("House Owner : Binaya Karki ");
         houseowner_name.setForeground(Color.BLACK);
         houseowner_name.setFont(new Font("times", Font.PLAIN,20));
         houseowner_name.setBounds(30,280,350,30);
         lowerPanel.add(houseowner_name);
 
-        contact = new JLabel("Contact Number: 9800562061");
+        contact = new JLabel("Contact Number: 9800459329");
         contact.setForeground(Color.BLACK);
         contact.setFont(new Font("times", Font.PLAIN,20));
-        contact.setBounds(30,310,250,30);
+        contact.setBounds(30,310,350,30);
         lowerPanel.add(contact);
 
         //back button
