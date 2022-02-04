@@ -87,25 +87,25 @@ public class Home extends JFrame implements ActionListener {
 
 
         rentLbl1 = new JLabel();
-        rentLbl1.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/rent333.png"))));
+        rentLbl1.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/rent2.png"))));
         getContentPane().add(rentLbl1);
         rentLbl1.setBounds(230, 150, 300, 240);
         add(rentLbl1);
 
         rentLbl2 = new JLabel();
-        rentLbl2.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/rent111.png"))));
+        rentLbl2.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/rent1.png"))));
         getContentPane().add(rentLbl2);
         rentLbl2.setBounds(630, 150, 300, 240);
         add(rentLbl2);
 
         rentLbl4 = new JLabel();
-        rentLbl4.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/rent444.png"))));
+        rentLbl4.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/rent3.png"))));
         getContentPane().add(rentLbl4);
         rentLbl4.setBounds(230, 410, 300, 240);
         add(rentLbl4);
 
         rentLbl5 = new JLabel();
-        rentLbl5.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/rent555.png"))));
+        rentLbl5.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/rent4.png"))));
         getContentPane().add(rentLbl5);
         rentLbl5.setBounds(630, 410, 300, 240);
         add(rentLbl5);
@@ -125,7 +125,12 @@ public class Home extends JFrame implements ActionListener {
         nextpage.addActionListener(this);
         view1.addActionListener(this);
         view2.addActionListener(this);
-//        view3.addActionListener(this);
+        view3.addActionListener(this);
+        view4.addActionListener(this);
+
+
+
+
     }
 
     public static void main(String[] args) {
@@ -164,8 +169,17 @@ public class Home extends JFrame implements ActionListener {
         }
         if (e.getSource().equals(view2)){
             dispose();
+            new Rent2().setVisible(true);
+        }
+        if (e.getSource().equals(view3)){
+            dispose();
             new Rent3().setVisible(true);
         }
+        if (e.getSource().equals(view4)){
+            dispose();
+            new Rent4().setVisible(true);
+        }
+
 
 
         if (e.getSource().equals(nextpage)){
