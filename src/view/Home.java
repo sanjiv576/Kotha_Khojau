@@ -15,6 +15,10 @@ public class Home extends JFrame implements ActionListener {
 
     JPanel panel1, panel2, panel3, panel4, panel5;
 
+    JLabel img1, img2;
+
+    JLabel rentLbl1, rentLbl2, rentLbl3, rentLbl4, rentLbl5, rentLbl6;
+
     public Home() {
 
         setTitle("Home Page");
@@ -28,10 +32,9 @@ public class Home extends JFrame implements ActionListener {
         // invoking user-defined method to insert and manage icons for dashboard
         insertButtonIcons();
 
-        // your code will be here
 
         nextpage = new JButton();
-        nextpage.setBounds(1080, 360, 64, 64);
+        nextpage.setBounds(1040, 360, 64, 64);
         nextpage.setIcon(new ImageIcon((Objects.requireNonNull(getClass().getResource("Images/next 1.png")))));
         nextpage.setBackground(Color.decode("#C6C6C6"));
         nextpage.setOpaque(true);
@@ -42,9 +45,9 @@ public class Home extends JFrame implements ActionListener {
 
 
         view1 = new JButton();
-        view1.setBounds(351, 345, 155, 35);
-        view1.setIcon(new ImageIcon((Objects.requireNonNull(getClass().getResource("Images/viewdetail.png")))));
-        view1.setBackground(Color.decode("#9E9B9B"));
+        view1.setBounds(370, 350, 155, 35);
+        view1.setIcon(new ImageIcon((Objects.requireNonNull(getClass().getResource("Images/viewdetails.png")))));
+        view1.setBackground(Color.decode("#FFFFFF"));
         view1.setOpaque(true);
         view1.setBorderPainted(false);
         view1.setFocusPainted(false);
@@ -52,9 +55,9 @@ public class Home extends JFrame implements ActionListener {
         add(view1);
 
         view2 = new JButton();
-        view2.setBounds(783, 345, 155, 35);
-        view2.setIcon(new ImageIcon((Objects.requireNonNull(getClass().getResource("Images/viewdetail.png")))));
-        view2.setBackground(Color.decode("#9E9B9B"));
+        view2.setBounds(770, 350, 155, 35);
+        view2.setIcon(new ImageIcon((Objects.requireNonNull(getClass().getResource("Images/viewdetails.png")))));
+        view2.setBackground(Color.decode("#FFFFFF"));
         view2.setOpaque(true);
         view2.setBorderPainted(false);
         view2.setFocusPainted(false);
@@ -62,9 +65,9 @@ public class Home extends JFrame implements ActionListener {
         add(view2);
 
         view3 = new JButton();
-        view3.setBounds(351, 595, 155, 35);
-        view3.setIcon(new ImageIcon((Objects.requireNonNull(getClass().getResource("Images/viewdetail.png")))));
-        view3.setBackground(Color.decode("#9E9B9B"));
+        view3.setBounds(370, 610, 155, 35);
+        view3.setIcon(new ImageIcon((Objects.requireNonNull(getClass().getResource("Images/viewdetails.png")))));
+        view3.setBackground(Color.decode("#FFFFFF"));
         view3.setOpaque(true);
         view3.setBorderPainted(false);
         view3.setFocusPainted(false);
@@ -72,34 +75,42 @@ public class Home extends JFrame implements ActionListener {
         add(view3);
 
         view4 = new JButton();
-        view4.setBounds(783, 595, 155, 35);
-        view4.setIcon(new ImageIcon((Objects.requireNonNull(getClass().getResource("Images/viewdetail.png")))));
-        view4.setBackground(Color.decode("#9E9B9B"));
+        view4.setBounds(770, 610, 155, 35);
+        view4.setIcon(new ImageIcon((Objects.requireNonNull(getClass().getResource("Images/viewdetails.png")))));
+        view4.setBackground(Color.decode("#FFFFFF"));
         view4.setOpaque(true);
         view4.setBorderPainted(false);
         view4.setFocusPainted(false);
         view4.setVisible(true);
         add(view4);
 
-        panel2 = new JPanel();
-        panel2.setBounds(230, 150, 395,230);
-        panel2.setBackground(Color.decode("#9E9B9B"));
-        add(panel2);
 
-        panel3 = new JPanel();
-        panel3.setBounds(665, 150, 395,230);
-        panel3.setBackground(Color.decode("#9E9B9B"));
-        add(panel3);
 
-        panel4 = new JPanel();
-        panel4.setBounds(230, 400, 395,230);
-        panel4.setBackground(Color.decode("#9E9B9B"));
-        add(panel4);
+        rentLbl1 = new JLabel();
+        rentLbl1.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/rent333.png"))));
+        getContentPane().add(rentLbl1);
+        rentLbl1.setBounds(230, 150, 300, 240);
+        add(rentLbl1);
 
-        panel5 = new JPanel();
-        panel5.setBounds(665, 400, 395,230);
-        panel5.setBackground(Color.decode("#9E9B9B"));
-        add(panel5);
+        rentLbl2 = new JLabel();
+        rentLbl2.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/rent111.png"))));
+        getContentPane().add(rentLbl2);
+        rentLbl2.setBounds(630, 150, 300, 240);
+        add(rentLbl2);
+
+        rentLbl4 = new JLabel();
+        rentLbl4.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/rent444.png"))));
+        getContentPane().add(rentLbl4);
+        rentLbl4.setBounds(230, 410, 300, 240);
+        add(rentLbl4);
+
+        rentLbl5 = new JLabel();
+        rentLbl5.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/rent555.png"))));
+        getContentPane().add(rentLbl5);
+        rentLbl5.setBounds(630, 410, 300, 240);
+        add(rentLbl5);
+
+
 
         panel1 = new JPanel();
         panel1.setBounds(135, 125, 1022, 550);
@@ -112,7 +123,9 @@ public class Home extends JFrame implements ActionListener {
         homeIcon.addActionListener(this);
         profileIcon.addActionListener(this);
         nextpage.addActionListener(this);
-
+        view1.addActionListener(this);
+        view2.addActionListener(this);
+//        view3.addActionListener(this);
     }
 
     public static void main(String[] args) {
@@ -145,6 +158,15 @@ public class Home extends JFrame implements ActionListener {
             dispose();
             new DriverDetails().setVisible(true);
         }
+        if (e.getSource().equals(view1)){
+            dispose();
+            new Rent1().setVisible(true);
+        }
+        if (e.getSource().equals(view2)){
+            dispose();
+            new Rent3().setVisible(true);
+        }
+
 
         if (e.getSource().equals(nextpage)){
             dispose();

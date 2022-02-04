@@ -31,7 +31,7 @@ public class Registration extends JFrame implements ActionListener{
     JButton Btn;
     JComboBox genderCombo, occupationCombo, memberCombo;
     JRadioButton Male, Female, Others;
-
+    ButtonGroup group;
     JSpinner yearSpinner, monthSpinner ,daySpinner;
 
     public Registration(){
@@ -86,35 +86,29 @@ public class Registration extends JFrame implements ActionListener{
         memberCombo.setFont(new Font("times", Font.BOLD,15));
         add(memberCombo);
 
+        group = new ButtonGroup();
 
         Male = new JRadioButton("Male");
+        Male.setActionCommand("Male");
+        Male.setSelected(true);
         Male.setBounds(690,145,120,20);
         Male.setBackground(Color.decode("#C0C0C0"));
         Male.setFont(new Font("times", Font.BOLD,15));
         add(Male);
 
         Female = new JRadioButton("Female");
+        Female.setActionCommand("Female");
         Female.setBounds(690,165,120,25);
         Female.setBackground(Color.decode("#C0C0C0"));
         Female.setFont(new Font("times", Font.BOLD,15));
         add(Female);
 
         Others = new JRadioButton("Others");
+        Others.setActionCommand("Others");
         Others.setBounds(690,185,120,20);
         Others.setBackground(Color.decode("#C0C0C0"));
         Others.setFont(new Font("times", Font.BOLD,15));
         add(Others);
-
-
-
-//        String[] Gender = {"Select", "Male", "Female", "Others"};
-//        genderCombo = new JComboBox(Gender);
-//        genderCombo.setBounds(690,145,120,25);
-//        genderCombo.setBackground(Color.decode("#C0C0C0"));
-//        genderCombo.setFont(new Font("times", Font.BOLD,15));
-//        //genderCombo.setSelectedItem("Others");
-//        add(genderCombo);
-
 
 
         contact = new JTextField();
@@ -179,7 +173,9 @@ public class Registration extends JFrame implements ActionListener{
         Btn.setOpaque(true);
         Btn.setBorderPainted(false);
         Btn.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/register.png"))));
-
+        group.add(Male);
+        group.add(Female);
+        group.add(Others);
 
         add(Btn);
         add(panel1);
@@ -241,11 +237,22 @@ public class Registration extends JFrame implements ActionListener{
 
 
         // for retrieving data from combo boxes
-        String selectedOccupation, selectedGender, selectedMember;
+        String selectedOccupation, selectedMember;
+        String selectedGender = null;
 
         selectedOccupation = Objects.requireNonNull(occupationCombo.getSelectedItem()).toString();
-        selectedGender = Objects.requireNonNull(genderCombo.getSelectedItem()).toString();
         selectedMember = Objects.requireNonNull(memberCombo.getSelectedItem()).toString();
+
+        if (Male.isSelected()){
+            System.out.println("Male");
+            selectedGender = "Male";
+        }
+        else if (Female.isSelected()){
+            selectedGender = "Female";
+        }
+        else if (Others.isSelected()){
+            selectedGender = "Others";
+        }
 
         // close the registration window after successful registration
         boolean closeRegistrationWindow = false;
