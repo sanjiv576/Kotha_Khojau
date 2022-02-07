@@ -199,7 +199,6 @@ public class New_updateprofile extends JFrame implements ActionListener {
         logoutIcon.addActionListener(this);
         submitbtn.addActionListener(this);
         cancelbtn.addActionListener(this);
-    //    backbtn.addActionListener(this);
         password_change.addActionListener(this);
         delete_account.addActionListener(this);
         driverIcon.addActionListener(this);
@@ -273,14 +272,7 @@ public class New_updateprofile extends JFrame implements ActionListener {
 
     // this method inserts lower buttons for back, cancel and submit
     public void insertLowerButtons(){
-//        backbtn= new JButton();
-//        backbtn.setBounds(210,570,187,55);
-//        backbtn.setOpaque(true);
-//        backbtn.setBorderPainted(false);
-//        backbtn.setBackground(Color.decode("#9F9391"));
-//        backbtn.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/backButton187x55.png"))));
-//        backbtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-//        add(backbtn);
+
 
         submitbtn= new JButton();
         submitbtn.setBounds(400,570,205,55);
@@ -350,6 +342,10 @@ public class New_updateprofile extends JFrame implements ActionListener {
         if(e.getSource().equals(homeIcon)){
             dispose();
             new Home().setVisible(true);
+        }
+        if(e.getSource().equals(delete_account)){
+            dispose();
+            new DeleteUserAccount().setVisible(true);
         }
 
         if (e.getSource().equals(cancelbtn)){
