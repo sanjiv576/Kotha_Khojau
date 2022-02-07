@@ -62,6 +62,15 @@ public class UserController {
         db.updateDetails(query);
     }
 
+    // for deleting account
+    public void deleteMyAccount(String username, String password){
+
+        String[] deleteData = profileDetails(username, password);
+        DbConnection db = new DbConnection();
+        String query = "delete from User_tbl where UserID='"+deleteData[0]+"'";
+        db.updateDetails(query);
+    }
+
 
 
     // for updating first, middle , last names, email, address, contact
@@ -71,32 +80,34 @@ public class UserController {
         String query;
         String[] oldData = personalData(SaveData.myUsername, SaveData.myPassword);
 
+        // fetching userID (primary key) to identify the particular row to be deleted
+        String[] userId = profileDetails(SaveData.myUsername, SaveData.myPassword);
         try {
             if (i == 0) {
-                query = "update User_tbl set FirstName='" + newData + "' where FirstName='" + oldData[i] + "'";
+                query = "update User_tbl set FirstName='" + newData + "' where FirstName='" + oldData[i] + "' and UserID='" + userId[0] + "'";
                 db.updateDetails(query);
             }
             else if (i == 1) {
-                query = "update User_tbl set MiddleName='" + newData + "' where MiddleName='" + oldData[i] + "'";
+                query = "update User_tbl set MiddleName='" + newData + "' where MiddleName='" + oldData[i] + "' and UserID='" + userId[0] + "'";
                 db.updateDetails(query);
             }
             else if (i == 2) {
-                query = "update User_tbl set LastName='" + newData + "' where LastName='" + oldData[i] + "'";
+                query = "update User_tbl set LastName='" + newData + "' where LastName='" + oldData[i] + "' and UserID='" + userId[0] + "'";
                 db.updateDetails(query);
             }
 
             else if (i == 3) {
-                query = "update User_tbl set Contact='" + newData + "' where Contact='" + oldData[i] + "'";
+                query = "update User_tbl set Contact='" + newData + "' where Contact='" + oldData[i] + "' and UserID='" + userId[0] + "'";
                 db.updateDetails(query);
             }
 
             else if (i == 4) {
-                query = "update User_tbl set Address='" + newData + "' where Address='" + oldData[i] + "'";
+                query = "update User_tbl set Address='" + newData + "' where Address='" + oldData[i] + "' and UserID='" + userId[0] + "'";
                 db.updateDetails(query);
             }
 
             else if (i == 5) {
-                query = "update User_tbl set PersonalEmail='" + newData + "' where PersonalEmail='" + oldData[i] + "'";
+                query = "update User_tbl set PersonalEmail='" + newData + "' where PersonalEmail='" + oldData[i] + "' and UserID='" + userId[0] + "'";
                 db.updateDetails(query);
             }
         }
