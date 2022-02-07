@@ -1,6 +1,8 @@
 package view;
 
+import controller.UserController;
 import logic.Logic_New_passwordchange;
+import logic.SaveData;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -126,35 +128,21 @@ public class DeleteUserAccount extends JFrame implements ActionListener {
 
 
 
-
-
-
         // invokes this method to insert buttons in lower region
         insertLowerButtons();
+
 
         homeIcon.addActionListener(this);
         profileIcon.addActionListener(this);
         logoutIcon.addActionListener(this);
-
-
-
+        password_change.addActionListener(this);
         update_profile.addActionListener(this);
+        driverIcon.addActionListener(this);
+        yestbtn.addActionListener(this);
+        nobtn.addActionListener(this);
+
         add(panel1);
         add(panel2);
-
-
-        //
-
-
-
-
-
-
-
-
-
-
-
 
 
     }
@@ -167,8 +155,64 @@ public class DeleteUserAccount extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
+        if (e.getSource().equals(logoutIcon)) {
+            int choice = JOptionPane.showConfirmDialog(null, "Do you want to log out ?",
+                    "Log out", JOptionPane.YES_NO_CANCEL_OPTION);
+            if (choice == JOptionPane.YES_OPTION) {
+                dispose();
+                new Signin().setVisible(true);
+            }
+        }
+
+        if (e.getSource().equals(homeIcon)){
+            dispose();
+            new Home().setVisible(true);
+        }
+
+        if (e.getSource().equals(profileIcon)){
+            dispose();
+            new Renter_userprofile().setVisible(true);
+        }
+
+        if (e.getSource().equals(password_change)){
+            dispose();
+            new New_passwordchange().setVisible(true);
+        }
+
+        if (e.getSource().equals(update_profile)){
+            dispose();
+            new New_updateprofile().setVisible(true);
+        }
+
+        if(e.getSource().equals(driverIcon)){
+            dispose();
+            new DriverDetails().setVisible(true);
+        }
+
+        if(e.getSource().equals(homeIcon)){
+            dispose();
+            new Home().setVisible(true);
+        }
+
+        if(e.getSource().equals(yestbtn)){
+
+            int choice = JOptionPane.showConfirmDialog(null, "Do you really want to delete account ?",
+                    "Delete Account Confirmation", JOptionPane.YES_NO_OPTION);
+            if (choice == JOptionPane.YES_OPTION) {
+
+                UserController userController = new UserController();
+                userController.deleteMyAccount(SaveData.myUsername, SaveData.myPassword);
+                dispose();
+                new Signin().setVisible(true);
+            }
 
 
+        }
+
+        if(e.getSource().equals(nobtn)){
+            System.out.println("no delete");
+
+        }
 
 
 
@@ -236,11 +280,10 @@ public class DeleteUserAccount extends JFrame implements ActionListener {
     public void insertLowerButtons(){
         nobtn= new JButton();
         nobtn.setBounds(450,450,165,55);
-        nobtn.addActionListener(this);
         nobtn.setOpaque(true);
         nobtn.setBorderPainted(false);
         nobtn.setBackground(Color.decode("#9F9391"));
-        nobtn.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/nobtn (1).png"))));
+        nobtn.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/noBtn_163x46.png"))));
         nobtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         add(nobtn);
 
@@ -250,7 +293,7 @@ public class DeleteUserAccount extends JFrame implements ActionListener {
         yestbtn.setOpaque(true);
         yestbtn.setBorderPainted(false);
         yestbtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        yestbtn.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/yesbtn (1).png"))));
+        yestbtn.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Images/yesBtn_163x46.png"))));
         add(yestbtn);
 
 
