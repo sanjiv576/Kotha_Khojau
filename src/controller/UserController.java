@@ -57,18 +57,20 @@ public class UserController {
     // for changing password
     public void passwordChange(String oldPassword, String newPassword){
 
+        String[] changeData = profileDetails(SaveData.myUsername, SaveData.myPassword);
         DbConnection db = new DbConnection();
-        String query = "update User_tbl set Password='"+newPassword+"' where Password='"+oldPassword+"'";
+        String query = "update User_tbl set Password='"+newPassword+"' where Password='"+oldPassword+"' and UserID='"+changeData[0]+"'";
         db.updateDetails(query);
     }
 
     // for deleting account
-    public void deleteMyAccount(String username, String password){
+    public int deleteMyAccount(String username, String password){
 
         String[] deleteData = profileDetails(username, password);
         DbConnection db = new DbConnection();
         String query = "delete from User_tbl where UserID='"+deleteData[0]+"'";
         db.updateDetails(query);
+        return 1;
     }
 
 

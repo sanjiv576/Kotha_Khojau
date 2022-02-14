@@ -190,7 +190,7 @@ public class Signin extends JFrame implements ActionListener {
             if (closeThisWindow){
                 dispose();
                 // opening Renter profile
-                new Renter_userprofile().setVisible(true);
+                new UserProfile().setVisible(true);
             }
 
         }

@@ -311,7 +311,7 @@ public class New_passwordchange extends JFrame implements ActionListener {
 
         if (e.getSource().equals(profileIcon)){
             dispose();
-            new Renter_userprofile().setVisible(true);
+            new UserProfile().setVisible(true);
         }
         if (e.getSource().equals(homeIcon)){
             dispose();

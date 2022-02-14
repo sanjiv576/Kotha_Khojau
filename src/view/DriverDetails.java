@@ -3,7 +3,6 @@ package view;
 import controller.UserController;
 import database.DbConnection;
 import model.Driver_Details;
-import model.User;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -165,7 +164,8 @@ public class DriverDetails extends JFrame implements ActionListener {
             int choice = JOptionPane.showConfirmDialog(null, "Do you want to log out ?",
                     "Log out", JOptionPane.YES_NO_CANCEL_OPTION);
             if (choice == JOptionPane.YES_OPTION) {
-                System.exit(0);
+                dispose();
+                new Signin().setVisible(true);
             }
         }
 
@@ -175,14 +175,14 @@ public class DriverDetails extends JFrame implements ActionListener {
             new New_updateprofile().setVisible(true);
         }
 
-//        if (e.getSource().equals(homeIcon)){
-//            dispose();
-//            new Home().setVisible(true);
-//        }
+        if (e.getSource().equals(homeIcon)){
+            dispose();
+            new Home().setVisible(true);
+        }
 
         if (e.getSource().equals(profileIcon)){
             dispose();
-            new Renter_userprofile().setVisible(true);
+            new UserProfile().setVisible(true);
         }
     }
 

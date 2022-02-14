@@ -38,6 +38,7 @@ public class Home extends JFrame implements ActionListener {
         nextpage.setIcon(new ImageIcon((Objects.requireNonNull(getClass().getResource("Images/next 1.png")))));
         nextpage.setBackground(Color.decode("#C6C6C6"));
         nextpage.setOpaque(true);
+        nextpage.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         nextpage.setBorderPainted(false);
         nextpage.setFocusPainted(false);
         nextpage.setVisible(true);
@@ -49,6 +50,7 @@ public class Home extends JFrame implements ActionListener {
         view1.setIcon(new ImageIcon((Objects.requireNonNull(getClass().getResource("Images/viewdetails.png")))));
         view1.setBackground(Color.decode("#FFFFFF"));
         view1.setOpaque(true);
+        view1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         view1.setBorderPainted(false);
         view1.setFocusPainted(false);
         view1.setVisible(true);
@@ -59,6 +61,7 @@ public class Home extends JFrame implements ActionListener {
         view2.setIcon(new ImageIcon((Objects.requireNonNull(getClass().getResource("Images/viewdetails.png")))));
         view2.setBackground(Color.decode("#FFFFFF"));
         view2.setOpaque(true);
+        view2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         view2.setBorderPainted(false);
         view2.setFocusPainted(false);
         view2.setVisible(true);
@@ -68,6 +71,7 @@ public class Home extends JFrame implements ActionListener {
         view3.setBounds(370, 610, 155, 35);
         view3.setIcon(new ImageIcon((Objects.requireNonNull(getClass().getResource("Images/viewdetails.png")))));
         view3.setBackground(Color.decode("#FFFFFF"));
+        view3.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         view3.setOpaque(true);
         view3.setBorderPainted(false);
         view3.setFocusPainted(false);
@@ -78,6 +82,7 @@ public class Home extends JFrame implements ActionListener {
         view4.setBounds(770, 610, 155, 35);
         view4.setIcon(new ImageIcon((Objects.requireNonNull(getClass().getResource("Images/viewdetails.png")))));
         view4.setBackground(Color.decode("#FFFFFF"));
+        view4.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         view4.setOpaque(true);
         view4.setBorderPainted(false);
         view4.setFocusPainted(false);
@@ -123,6 +128,7 @@ public class Home extends JFrame implements ActionListener {
         homeIcon.addActionListener(this);
         profileIcon.addActionListener(this);
         nextpage.addActionListener(this);
+        driverIcon.addActionListener(this);
         view1.addActionListener(this);
         view2.addActionListener(this);
         view3.addActionListener(this);
@@ -145,7 +151,8 @@ public class Home extends JFrame implements ActionListener {
             int choice = JOptionPane.showConfirmDialog(null, "Do you want to log out ?",
                     "Log out", JOptionPane.YES_NO_CANCEL_OPTION);
             if (choice == JOptionPane.YES_OPTION) {
-                System.exit(0);
+                dispose();
+                new Signin().setVisible(true);
             }
         }
 
@@ -156,7 +163,7 @@ public class Home extends JFrame implements ActionListener {
 
         if (e.getSource().equals(profileIcon)){
             dispose();
-            new Renter_userprofile().setVisible(true);
+            new UserProfile().setVisible(true);
         }
 
         if (e.getSource().equals(driverIcon)){

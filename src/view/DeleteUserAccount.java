@@ -1,7 +1,6 @@
 package view;
 
 import controller.UserController;
-import logic.Logic_New_passwordchange;
 import logic.SaveData;
 
 import javax.swing.*;
@@ -171,7 +170,7 @@ public class DeleteUserAccount extends JFrame implements ActionListener {
 
         if (e.getSource().equals(profileIcon)){
             dispose();
-            new Renter_userprofile().setVisible(true);
+            new UserProfile().setVisible(true);
         }
 
         if (e.getSource().equals(password_change)){

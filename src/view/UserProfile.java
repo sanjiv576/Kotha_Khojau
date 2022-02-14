@@ -15,7 +15,7 @@ import java.sql.SQLException;
 import java.util.GregorianCalendar;
 import java.util.Objects;
 
-public class Renter_userprofile extends JFrame implements ActionListener {
+public class UserProfile extends JFrame implements ActionListener {
 
 
     // Images Labeling
@@ -33,7 +33,7 @@ public class Renter_userprofile extends JFrame implements ActionListener {
     JLabel aboutme, nameLbl, renterIDLbl, typeLbl,
             genderLbl, contactLbl, dobLbl, emailLbl, occupationLbl;
     JTextArea aboutMeField;
-    JButton saveBtn, updateBtn;
+    JButton saveBtn, updateBtn, advertisementBtn, historyBtn;
 
     JLabel backgroundImg;
 
@@ -51,10 +51,34 @@ public class Renter_userprofile extends JFrame implements ActionListener {
     UserController userController = new UserController();
     String aboutMeData = "";
 
-    public Renter_userprofile() {
+    public UserProfile() {
 
         aboutMeData = userController.retrieveAboutMe(SaveData.myUsername, SaveData.myPassword);
-        setTitle("Renter Profile");
+        String[] userList = userController.profileDetails(SaveData.myUsername, SaveData.myPassword);
+        if (userList[2].equals("Renter")) {
+            setTitle("Renter Profile");
+        }
+        else if (userList[2].equals("Owner")){
+            setTitle("Owner Profile");
+
+            advertisementBtn = new JButton();
+            advertisementBtn.setIcon(new ImageIcon((Objects.requireNonNull(getClass().getResource("Images/yellowAdvertiseBtn_172x52.png")))));
+            advertisementBtn.setBounds(927, 461, 172, 52);
+            advertisementBtn.setBackground(Color.decode("#9E9B9B"));
+            advertisementBtn.setOpaque(true);
+            advertisementBtn.setBorderPainted(false);
+            advertisementBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            add(advertisementBtn);
+
+            historyBtn = new JButton();
+            historyBtn.setIcon(new ImageIcon((Objects.requireNonNull(getClass().getResource("Images/yellowHistoryBtn_130x52.png")))));
+            historyBtn.setBounds(948, 553, 130, 52);
+            historyBtn.setBackground(Color.decode("#9E9B9B"));
+            historyBtn.setOpaque(true);
+            historyBtn.setBorderPainted(false);
+            historyBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            add(historyBtn);
+        }
         setBounds(100, 80, 1280, 740);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setBackground(Color.darkGray);
@@ -150,7 +174,7 @@ public class Renter_userprofile extends JFrame implements ActionListener {
         add(nameLbl);
 
 
-        renterIDLbl = new JLabel("Renter ID :");
+        renterIDLbl = new JLabel("User ID :");
         renterIDLbl.setBounds(500, 200, 150, 25);
         renterIDLbl.setFont(new Font("Serif", Font.BOLD, 23));
         renterIDLbl.setForeground(Color.WHITE);
@@ -193,7 +217,7 @@ public class Renter_userprofile extends JFrame implements ActionListener {
         add(emailLbl);
 
 
-        String[] userList = userController.profileDetails(SaveData.myUsername, SaveData.myPassword);
+       // String[] userList = userController.profileDetails(SaveData.myUsername, SaveData.myPassword);
 
         String myName = userList[1];
         String myUserId = userList[0];
@@ -269,6 +293,7 @@ public class Renter_userprofile extends JFrame implements ActionListener {
         driverIcon.addActionListener(this);
         saveBtn.addActionListener(this);
         updateBtn.addActionListener(this);
+        homeIcon.addActionListener(this);
 
         add(panel1);
 
@@ -277,7 +302,7 @@ public class Renter_userprofile extends JFrame implements ActionListener {
     // ------------------- main method -------------------
 
     public static void main(String args[]) {
-        new Renter_userprofile().setVisible(true);
+        new UserProfile().setVisible(true);
 
 
         //Look and feel
@@ -487,12 +512,17 @@ public class Renter_userprofile extends JFrame implements ActionListener {
             int choice = JOptionPane.showConfirmDialog(null, "Do you want to log out ?",
                     "Log out", JOptionPane.YES_NO_CANCEL_OPTION);
             if (choice == JOptionPane.YES_OPTION) {
-                System.exit(0);
+                dispose();
+                new Signin().setVisible(true);
             }
         }
         if (e.getSource().equals(settingIcon)) {
             dispose();
             new New_updateprofile().setVisible(true);
+        }
+        if (e.getSource().equals(homeIcon)) {
+            dispose();
+            new Home().setVisible(true);
         }
 
         if (e.getSource().equals(saveBtn)) {
@@ -515,6 +545,11 @@ public class Renter_userprofile extends JFrame implements ActionListener {
             updateBtn.setVisible(false);
             saveBtn.setVisible(true);
 
+        }
+
+        if (e.getSource().equals(driverIcon)){
+            dispose();
+            new DriverDetails().setVisible(true);
         }
 
     }

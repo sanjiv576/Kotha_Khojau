@@ -1,7 +1,5 @@
 package database;
 
-
-
 import java.sql.*;
 import java.util.Random;
 
@@ -21,12 +19,12 @@ public class DbConnection {
             statement = connection.createStatement();
 
 
-            if (connection != null){
-                System.out.println("Database is connected");
-            }
-            else {
-                System.out.println("Database connection failed");
-            }
+//            if (connection != null){
+//                System.out.println("Database is connected");
+//            }
+//            else {
+//                System.out.println("Database connection failed");
+//            }
 
             // create table for User
             String tableCreate = "create table if not exists User_tbl(UserID int auto_increment, " +
@@ -61,15 +59,13 @@ public class DbConnection {
                     "constraint driverId_pk primary key(DriverID))";
 
 
-           // PreparedStatement pst = connection.prepareStatement(tableCreate);
-
             String[] tables = {tableCreate, driverTable};
             for (String element : tables) {
                 statement.execute(element);
             }
 
 
-            System.out.println("Table has been created");
+           // System.out.println("Table has been created");
 
         }
         catch (Exception exception){
@@ -97,15 +93,6 @@ public class DbConnection {
     public ResultSet matchValues(String query, String username, String password){
 
         try{
-            // 1st try
-//            PreparedStatement pst = (PreparedStatement) connection.prepareStatement(query);
-//            pst.setString(1, username);
-//            pst.setString(2, password);
-//
-//            resultSet = pst.executeQuery(query);
-
-            // this does not work : memberType
-            //System.out.println(statement.executeQuery(memberCategory));
             resultSet = statement.executeQuery(query);
         }
         catch (Exception exception){
@@ -142,8 +129,6 @@ public class DbConnection {
         }
     }
 
-
-
     public boolean driverDetailsInsert(){
         String[] names = {"Bishal Kumar Karki", "Santosh Adhikari", "Lal Mani Shrestha", "Suraj Majhi", "Keshav Bhujel", "Nabin Jung Magar", "Pravin Narayan Thapa", "Manoj Ratna Shakya", "Arjun Bahadur Karki"};
         String[] contacts = {"9861251844", "9823426229", "9864224909", "9841124819", "9844224909", "9746297792", "9848673763", "9869760012", "9808502001"};
@@ -169,7 +154,7 @@ public class DbConnection {
                         longDistance[num] + "','" +
                         vehicleStatus[num] + "')");
             }
-            System.out.println("Driver info inserted in the database");
+           // System.out.println("Driver info inserted in the database");
         }
         catch (Exception exception){
             System.out.println(exception.getMessage());
@@ -178,7 +163,6 @@ public class DbConnection {
 
         return false;
     }
-
 
     public static void main(String[] args) {
         new DbConnection();
