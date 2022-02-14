@@ -33,10 +33,6 @@ public class Rent1 extends JFrame implements ActionListener {
         setResizable(false);
 
 
-
-
-
-
         s = new ImageIcon[4];
 
         s[0] = new ImageIcon(Objects.requireNonNull(getClass().getResource("rentImage/9.png")));
@@ -58,9 +54,10 @@ public class Rent1 extends JFrame implements ActionListener {
         lowerPanel.setBackground(Color.decode("#9F9391"));
 
         b1 = new JButton("<<");
-
+        b1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         b1.setBounds(150, 10, 50, 20);
         b2 = new JButton(">>");
+        b2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         b2.setBounds(200, 10, 50, 20);
 
         lowerPanel.add(b1);
