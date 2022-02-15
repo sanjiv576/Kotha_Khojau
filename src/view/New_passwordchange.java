@@ -198,6 +198,7 @@ public class New_passwordchange extends JFrame implements ActionListener {
         submitbtn.addActionListener(this);
         cancelbtn.addActionListener(this);
         driverIcon.addActionListener(this);
+        delete_account.addActionListener(this);
 
         showPassword1.addActionListener(this);
         showPassword2.addActionListener(this);
@@ -314,8 +315,12 @@ public class New_passwordchange extends JFrame implements ActionListener {
         }
         if (e.getSource().equals(homeIcon)){
             dispose();
-            // remaining
-           // new New_updateprofile().setVisible(true);
+            new Home().setVisible(true);
+        }
+
+        if(e.getSource().equals(delete_account)){
+            dispose();
+            new DeleteUserAccount().setVisible(true);
         }
     }
 
