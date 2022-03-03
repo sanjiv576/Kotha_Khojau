@@ -86,6 +86,12 @@ development and for database we relied on MySQL Workbench.
 ![Tux, the Linux mascot](https://github.com/sanjiv576/Kotha_Khojau/blob/master/src/forReadmeFile/techTools.png)
 <br><br>
 
+# SCOPE
+The scope of this project is to end the struggle of renting rooms that has been around for quite a time in
+many parts around the world and create a virtual experience for tenants.
+
+
+
 # BEFORE RUNNING THE APPLICATION
 After, it is downloaded its zip file  or cloned, you must install **third-party library** and dependency libraries in order to execute properly.
 
