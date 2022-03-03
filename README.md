@@ -42,6 +42,11 @@ Login
 - The user shall be able to successfully login after registering if the correct username 
 and password is given
 - Logging in would lead the user to the homepage of the application
+User details
+- People on the application can view other users’ profiles where they can find details 
+like phone number, email, username
+- Personal details can be updated by the user
+
 
 
 
