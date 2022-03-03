@@ -25,7 +25,7 @@ Some major features of this application are as follows:
 - Users can update, view and add information in Profile.
 - Rooms that are available for rent are displayed on the home page
 - User can change their password if they can type in their previous one
-- 
+- The feature of deleting the account is also available
 <br><br>
 
 ## What does this application solve the problems ?
