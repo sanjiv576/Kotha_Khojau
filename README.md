@@ -53,6 +53,8 @@ Driver details
 - A designated button that takes the user to a list of drivers and shipment companies 
 with their details like location and phone number
 
+# NON-FUNCTIONAL REQUIREMENTS
+
 
 
 
