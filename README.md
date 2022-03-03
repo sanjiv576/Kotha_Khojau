@@ -5,21 +5,71 @@
 
 
 # INTRODUCTION 
-
-Kotha Khojau is a rental management system which allows to find appropriate rooms/hostels/buildings/flats for room seekers . 
-This is a desktop-based application which is developed by using Swing for frontend and Java programming language and mySQL for the backend part. <br><br>
+Kotha Khojau is a room rental application that acts as a platform for people to look for free spaces 
+that are available near their desired location and allows its users to give their property for rent.Traditional methods to look for places available for rent are still quite common today. In the context of Nepal, people still rely on old ways of finding and renting rooms which are quite hectic and time consuming. To overcome this type of problem, an interface is needed which allows the user 
+to check out rooms that are available for rent and can be used for putting up properties for rent as 
+well. On top of that, a medium should be created to connect people to shipping agencies and drivers 
+for shipping purposes. <br><br>
 
 # AIM
-Find suitable rooms/buildings/flats for tenant instead of walking every street and visiting every house and reduction in mental stress and within low investment.
+Design and implement a computerized and functional application that permits users to search for rooms or living spaces for tenant purposes, reducing the hassle and manual work of looking and managing details, location, prices, and shipment of goods while moving out and into a new place.
 <br><br>
 
 # FEATURES
 Some major features of this application are as follows:
-- Create and delete own account.
+- Users can make a new account using their phone number and e-mail
+- A notification is given to rewriting the phone number if it detects a shortage in the number of 
+  digits
+- Member type must be specified to register which allows the admin to determine the user’s 
+  intentions for using the application
 - Account verification through email address.
+- User must specify their occupation for registering a new account
 - Users can update, view and add information in Profile.
-- Find vacant roomshostels/buildings/flats in expected locations, price range and room services.
+- Rooms that are available for rent are displayed on the home page
+- User can change their password if they can type in their previous one
+- The feature of deleting the account is also available
+- The application has a designated button which contains details of drivers and shipment 
+  companies for moving goods from the previous space and into the new place
 <br><br>
+
+# FUNCTIONAL REQUIREMENTS
+Registration
+- The user shall be able to register a new account
+Customers are required to type in the required entries for successful registration, incorrect 
+Information like contact numbers and email are detected and the credentials are stored safely 
+in the database
+Login
+- The user shall be able to successfully login after registering if the correct username 
+and password is given
+- Logging in would lead the user to the homepage of the application
+User details
+- People on the application can view other users’ profiles where they can find details 
+like phone number, email, username
+- Personal details can be updated by the user
+View details
+- Users can click on a particular room displayed on the home page and get details of it 
+like location, price, and others
+Driver details
+- A designated button that takes the user to a list of drivers and shipment companies 
+with their details like location and phone number
+
+# NON-FUNCTIONAL REQUIREMENTS
+Performance 
+- The application should have showrooms available and update details with time
+Reliable
+- The application should be functional, and it should be able to handle multiple users
+Security
+- The user accounts should be only accessed by the user and not the admins
+
+
+
+
+
+
+
+
+
+
 
 ## What does this application solve the problems ?
 <br><br>
@@ -27,9 +77,20 @@ Some major features of this application are as follows:
 <br><br>
 
 # TOOLS AND TECHNOLOGIES USED 
+We have used a wide variety of tools for this project. The scrum master had to make user stories for 
+assigning duties, so Excel was used ever other week. For making prototype of the project, we sticked 
+with figma as our primary option. As we executed this code using Java, we relied on Intellij for the 
+development and for database we relied on MySQL Workbench.
+
 <br><br>
 ![Tux, the Linux mascot](https://github.com/sanjiv576/Kotha_Khojau/blob/master/src/forReadmeFile/techTools.png)
 <br><br>
+
+# SCOPE
+The scope of this project is to end the struggle of renting rooms that has been around for quite a time in
+many parts around the world and create a virtual experience for tenants.
+
+
 
 # BEFORE RUNNING THE APPLICATION
 After, it is downloaded its zip file  or cloned, you must install **third-party library** and dependency libraries in order to execute properly.
