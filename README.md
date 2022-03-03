@@ -18,6 +18,8 @@ Some major features of this application are as follows:
 - Users can make a new account using their phone number and e-mail
 - A notification is given to rewriting the phone number if it detects a shortage in the number of 
   digits
+- Member type must be specified to register which allows the admin to determine the user’s 
+  intentions for using the application
 - Account verification through email address.
 - Users can update, view and add information in Profile.
 - Find vacant roomshostels/buildings/flats in expected locations, price range and room services.
