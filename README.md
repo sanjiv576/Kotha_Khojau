@@ -23,7 +23,7 @@ Some major features of this application are as follows:
 - Account verification through email address.
 - User must specify their occupation for registering a new account
 - Users can update, view and add information in Profile.
-- Find vacant roomshostels/buildings/flats in expected locations, price range and room services.
+- Rooms that are available for rent are displayed on the home page
 <br><br>
 
 ## What does this application solve the problems ?
