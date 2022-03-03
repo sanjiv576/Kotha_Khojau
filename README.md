@@ -5,9 +5,8 @@
 
 
 # INTRODUCTION 
-
-Kotha Khojau is a rental application which allows to find rooms/hostels/buildings/flats for room seekers. It also is a platform for posting spaces online for rent. 
-This is a desktop-based application which is developed by using Swing for frontend and Java programming language and mySQL for the backend part. <br><br>
+Kotha Khojau is a room rental application that acts as a platform for people to look for free spaces 
+that are available near their desired location and allows its users to give their property for rent. <br><br>
 
 # AIM
 Design and implement a computerized and functional application that permits users to search for rooms or living spaces for tenant purposes, reducing the hassle and manual work of looking and managing details, location, prices, and shipment of goods while moving out and into a new place.
