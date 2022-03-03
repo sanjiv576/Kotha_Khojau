@@ -58,6 +58,9 @@ Performance
 - The application should have showrooms available and update details with time
 Reliable
 - The application should be functional, and it should be able to handle multiple users
+Security
+- The user accounts should be only accessed by the user and not the admins
+
 
 
 
