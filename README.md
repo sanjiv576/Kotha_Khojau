@@ -49,6 +49,10 @@ like phone number, email, username
 View details
 - Users can click on a particular room displayed on the home page and get details of it 
 like location, price, and others
+Driver details
+- A designated button that takes the user to a list of drivers and shipment companies 
+with their details like location and phone number
+
 
 
 
