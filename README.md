@@ -46,6 +46,9 @@ User details
 - People on the application can view other users’ profiles where they can find details 
 like phone number, email, username
 - Personal details can be updated by the user
+View details
+- Users can click on a particular room displayed on the home page and get details of it 
+like location, price, and others
 
 
 
