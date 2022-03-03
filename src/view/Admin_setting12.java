@@ -2,7 +2,7 @@ package view;
 
 //import logic.Logic_New_updateProfile;
 
-import logic.Admin.Logic_UpdateProfile;
+//import logic.Admin.Logic_UpdateProfile;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -328,7 +328,7 @@ class Admin_Setting12 extends JFrame implements ActionListener {
                     "Profile update", JOptionPane.INFORMATION_MESSAGE);
             clearAll();
         }
-//        if (e.getSource().equals(profileIcon)){
+//        if (e.getSource().equals(profileIcons)){
 //            dispose();
 //            new Renter_userprofile().setVisible(true);
 //        }
