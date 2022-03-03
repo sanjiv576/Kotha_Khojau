@@ -21,6 +21,7 @@ Some major features of this application are as follows:
 - Member type must be specified to register which allows the admin to determine the user’s 
   intentions for using the application
 - Account verification through email address.
+- User must specify their occupation for registering a new account
 - Users can update, view and add information in Profile.
 - Find vacant roomshostels/buildings/flats in expected locations, price range and room services.
 <br><br>
