@@ -55,7 +55,10 @@ with their details like location and phone number
 
 # NON-FUNCTIONAL REQUIREMENTS
 Performance 
-The application should have showrooms available and update details with time
+- The application should have showrooms available and update details with time
+Reliable
+- The application should be functional, and it should be able to handle multiple users
+
 
 
 
