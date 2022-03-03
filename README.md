@@ -15,7 +15,9 @@ Design and implement a computerized and functional application that permits user
 
 # FEATURES
 Some major features of this application are as follows:
-- Create and delete own account.
+- Users can make a new account using their phone number and e-mail
+- A notification is given to rewriting the phone number if it detects a shortage in the number of 
+  digits
 - Account verification through email address.
 - Users can update, view and add information in Profile.
 - Find vacant roomshostels/buildings/flats in expected locations, price range and room services.
