@@ -38,6 +38,12 @@ Registration
 Customers are required to type in the required entries for successful registration, incorrect 
 Information like contact numbers and email are detected and the credentials are stored safely 
 in the database
+Login
+- The user shall be able to successfully login after registering if the correct username 
+and password is given
+- Logging in would lead the user to the homepage of the application
+
+
 
 
 
