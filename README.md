@@ -33,6 +33,13 @@ Some major features of this application are as follows:
 <br><br>
 
 # FUNCTIONAL REQUIREMENTS
+Registration
+- The user shall be able to register a new account
+Customers are required to type in the required entries for successful registration, incorrect 
+Information like contact numbers and email are detected and the credentials are stored safely 
+in the database
+
+
 
 
 ## What does this application solve the problems ?
