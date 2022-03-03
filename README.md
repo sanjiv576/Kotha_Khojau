@@ -6,7 +6,7 @@
 
 # INTRODUCTION 
 Kotha Khojau is a room rental application that acts as a platform for people to look for free spaces 
-that are available near their desired location and allows its users to give their property for rent. <br><br>
+that are available near their desired location and allows its users to give their property for rent.Traditional methods to look for places available for rent are still quite common today. In the context of Nepal, people still rely on old ways of finding and renting rooms which are quite hectic and time consuming. <br><br>
 
 # AIM
 Design and implement a computerized and functional application that permits users to search for rooms or living spaces for tenant purposes, reducing the hassle and manual work of looking and managing details, location, prices, and shipment of goods while moving out and into a new place.
