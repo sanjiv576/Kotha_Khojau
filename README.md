@@ -24,6 +24,8 @@ Some major features of this application are as follows:
 - User must specify their occupation for registering a new account
 - Users can update, view and add information in Profile.
 - Rooms that are available for rent are displayed on the home page
+- User can change their password if they can type in their previous one
+- 
 <br><br>
 
 ## What does this application solve the problems ?
