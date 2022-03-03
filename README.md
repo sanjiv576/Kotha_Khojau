@@ -77,6 +77,11 @@ Security
 <br><br>
 
 # TOOLS AND TECHNOLOGIES USED 
+We have used a wide variety of tools for this project. The scrum master had to make user stories for 
+assigning duties, so Excel was used ever other week. For making prototype of the project, we sticked 
+with figma as our primary option. As we executed this code using Java, we relied on Intellij for the 
+development and for database we relied on MySQL Workbench.
+
 <br><br>
 ![Tux, the Linux mascot](https://github.com/sanjiv576/Kotha_Khojau/blob/master/src/forReadmeFile/techTools.png)
 <br><br>
