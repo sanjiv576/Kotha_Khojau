@@ -32,6 +32,9 @@ Some major features of this application are as follows:
   companies for moving goods from the previous space and into the new place
 <br><br>
 
+# FUNCTIONAL REQUIREMENTS
+
+
 ## What does this application solve the problems ?
 <br><br>
 ![Tux, the Linux mascot](https://github.com/sanjiv576/Kotha_Khojau/blob/master/src/forReadmeFile/problemAndSolution.png)
